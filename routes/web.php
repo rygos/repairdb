@@ -11,16 +11,27 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', 'HomeController@index');
+
+Route::post('search', 'SearchController@searchProcess');
+Route::get('search/{term}', 'SearchController@search');
 
 Route::get('repair/create', 'RepairController@create');
 Route::get('repair/{id}', 'RepairController@show');
 
 Route::post('repair/create', 'RepairController@store');
 Route::post('repair/storeremark', 'RepairController@storeremark');
+Route::post('repair/changegorderno', 'RepairController@changegorderno');
 Route::post('repair/changestate', 'RepairController@changestate');
 
 Route::get('spare/create', 'PartsController@create');
 Route::post('spare/store', 'PartsController@store');
 Route::post('spare/update_sn', 'PartsController@updateSpareSn');
 Route::post('spare/addrepair/{repair_id}', 'PartsController@addToRepair');
+
+
+
+

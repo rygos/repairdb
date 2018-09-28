@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 18 Sep 2018 08:13:42 +0000.
+ * Date: Tue, 25 Sep 2018 11:46:56 +0000.
  */
 
 namespace App\Models\Base;
@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Spare
- *
+ * 
  * @property int $id
  * @property int $sap_no
  * @property string $sap_desc
@@ -27,29 +27,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $price_stock_date
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ *
  * @package App\Models\Base
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereManufacturerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereManufacturerPartDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereManufacturerPartNo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereManufacturerRemarks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereModelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare wherePriceReplace($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare wherePriceReplaceDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare wherePriceStock($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare wherePriceStockDate($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereSapDesc($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereSapNo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Spare whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Spare extends Eloquent
 {
 	protected $casts = [
 		'sap_no' => 'int',
-		'sap_desc' => 'string',
 		'manufacturer_id' => 'int',
 		'model_id' => 'int',
 		'customer_id' => 'int',

@@ -35,6 +35,10 @@ namespace App\Models;
  * @property int $unit_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereUnitId($value)
  * @property-read \App\Models\Rminstzlb $rminst
+ * @property string|null $g_no
+ * @property int|null $order_no
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereGNo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereOrderNo($value)
  */
 class Repair extends \App\Models\Base\Repair
 {

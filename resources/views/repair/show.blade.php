@@ -66,6 +66,22 @@
                                 <td>Serial:</td>
                                 <td>{{ $data->unit()->serial }}</td>
                             </tr>
+                            {!! Form::open(['method' => 'POST', 'action' => 'RepairController@changegorderno']) !!}
+                            {!! Form::hidden('repair_id', $data->id) !!}
+                            <tr>
+                                <td>G-No:</td>
+                                <td>
+                                    {!! Form::text('gno', $data->g_no) !!}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Order No:</td>
+                                <td>
+                                    {!! Form::text('orderno', $data->order_no) !!}
+                                    {!! Form::submit('Save') !!}
+                                </td>
+                            </tr>
+                            {!! Form::close() !!}
                         </table>
                     </td>
                 </tr>
@@ -114,8 +130,17 @@
                     <tr>
                         <td class='nav' colspan=9>
                             {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
-                            {!! Form::label('spare', 'SAP/OrderNo: ') !!}
+                            {!! Form::label('spare', 'SAP: ') !!}
                             {!! Form::text('spare') !!}
+                            {!! Form::submit('Add') !!}
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="nav" colspan="9">
+                            {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
+                            {!! Form::label('spare', 'SAP: ') !!}
+                            {!! Form::select('spare', $spares) !!}
                             {!! Form::submit('Add') !!}
                             {!! Form::close() !!}
                         </td>

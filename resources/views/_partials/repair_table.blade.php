@@ -43,6 +43,9 @@
                 @case('ORDERED')
                     <td style="background-color: orange; color: green">ORDERED</td>
                     @break
+                @case('SUCCESS')
+                    <td style="background-color: green;">SUCCESS</td>
+                    @break
                 @default
                     <td>{{ $reason }}</td>
             @endswitch

@@ -20,6 +20,8 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair whereSpareId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property-read \App\Models\Repair $repair
+ * @property-read \App\Models\Spare $spare
  */
 class SparesToRepair extends \App\Models\Base\SparesToRepair
 {

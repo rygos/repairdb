@@ -9,6 +9,7 @@ use App\Models\Manufacturer;
 use App\Models\Model;
 use App\Models\Repair;
 use App\Models\RepairType;
+use App\Models\Spare;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -110,9 +111,18 @@ class RepairController extends Controller
         $data = Repair::whereId($id)->first();
         $reasons = ClosingReason::orderBy('reason')->get();
 
+        $spares = Spare::where('manufacturer_id', '=', $data->manufacturer_id)
+            ->where('model_id', '=', $data->model_id)
+            ->orderBy('sap_desc')->get();
+        $spares_res = array();
+        foreach($spares as $i){
+            $spares_res[$i->sap_no] = $i->sap_no.' - '. $i->sap_desc.' ('.$i->manufacturer_part_no.')';
+        }
+
         return view('repair.show',[
             'data' => $data,
             'reasons' => $reasons,
+            'spares' => $spares_res,
         ]);
     }
 
@@ -166,4 +176,14 @@ class RepairController extends Controller
 
         return redirect()->action('RepairController@show', $rep->id);
     }
+
+    public function changegorderno(Request $request){
+        $t = Repair::whereId($request->post('repair_id'))->first();
+        $t->order_no = $request->post('oderno');
+        $t->g_no = $request->post('gno');
+        $t->save();
+
+        return redirect()->action('RepairController@show', $t->id);
+    }
+
 }
