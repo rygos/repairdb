@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.7.4 on 2018-09-25 11:18:08.
+ * Generated for Laravel 5.7.6 on 2018-09-28 21:28:27.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1668,7 +1668,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the currently authenticated user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function user()
@@ -1703,7 +1703,7 @@ namespace Illuminate\Support\Facades {
          * Log the given user ID into the application without sessions or cookies.
          *
          * @param mixed $id
-         * @return \App\User|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function onceUsingId($id)
@@ -1767,7 +1767,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param mixed $id
          * @param bool $remember
-         * @return \App\User|false 
+         * @return \App\Models\User|false 
          * @static 
          */ 
         public static function loginUsingId($id, $remember = false)
@@ -1829,7 +1829,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Get the last user we attempted to authenticate.
          *
-         * @return \App\User 
+         * @return \App\Models\User 
          * @static 
          */ 
         public static function getLastAttempted()
@@ -1931,7 +1931,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Return the currently cached user.
          *
-         * @return \App\User|null 
+         * @return \App\Models\User|null 
          * @static 
          */ 
         public static function getUser()
@@ -1977,7 +1977,7 @@ namespace Illuminate\Support\Facades {
         /**
          * Determine if current user is authenticated. If not, throw an exception.
          *
-         * @return \App\User 
+         * @return \App\Models\User 
          * @throws \Illuminate\Auth\AuthenticationException
          * @static 
          */ 
@@ -4510,11 +4510,11 @@ namespace Illuminate\Support\Facades {
     /**
      * 
      *
-     * @method static void listen(string | array $events, $listener)
+     * @method static void listen(string|array $events, $listener)
      * @method static bool hasListeners(string $eventName)
-     * @method static void subscribe(object | string $subscriber)
-     * @method static array|null until(string | object $event, $payload = [])
-     * @method static array|null dispatch(string | object $event, $payload = [], bool $halt = false)
+     * @method static void subscribe(object|string $subscriber)
+     * @method static array|null until(string|object $event, $payload = [])
+     * @method static array|null dispatch(string|object $event, $payload = [], bool $halt = false)
      * @method static void push(string $event, array $payload = [])
      * @method static void flush(string $event)
      * @method static void forget(string $event)
@@ -5307,17 +5307,17 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static bool has(string $ability)
-     * @method static \Illuminate\Contracts\Auth\Access\Gate define(string $ability, callable | string $callback)
+     * @method static \Illuminate\Contracts\Auth\Access\Gate define(string $ability, callable|string $callback)
      * @method static \Illuminate\Contracts\Auth\Access\Gate policy(string $class, string $policy)
      * @method static \Illuminate\Contracts\Auth\Access\Gate before(callable $callback)
      * @method static \Illuminate\Contracts\Auth\Access\Gate after(callable $callback)
-     * @method static bool allows(string $ability, array | mixed $arguments = [])
-     * @method static bool denies(string $ability, array | mixed $arguments = [])
-     * @method static bool check(iterable | string $abilities, array | mixed $arguments = [])
-     * @method static bool any(iterable | string $abilities, array | mixed $arguments = [])
-     * @method static \Illuminate\Auth\Access\Response authorize(string $ability, array | mixed $arguments = [])
-     * @method static mixed getPolicyFor(object | string $class)
-     * @method static \Illuminate\Contracts\Auth\Access\Gate forUser(\Illuminate\Contracts\Auth\Authenticatable | mixed $user)
+     * @method static bool allows(string $ability, array|mixed $arguments = [])
+     * @method static bool denies(string $ability, array|mixed $arguments = [])
+     * @method static bool check(iterable|string $abilities, array|mixed $arguments = [])
+     * @method static bool any(iterable|string $abilities, array|mixed $arguments = [])
+     * @method static \Illuminate\Auth\Access\Response authorize(string $ability, array|mixed $arguments = [])
+     * @method static mixed getPolicyFor(object|string $class)
+     * @method static \Illuminate\Contracts\Auth\Access\Gate forUser(\Illuminate\Contracts\Auth\Authenticatable|mixed $user)
      * @method static array abilities()
      * @see \Illuminate\Contracts\Auth\Access\Gate
      */ 
@@ -5692,7 +5692,7 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static mixed trans(string $key, array $replace = [], string $locale = null)
-     * @method static string transChoice(string $key, int | array | \Countable $number, array $replace = [], string $locale = null)
+     * @method static string transChoice(string $key, int|array|\Countable $number, array $replace = [], string $locale = null)
      * @method static string getLocale()
      * @method static void setLocale(string $locale)
      * @method static string|array|null get(string $key, array $replace = [], string $locale = null, bool $fallback = true)
@@ -9623,16 +9623,16 @@ namespace Illuminate\Support\Facades {
      *
      * @method static \Illuminate\Http\Response make(string $content = '', int $status = 200, array $headers = [])
      * @method static \Illuminate\Http\Response view(string $view, array $data = [], int $status = 200, array $headers = [])
-     * @method static \Illuminate\Http\JsonResponse json(string | array $data = [], int $status = 200, array $headers = [], int $options = 0)
-     * @method static \Illuminate\Http\JsonResponse jsonp(string $callback, string | array $data = [], int $status = 200, array $headers = [], int $options = 0)
+     * @method static \Illuminate\Http\JsonResponse json(string|array $data = [], int $status = 200, array $headers = [], int $options = 0)
+     * @method static \Illuminate\Http\JsonResponse jsonp(string $callback, string|array $data = [], int $status = 200, array $headers = [], int $options = 0)
      * @method static \Symfony\Component\HttpFoundation\StreamedResponse stream(\Closure $callback, int $status = 200, array $headers = [])
-     * @method static \Symfony\Component\HttpFoundation\StreamedResponse streamDownload(\Closure $callback, string | null $name = null, array $headers = [], string | null $disposition = 'attachment')
-     * @method static \Symfony\Component\HttpFoundation\BinaryFileResponse download(\SplFileInfo | string $file, string | null $name = null, array $headers = [], string | null $disposition = 'attachment')
-     * @method static \Illuminate\Http\RedirectResponse redirectTo(string $path, int $status = 302, array $headers = [], bool | null $secure = null)
+     * @method static \Symfony\Component\HttpFoundation\StreamedResponse streamDownload(\Closure $callback, string|null $name = null, array $headers = [], string|null $disposition = 'attachment')
+     * @method static \Symfony\Component\HttpFoundation\BinaryFileResponse download(\SplFileInfo|string $file, string|null $name = null, array $headers = [], string|null $disposition = 'attachment')
+     * @method static \Illuminate\Http\RedirectResponse redirectTo(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
      * @method static \Illuminate\Http\RedirectResponse redirectToRoute(string $route, array $parameters = [], int $status = 302, array $headers = [])
      * @method static \Illuminate\Http\RedirectResponse redirectToAction(string $action, array $parameters = [], int $status = 302, array $headers = [])
-     * @method static \Illuminate\Http\RedirectResponse redirectGuest(string $path, int $status = 302, array $headers = [], bool | null $secure = null)
-     * @method static \Illuminate\Http\RedirectResponse redirectToIntended(string $default = '/', int $status = 302, array $headers = [], bool | null $secure = null)
+     * @method static \Illuminate\Http\RedirectResponse redirectGuest(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
+     * @method static \Illuminate\Http\RedirectResponse redirectToIntended(string $default = '/', int $status = 302, array $headers = [], bool|null $secure = null)
      * @see \Illuminate\Contracts\Routing\ResponseFactory
      */ 
     class Response {
@@ -12637,9 +12637,9 @@ namespace Illuminate\Support\Facades {
      * 
      *
      * @method static \Illuminate\Contracts\Validation\Validator make(array $data, array $rules, array $messages = [], array $customAttributes = [])
-     * @method static void extend(string $rule, \Closure | string $extension, string $message = null)
-     * @method static void extendImplicit(string $rule, \Closure | string $extension, string $message = null)
-     * @method static void replacer(string $rule, \Closure | string $replacer)
+     * @method static void extend(string $rule, \Closure|string $extension, string $message = null)
+     * @method static void extendImplicit(string $rule, \Closure|string $extension, string $message = null)
+     * @method static void replacer(string $rule, \Closure|string $replacer)
      * @see \Illuminate\Validation\Factory
      */ 
     class Validator {
@@ -12784,11 +12784,11 @@ namespace Illuminate\Support\Facades {
      * @method static bool exists(string $view)
      * @method static \Illuminate\Contracts\View\View file(string $path, array $data = [], array $mergeData = [])
      * @method static \Illuminate\Contracts\View\View make(string $view, array $data = [], array $mergeData = [])
-     * @method static mixed share(array | string $key, $value = null)
-     * @method static array composer(array | string $views, \Closure | string $callback)
-     * @method static array creator(array | string $views, \Closure | string $callback)
-     * @method static \Illuminate\Contracts\View\Factory addNamespace(string $namespace, string | array $hints)
-     * @method static \Illuminate\Contracts\View\Factory replaceNamespace(string $namespace, string | array $hints)
+     * @method static mixed share(array|string $key, $value = null)
+     * @method static array composer(array|string $views, \Closure|string $callback)
+     * @method static array creator(array|string $views, \Closure|string $callback)
+     * @method static \Illuminate\Contracts\View\Factory addNamespace(string $namespace, string|array $hints)
+     * @method static \Illuminate\Contracts\View\Factory replaceNamespace(string $namespace, string|array $hints)
      * @see \Illuminate\View\Factory
      */ 
     class View {
@@ -15584,7 +15584,7 @@ namespace  {
              * Add a join clause to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @param string $type
@@ -15601,7 +15601,7 @@ namespace  {
              * Add a "join where" clause to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string $operator
              * @param string $second
              * @param string $type
@@ -15618,7 +15618,7 @@ namespace  {
              *
              * @param \Closure|\Illuminate\Database\Query\Builder|string $query
              * @param string $as
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @param string $type
@@ -15636,7 +15636,7 @@ namespace  {
              * Add a left join to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -15682,7 +15682,7 @@ namespace  {
              * Add a right join to the query.
              *
              * @param string $table
-             * @param string $first
+             * @param \Closure|string $first
              * @param string|null $operator
              * @param string|null $second
              * @return \Illuminate\Database\Query\Builder|static 
@@ -15728,7 +15728,7 @@ namespace  {
              * Add a "cross join" clause to the query.
              *
              * @param string $table
-             * @param string|null $first
+             * @param \Closure|string|null $first
              * @param string|null $operator
              * @param string|null $second
              * @return \Illuminate\Database\Query\Builder|static 
