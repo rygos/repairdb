@@ -105,7 +105,15 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $sum_replace = 0;
+                        $sum_stock = 0;
+                    @endphp
                     @foreach($data->spares() as $item)
+                        @php
+                            $sum_replace += $item->spare->price_replace;
+                            $sum_stock += $item->spare->price_stock
+                        @endphp
                         {!! Form::open(['action' => 'PartsController@updateSpareSn']) !!}
                         {!! Form::hidden('sparerepair_id', $item->id) !!}
                         {!! Form::hidden('repair_id', $data->id) !!}
@@ -126,6 +134,13 @@
                         </tr>
                         {!! Form::close() !!}
                     @endforeach
+                    <tr>
+                        <td colspan="3">KVA Max for {{ $data->customer()->customer }}: </td>
+                        <td></td>
+                        <td>{{ $sum_stock }}</td>
+                        <td>{{ $sum_replace }}</td>
+                        <td colspan="3"></td>
+                    </tr>
                     </tbody>
                     <tr>
                         <td class='nav' colspan=9>
