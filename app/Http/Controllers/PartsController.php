@@ -149,6 +149,12 @@ class PartsController extends Controller
         return \Redirect::action('RepairController@show', $repair_id);
     }
 
+    public function destroyFromRepair(Request $request){
+        $item = SparesToRepair::destroy($request->post('srid'));
+
+        return \Redirect::action('RepairController@show', $request->post('repair_id'));
+    }
+
     public function updateSpareSn(Request $request){
         $sparerepair = SparesToRepair::whereId($request->get('sparerepair_id'))->first();
         $sparerepair->serial_new = $request->get('serial_new');

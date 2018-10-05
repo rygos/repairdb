@@ -31,7 +31,8 @@ Route::get('spare/create', 'PartsController@create');
 Route::post('spare/store', 'PartsController@store');
 Route::post('spare/update_sn', 'PartsController@updateSpareSn');
 Route::post('spare/addrepair/{repair_id}', 'PartsController@addToRepair');
+Route::post('spare/removefromrepair', 'PartsController@destroyFromRepair');
 
-
+Route::post('kva/save', 'KvaLimitController@save');
 
 

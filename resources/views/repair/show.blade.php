@@ -79,9 +79,12 @@
                                 <td>
                                     {!! Form::text('orderno', $data->order_no) !!}
                                     {!! Form::submit('Save') !!}
+                                    {!! Form::close() !!}
+
+
                                 </td>
                             </tr>
-                            {!! Form::close() !!}
+
                         </table>
                     </td>
                 </tr>
@@ -101,7 +104,7 @@
                             <td>Replace Price</td>
                             <td>SN Old</td>
                             <td>SN New</td>
-                            <td>Action</td>
+                            <td colspan="2">Action</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -130,20 +133,62 @@
                             <td>
                                 {!! Form::text('serial_new', $item->serial_new) !!}
                             </td>
-                            <td>{!! Form::submit('Save') !!}</td>
+                            <td>
+                                {!! Form::submit('Save') !!}
+                                {!! Form::close() !!}
+                            </td>
+                            <td>
+                                {!! Form::open(['method' => 'POST', 'action' => 'PartsController@destroyFromRepair']) !!}
+                                {!! Form::hidden('srid', $item->id) !!}
+                                {!! Form::hidden('repair_id', $data->id) !!}
+                                {!! Form::submit('Del') !!}
+                                {!! Form::close() !!}
+                            </td>
                         </tr>
-                        {!! Form::close() !!}
+
                     @endforeach
                     <tr>
                         <td colspan="3">KVA Max for {{ $data->customer()->customer }}: </td>
-                        <td></td>
-                        <td>{{ $sum_stock }}</td>
-                        <td>{{ $sum_replace }}</td>
-                        <td colspan="3"></td>
+
+                        @if($kva)
+                            <td>
+                                {{ $kva->max_price }}
+                            </td>
+                        @else
+                            <td style="background-color: #8b0000">N/A</td>
+                        @endif
+
+                        <td
+                        @if($kva)
+                            @if($kva->max_price <= $sum_stock)
+                                style="background-color: green"
+                            @elseif($kva->max_price > $sum_stock)
+                                style="background-color: darkred"
+                            @endif
+                        @endif
+                        >
+                            {{ $sum_stock }}
+                        </td>
+                        <td
+                        @if($kva)
+                            @if($kva->max_price <= $sum_replace)
+                                style="background-color: green"
+                            @elseif($kva->max_price > $sum_replace)
+                                style="background-color: darkred"
+                            @endif
+                        @endif
+                        >
+                            {{ $sum_replace }}
+                        </td>
+                        <td colspan="4">
+                            @if($kva)
+                                {{ $kva->remark }}
+                            @endif
+                        </td>
                     </tr>
                     </tbody>
                     <tr>
-                        <td class='nav' colspan=9>
+                        <td class='nav' colspan=10>
                             {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
                             {!! Form::label('spare', 'SAP: ') !!}
                             {!! Form::text('spare') !!}
@@ -152,7 +197,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="nav" colspan="9">
+                        <td class="nav" colspan="10">
                             {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
                             {!! Form::label('spare', 'SAP: ') !!}
                             {!! Form::select('spare', $spares) !!}

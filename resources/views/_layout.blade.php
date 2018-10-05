@@ -40,7 +40,7 @@
 </nav>
 <footer>
     <ul>
-        <li>RepairDB 0.0.0.0.0.0.0.0.0.0.1 preAlpha</li>
+        <li>{{ config('app.name').' - '.config('app.version') }}</li>
     </ul>
 </footer>
 </body>

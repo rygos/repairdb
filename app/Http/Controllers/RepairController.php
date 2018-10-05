@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CallType;
 use App\Models\ClosingReason;
 use App\Models\Customer;
+use App\Models\KvaLimit;
 use App\Models\Manufacturer;
 use App\Models\Model;
 use App\Models\Repair;
@@ -119,10 +120,15 @@ class RepairController extends Controller
             $spares_res[$i->sap_no] = $i->sap_no.' - '. $i->sap_desc.' ('.$i->manufacturer_part_no.')';
         }
 
+        $kva = KvaLimit::where('customer_id', '=', $data->customer_id)
+            ->where('model_id', '=', $data->model_id)
+            ->first();
+
         return view('repair.show',[
             'data' => $data,
             'reasons' => $reasons,
             'spares' => $spares_res,
+            'kva' => $kva,
         ]);
     }
 
@@ -179,7 +185,7 @@ class RepairController extends Controller
 
     public function changegorderno(Request $request){
         $t = Repair::whereId($request->post('repair_id'))->first();
-        $t->order_no = $request->post('oderno');
+        $t->order_no = $request->post('orderno');
         $t->g_no = $request->post('gno');
         $t->save();
 
