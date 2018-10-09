@@ -89,8 +89,6 @@
                                     {!! Form::text('orderno', $data->order_no) !!}
                                     {!! Form::submit('Save') !!}
                                     {!! Form::close() !!}
-
-
                                 </td>
                             </tr>
 

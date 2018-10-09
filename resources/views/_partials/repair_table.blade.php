@@ -65,7 +65,7 @@
     </tr>
     @endforeach
     <tr>
-        <td class='nav' colspan=14>
+        <td class='nav' colspan=16>
             Untere Zeile
         </td>
     </tr>
