@@ -50,6 +50,12 @@
                 @case('SUCCESS')
                     <td style="background-color: green;">SUCCESS</td>
                     @break
+                @case('WAIT FOR INFO')
+                    <td style="background-color: blue;">WAIT FOR INFO</td>
+                    @break
+                @case('KVA')
+                    <td style="background-color: purple;">KVA</td>
+                    @break
                 @default
                     <td>{{ $reason }}</td>
             @endswitch
