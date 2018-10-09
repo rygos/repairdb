@@ -213,7 +213,11 @@
             <div class="content" style=" text-align: center;">
                 {!! Form::open(['action' => 'RepairController@storeremark']) !!}
                 {!! Form::hidden('repair_id', $data->id) !!}
-                {!! Form::textarea('remark', $data->remarks, ['cols' => '100']) !!}
+                @if($data->remarks == '')
+                    {!! Form::textarea('remark', $remark_template, ['cols' => '100']) !!}
+                @else
+                    {!! Form::textarea('remark', $data->remarks, ['cols' => '100']) !!}
+                @endif
                 <br>
                 {!! Form::submit('Submit') !!}
                 {!! Form::close() !!}

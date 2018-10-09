@@ -124,11 +124,21 @@ class RepairController extends Controller
             ->where('model_id', '=', $data->model_id)
             ->first();
 
+        $remark_template = 'Aktion: &#13;
+------------&#13;
+Gemeldet: &#13;
+Diagnose: &#13;
+MRI: &#13;
+-------------
+Kostenpflichtig: &#13;
+Hersteller-Garantie: ';
+
         return view('repair.show',[
             'data' => $data,
             'reasons' => $reasons,
             'spares' => $spares_res,
             'kva' => $kva,
+            'remark_template' => $remark_template,
         ]);
     }
 
