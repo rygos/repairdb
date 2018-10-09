@@ -23,7 +23,7 @@
         <td>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
         <td>{{ \Carbon\Carbon::parse($item->started_at)->toDateString() }}</td>
         <td>{{ $item->rminst()->calltype()->type }}</td>
-        <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->rminst()->rminst }}</a></td>
+        <td>{{ $item->rminst()->rminst }}</td>
         <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->rminst()->zlb }}</a></td>
         <td>{{ $item->customer()->customer }}</td>
         <td>{{ $item->unit()->serial }}</td>
