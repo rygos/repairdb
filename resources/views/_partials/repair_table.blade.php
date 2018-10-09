@@ -11,7 +11,9 @@
         <th>MANUFACTURER</th>
         <th>MODEL</th>
         <th>REP-TYPE</th>
-        <th>PARTS ORDERED</th>
+        <th>PARTS</th>
+        <th>G-NO</th>
+        <th>ORDER</th>
         <th>STATUS</th>
         <th>REMARKS</th>
     </tr>
@@ -29,6 +31,8 @@
         <td>{{ $item->model()->model }}</td>
         <td>{{ $item->reptype()->type }}</td>
         <td>{{ $item->spares()->count() }}</td>
+        <td>{{ $item->g_no }}</td>
+        <td>{{ $item->order_no }}</td>
         @if(!$item->closing_reason_id)
             <td style="background-color: green; color: white;">NEW</td>
         @else
