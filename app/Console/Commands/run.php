@@ -280,6 +280,7 @@ class run extends Command
         $rep->manufacturer_id = $repmanufacturer;
         $rep->model_id = $repmodel;
         $rep->repair_type_id = $reptype;
+        $rep->user_id = 1;
         $rep->save();
 
         $this->handle();
