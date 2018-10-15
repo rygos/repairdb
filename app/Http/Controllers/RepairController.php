@@ -118,7 +118,7 @@ class RepairController extends Controller
         }
         if($request->post('repair_type_text') != ''){
             $manu = new RepairType;
-            $manu->type = $request->post('repair_type');
+            $manu->type = $request->post('repair_type_text');
             $manu->save();
             $r->repair_type_id = $manu->id;
         }else{
