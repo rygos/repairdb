@@ -30,4 +30,12 @@ class HomeController extends Controller
             'data' => $data
         ]);
     }
+
+    public function index_all(){
+        $data = Repair::whereNotIn('closing_reason_id', [2])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
+
+        return view('home.index', [
+            'data' => $data
+        ]);
+    }
 }

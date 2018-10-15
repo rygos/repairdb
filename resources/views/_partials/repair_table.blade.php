@@ -16,6 +16,7 @@
         <th>ORDER</th>
         <th>STATUS</th>
         <th>REMARKS</th>
+        <th>TECHNICIAN</th>
     </tr>
     @foreach($data as $item)
     <tr>
@@ -62,11 +63,14 @@
         @endif
 
         <td>{{ substr($item->remarks, 0, 50) }}</td>
+        <td>{{ $item->user()->name }}</td>
     </tr>
     @endforeach
     <tr>
-        <td class='nav' colspan=16>
-            Untere Zeile
+        <td class='nav' colspan=17>
+            <a href="{{ action('HomeController@index_all') }}">
+                Show all open repairs
+            </a>
         </td>
     </tr>
 </table>
