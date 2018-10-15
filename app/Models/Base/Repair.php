@@ -55,7 +55,8 @@ class Repair extends Eloquent
 		'repair_type_id' => 'int',
 		'closing_reason_id' => 'int',
 		'unit_id' => 'int',
-		'order_no' => 'int'
+		'order_no' => 'int',
+        'user_id' => 'int',
 	];
 
 	protected $dates = [

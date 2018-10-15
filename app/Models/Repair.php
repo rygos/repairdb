@@ -52,7 +52,8 @@ class Repair extends \App\Models\Base\Repair
 		'repair_type_id',
 		'closing_reason_id',
 		'remarks',
-		'closed_at'
+		'closed_at',
+        'user_id',
 	];
 
 	public function rminst(){
@@ -81,5 +82,9 @@ class Repair extends \App\Models\Base\Repair
 
     public function spares(){
 	    return $this->hasMany('App\Models\SparesToRepair', 'repair_id', 'id')->get();
+    }
+
+    public function user(){
+	    return $this->hasOne('App\Models\User', 'id', 'user_id')->first();
     }
 }
