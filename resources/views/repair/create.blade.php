@@ -36,7 +36,7 @@
                         </tr>
                         <tr>
                             <td>Manufacturer:</td>
-                            <td>{!! Form::select('manufacturer', $manu) !!}</td>
+                            <td>{!! Form::select('manufacturer', $manu) !!} {!! Form::text('manufacturer_text') !!}</td>
                         </tr>
                         <tr>
                             <td>Model:</td>
