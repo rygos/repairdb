@@ -40,15 +40,15 @@
                         </tr>
                         <tr>
                             <td>Model:</td>
-                            <td>{!! Form::select('model', $model) !!}</td>
+                            <td>{!! Form::select('model', $model) !!} {!! Form::text('model_text') !!}</td>
                         </tr>
                         <tr>
                             <td>Customer:</td>
-                            <td>{!! Form::select('customer', $customer) !!}</td>
+                            <td>{!! Form::select('customer', $customer) !!} {!! Form::text('customer_text') !!}</td>
                         </tr>
                         <tr>
                             <td>Repair Type:</td>
-                            <td>{!! Form::select('repair_type', $rep_type) !!}</td>
+                            <td>{!! Form::select('repair_type', $rep_type) !!} {!! Form::text('repair_type_text') !!}</td>
                         </tr>
                         <tr>
                             <td>Serial:</td>

@@ -91,10 +91,40 @@ class RepairController extends Controller
         $r = new Repair;
         $r->started_at = Carbon::parse($request->post('started_at'))->toDateString();
         $r->rminstzlb_id = insert_zlbrminst(Carbon::parse($request->post('zlb_created_at'))->toDateString(), $request->post('zlb'), $request->post('rminst'), $request->post('call_type'));
-        $r->customer_id = $request->post('customer');
-        $r->manufacturer_id = $request->post('manufacturer');
-        $r->model_id = $request->post('model');
-        $r->repair_type_id = $request->post('repair_type');
+        if($request->post('customer_text') != ''){
+            $cust = new Customer;
+            $cust->customer = $request->post('customer_text');
+            $cust->save();
+            $r->customer_id = $cust->id;
+        }else{
+            $r->customer_id = $request->post('customer');
+        }
+        if($request->post('manufacturer_text') != ''){
+            $manu = new Manufacturer;
+            $manu->manufacturer = $request->post('manufacturer_text');
+            $manu->save();
+            $r->manufacturer_id = $manu->id;
+        }else{
+            $r->manufacturer_id = $request->post('manufacturer');
+        }
+        if($request->post('model_text') != ''){
+            $manu = new Model;
+            $manu->model = $request->post('model_text');
+            $manu->manufacturer_id = $r->manufacturer_id;
+            $manu->save();
+            $r->model_id = $manu->id;
+        }else{
+            $r->model_id = $request->post('model');
+        }
+        if($request->post('repair_type_text') != ''){
+            $manu = new RepairType;
+            $manu->type = $request->post('repair_type');
+            $manu->save();
+            $r->repair_type_id = $manu->id;
+        }else{
+            $r->repair_type_id = $request->post('repair_type');
+        }
+
         $r->unit_id = insert_unit($request->post('serial'), $r->manufacturer_id, $r->model_id, $r->customer_id);
         $r->user_id = \Auth::id();
         $r->save();
