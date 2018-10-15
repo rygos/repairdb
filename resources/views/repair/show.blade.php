@@ -30,7 +30,7 @@
                                 <td>{{ Carbon\Carbon::parse($data->started_at)->toDateString() }}</td>
                             </tr>
                             <tr>
-                                <td>Status</td>
+                                <td>Status:</td>
                                 @if(!$data->closing_reason_id)
                                     <td style="background-color: green; color: white;">NEW</td>
                                 @else
@@ -58,6 +58,10 @@
                                         <td>{{ $reason }}</td>
                                     @endswitch
                                 @endif
+                            </tr>
+                            <tr>
+                                <td>Technician:</td>
+                                <td>----</td>
                             </tr>
                         </table>
                     </td>
