@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                                 <td>Technician:</td>
-                                <td>----</td>
+                                <td>{{ $data->user()->name }}</td>
                             </tr>
                         </table>
                     </td>
