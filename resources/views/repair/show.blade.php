@@ -54,6 +54,9 @@
                                         @case('KVA')
                                         <td style="background-color: purple;">KVA</td>
                                         @break
+                                        @case('MAIL-IN')
+                                        <td style="background-color: hotpink; color: white;">MAIL-IN</td>
+                                        @break
                                         @default
                                         <td>{{ $reason }}</td>
                                     @endswitch
