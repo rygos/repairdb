@@ -47,12 +47,12 @@
                             <td>{!! Form::text('remarks') !!}</td>
                         </tr>
                         <tr>
-                            <td>Replacement Price:</td>
-                            <td>{!! Form::text('price_replace','0,00') !!}</td>
-                        </tr>
-                        <tr>
                             <td>Stock Price:</td>
                             <td>{!! Form::text('price_stock','0,00') !!}</td>
+                        </tr>
+                        <tr>
+                            <td>Replacement Price:</td>
+                            <td>{!! Form::text('price_replace','0,00') !!}</td>
                         </tr>
                         <tr>
                             <td></td>
