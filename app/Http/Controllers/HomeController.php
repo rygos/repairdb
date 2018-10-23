@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
+        $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
 
         return view('home.index', [
             'data' => $data
@@ -32,7 +32,7 @@ class HomeController extends Controller
     }
 
     public function index_all(){
-        $data = Repair::whereNotIn('closing_reason_id', [2])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
+        $data = Repair::whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
 
         return view('home.index', [
             'data' => $data

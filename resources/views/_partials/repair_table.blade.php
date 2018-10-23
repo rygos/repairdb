@@ -51,6 +51,9 @@
                 @case('SUCCESS')
                     <td style="background-color: green;">SUCCESS</td>
                     @break
+                @case('NDF')
+                    <td style="background-color: green;">SUCCESS</td>
+                    @break
                 @case('WAIT FOR INFO')
                     <td style="background-color: blue;">WAIT FOR INFO</td>
                     @break
