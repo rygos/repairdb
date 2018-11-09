@@ -14,7 +14,7 @@ class AddTypeFieldToSparesToRepairTable extends Migration
     public function up()
     {
         Schema::table('spares_to_repairs', function (Blueprint $table) {
-            $table->integer('type_id');
+            $table->integer('type_id')->default(0);
             $table->index('type_id');
         });
     }
