@@ -85,8 +85,8 @@
                                 <td>Serial:</td>
                                 <td>{{ $data->unit()->serial }}</td>
                             </tr>
-                            {!! Form::open(['method' => 'POST', 'action' => 'RepairController@changegorderno']) !!}
-                            {!! Form::hidden('repair_id', $data->id) !!}
+                                {!! Form::open(['method' => 'POST', 'action' => 'RepairController@changegorderno']) !!}
+                                {!! Form::hidden('repair_id', $data->id) !!}
                             <tr>
                                 <td>G-No:</td>
                                 <td>
@@ -121,6 +121,7 @@
                             <td>Replace Price</td>
                             <td>SN Old</td>
                             <td>SN New</td>
+                            <td>Type</td>
                             <td colspan="2">Action</td>
                         </tr>
                     </thead>
@@ -149,6 +150,9 @@
                             </td>
                             <td>
                                 {!! Form::text('serial_new', $item->serial_new) !!}
+                            </td>
+                            <td>
+                                {!! Form::select('type', ['0' => 'Test']) !!}
                             </td>
                             <td>
                                 {!! Form::submit('Save') !!}

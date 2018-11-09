@@ -29,7 +29,8 @@ class SparesToRepair extends \App\Models\Base\SparesToRepair
 		'repair_id',
 		'spare_id',
 		'serial_old',
-		'serial_new'
+		'serial_new',
+        'type_id'
 	];
 
     public function spare(){
