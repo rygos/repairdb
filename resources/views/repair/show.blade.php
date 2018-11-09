@@ -152,7 +152,7 @@
                                 {!! Form::text('serial_new', $item->serial_new) !!}
                             </td>
                             <td>
-                                {!! Form::select('type', ['0' => 'Test']) !!}
+                                {!! Form::select('type', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
                             </td>
                             <td>
                                 {!! Form::submit('Save') !!}

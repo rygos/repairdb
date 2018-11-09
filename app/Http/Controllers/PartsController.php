@@ -159,6 +159,7 @@ class PartsController extends Controller
         $sparerepair = SparesToRepair::whereId($request->get('sparerepair_id'))->first();
         $sparerepair->serial_new = $request->get('serial_new');
         $sparerepair->serial_old = $request->get('serial_old');
+        $sparerepair->type_id = $request->get('type_id');
         $sparerepair->save();
 
         return redirect()->action('RepairController@show', $request->get('repair_id'));
