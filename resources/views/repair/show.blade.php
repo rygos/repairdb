@@ -201,7 +201,7 @@
                         >
                             {{ $sum_replace }}
                         </td>
-                        <td colspan="4">
+                        <td colspan="5">
                             @if($kva)
                                 {{ $kva->remark }}
                             @endif
@@ -209,7 +209,7 @@
                     </tr>
                     </tbody>
                     <tr>
-                        <td class='nav' colspan=10>
+                        <td class='nav' colspan=11>
                             {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
                             {!! Form::label('spare', 'SAP: ') !!}
                             {!! Form::text('spare') !!}
@@ -218,7 +218,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="nav" colspan="10">
+                        <td class="nav" colspan="11">
                             {!! Form::open(['action' => ['PartsController@addToRepair', $data->id]]) !!}
                             {!! Form::label('spare', 'SAP: ') !!}
                             {!! Form::select('spare', $spares) !!}
