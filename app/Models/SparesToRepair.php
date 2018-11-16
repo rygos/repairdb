@@ -22,6 +22,8 @@ namespace App\Models;
  * @mixin \Eloquent
  * @property-read \App\Models\Repair $repair
  * @property-read \App\Models\Spare $spare
+ * @property int $type_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair whereTypeId($value)
  */
 class SparesToRepair extends \App\Models\Base\SparesToRepair
 {

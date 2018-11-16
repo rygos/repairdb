@@ -36,4 +36,6 @@ Route::post('spare/removefromrepair', 'PartsController@destroyFromRepair');
 
 Route::post('kva/save', 'KvaLimitController@save');
 
+Route::get('stats', 'StatsController@index');
+
 

@@ -2,6 +2,7 @@
     <li><a href="{{ action('HomeController@index') }}">Home</a></li>
     <li><a href="{{ action('RepairController@create') }}">Add Repair</a></li>
     <li><a href="{{ action('PartsController@create') }}">Add Spares</a></li>
+    <li><a href="{{ action('StatsController@index') }}">Stats</a></li>
     <li>
         {!! Form::open(['method' => 'POST', 'action' => 'SearchController@searchProcess', 'style' => 'display: inline']) !!}
         {!! Form::text('term') !!}
@@ -12,8 +13,9 @@
         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
             Logout
         </a>
-        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-            {{ csrf_field() }}
-        </form>
     </li>
 </ul>
+
+<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>

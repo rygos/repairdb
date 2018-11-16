@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 02 Oct 2018 06:53:48 +0000.
+ * Date: Fri, 16 Nov 2018 08:37:16 +0000.
  */
 
 namespace App\Models\Base;
@@ -27,6 +27,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $unit_id
  * @property string $g_no
  * @property int $order_no
+ * @property int $user_id
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosingReasonId($value)
@@ -43,6 +44,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereStartedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUnitId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUserId($value)
  * @mixin \Eloquent
  */
 class Repair extends Eloquent
@@ -56,7 +58,7 @@ class Repair extends Eloquent
 		'closing_reason_id' => 'int',
 		'unit_id' => 'int',
 		'order_no' => 'int',
-        'user_id' => 'int',
+		'user_id' => 'int'
 	];
 
 	protected $dates = [
