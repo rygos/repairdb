@@ -1,5 +1,6 @@
 <table id='pouetbox_prodlist' class='boxtable pagedtable'>
     <tr class='sortable'>
+        <th>NO</th>
         <th>ID</th>
         <th>ZLB-DATE</th>
         <th>START-DATE</th>
@@ -18,8 +19,10 @@
         <th>REMARKS</th>
         <th>TECHNICIAN</th>
     </tr>
+    @php $counter = 1; @endphp
     @foreach($data as $item)
     <tr>
+        <td>{{ $counter }}</td>
         <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->id }}</a></td>
         <td>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
         <td>{{ \Carbon\Carbon::parse($item->started_at)->toDateString() }}</td>
@@ -71,6 +74,7 @@
         <td>{{ substr($item->remarks, 0, 50) }}</td>
         <td>{{ $item->user()->name }}</td>
     </tr>
+    @php $counter += 1; @endphp
     @endforeach
     <tr>
         <td class='nav' colspan=17>
