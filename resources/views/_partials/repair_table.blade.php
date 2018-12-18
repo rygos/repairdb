@@ -77,7 +77,7 @@
     @php $counter += 1; @endphp
     @endforeach
     <tr>
-        <td class='nav' colspan=17>
+        <td class='nav' colspan=18>
             <a href="{{ action('HomeController@index_all') }}">
                 Show all open repairs
             </a>
