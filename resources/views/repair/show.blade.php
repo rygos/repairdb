@@ -86,7 +86,7 @@
                                 <td>{{ $data->unit()->serial }}</td>
                             </tr>
                                 {!! Form::open(['method' => 'POST', 'action' => 'RepairController@changegorderno']) !!}
-                                {!! Form::hidden('repair_id', $data->id) !!}
+                                {!! Form::hidden('repair_id', $data->id, ['id' => 'gno']) !!}
                             <tr>
                                 <td>G-No:</td>
                                 <td>
@@ -96,7 +96,7 @@
                             <tr>
                                 <td>Order No:</td>
                                 <td>
-                                    {!! Form::text('orderno', $data->order_no) !!}
+                                    {!! Form::text('orderno', $data->order_no, ['id' => 'ono']) !!}
                                     {!! Form::submit('Save') !!}
                                     {!! Form::close() !!}
                                 </td>
@@ -146,10 +146,10 @@
                             <td>{{ $item->spare->price_stock }}</td>
                             <td>{{ $item->spare->price_replace }}</td>
                             <td>
-                                {!! Form::text('serial_old', $item->serial_old) !!}
+                                {!! Form::text('serial_old', $item->serial_old, ['id' => 'sold']) !!}
                             </td>
                             <td>
-                                {!! Form::text('serial_new', $item->serial_new) !!}
+                                {!! Form::text('serial_new', $item->serial_new, ['id' => 'snew']) !!}
                             </td>
                             <td>
                                 {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
@@ -275,5 +275,23 @@
                     ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + ". - Aktion: " + get_action + "\n" + document.getElementById("remark").innerHTML;
             }
         }
+    </script>
+
+    <script>
+        jQuery('#remark').on('input propertychange paste', function() {
+            document.getElementById("remark").style.backgroundColor = "yellow";
+        });
+        jQuery('#ono').on('input propertychange paste', function() {
+            document.getElementById("ono").style.backgroundColor = "yellow";
+        });
+        jQuery('#snew').on('input propertychange paste', function() {
+            document.getElementById("snew").style.backgroundColor = "yellow";
+        });
+        jQuery('#gno').on('input propertychange paste', function() {
+            document.getElementById("gno").style.backgroundColor = "yellow";
+        });
+        jQuery('#sold').on('input propertychange paste', function() {
+            document.getElementById("sold").style.backgroundColor = "yellow";
+        });
     </script>
 @endsection
