@@ -45,7 +45,7 @@ class SearchController extends Controller
         $result = $result->merge($reporder);
 
         $repgno = Repair::where('g_no', 'LIKE', "%$term%")->get();
-        $result = $result->merge($repgno)->sortByDesc('id', 'ASC');
+        $result = $result->merge($repgno)->sortByDesc('id');
 
         return view('home.index', [
             'data' => $result,
