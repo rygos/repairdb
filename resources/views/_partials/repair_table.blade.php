@@ -85,7 +85,7 @@
     </tr>
 </table>
 
-@if($term)
+@if(isset($term))
     <script>
         var src_str = $("#pouetbox_prodlist").html();
         var term = "{{ $term }}";
