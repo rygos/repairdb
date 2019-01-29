@@ -234,10 +234,11 @@
             <div class="content" style=" text-align: center;">
                 {!! Form::open(['action' => 'RepairController@storeremark']) !!}
                 {!! Form::hidden('repair_id', $data->id) !!}
+                <button onclick="add_action()">Add Action</button>
                 @if($data->remarks == '')
-                    {!! Form::textarea('remark', $remark_template, ['cols' => '100']) !!}
+                    {!! Form::textarea('remark', $remark_template, ['cols' => '100', 'id' => 'remark']) !!}
                 @else
-                    {!! Form::textarea('remark', $data->remarks, ['cols' => '100']) !!}
+                    {!! Form::textarea('remark', $data->remarks, ['cols' => '100', 'id' => 'remark']) !!}
                 @endif
                 <br>
                 {!! Form::submit('Submit') !!}
@@ -264,4 +265,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function add_action() {
+            var get_action = prompt("Please enter action description", "");
+            var d = new Date();
+            if (get_action != null) {
+                document.getElementById("remark").innerHTML =
+                    ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + ". - Aktion: " + get_action + "\n" + document.getElementById("remark").innerHTML;
+            }
+        }
+    </script>
 @endsection
