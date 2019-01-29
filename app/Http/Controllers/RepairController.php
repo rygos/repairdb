@@ -162,7 +162,7 @@ Diagnose: &#13;
 MRI: &#13;
 -------------
 Kostenpflichtig: &#13;
-Hersteller-Garantie: &#13';
+Hersteller-Garantie: &#13;';
 
         return view('repair.show',[
             'data' => $data,
