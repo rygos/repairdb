@@ -86,11 +86,11 @@
                                 <td>{{ $data->unit()->serial }}</td>
                             </tr>
                                 {!! Form::open(['method' => 'POST', 'action' => 'RepairController@changegorderno']) !!}
-                                {!! Form::hidden('repair_id', $data->id, ['id' => 'gno']) !!}
+                                {!! Form::hidden('repair_id', $data->id) !!}
                             <tr>
                                 <td>G-No:</td>
                                 <td>
-                                    {!! Form::text('gno', $data->g_no) !!}
+                                    {!! Form::text('gno', $data->g_no, ['id' => 'gno']) !!}
                                 </td>
                             </tr>
                             <tr>
@@ -273,6 +273,7 @@
             if (get_action != null) {
                 document.getElementById("remark").innerHTML =
                     ("0" + d.getDate()).slice(-2) + "." + ("0"+(d.getMonth()+1)).slice(-2) + ". - Aktion: " + get_action + "\n" + document.getElementById("remark").innerHTML;
+                document.getElementById("remark").style.backgroundColor = "yellow";
             }
         }
     </script>
