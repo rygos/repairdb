@@ -84,17 +84,3 @@
         </td>
     </tr>
 </table>
-
-@if(isset($term))
-    <script>
-        var src_str = $(document).html();
-        var term = "{{ $term }}";
-        term = term.replace(/(\s+)/,"(<[^>]+>)*$1(<[^>]+>)*");
-        var pattern = new RegExp("("+term+")", "gi");
-
-        src_str = src_str.replace(pattern, "<mark>$1</mark>");
-        src_str = src_str.replace(/(<mark>[^<>]*)((<[^>]+>)+)([^<>]*<\/mark>)/,"$1</mark>$2<mark>$4");
-
-        $(document).html(src_str);
-    </script>
-@endif
