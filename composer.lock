@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6f9245aa8b35a655e319466df6f1f3a1",
+    "content-hash": "2bd71bda9483cdd04dab35b6a9e5deba",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1142,6 +1142,52 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+        },
+        {
+            "name": "inani/larapoll",
+            "version": "2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/akiyamaSM/larapoll.git",
+                "reference": "64fcf75a8dd5c682273ed2ba288b8769f9da755d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/akiyamaSM/larapoll/zipball/64fcf75a8dd5c682273ed2ba288b8769f9da755d",
+                "reference": "64fcf75a8dd5c682273ed2ba288b8769f9da755d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5"
+            },
+            "require-dev": {
+                "fzaninotto/faker": "~1.4",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inani\\Larapoll\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Inani El Houssain",
+                    "email": "inanielhoussain@gmail.com"
+                }
+            ],
+            "description": "A Laravel package to create polls",
+            "keywords": [
+                "laravel",
+                "php",
+                "polls",
+                "votes"
+            ],
+            "time": "2017-10-06T09:55:05+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

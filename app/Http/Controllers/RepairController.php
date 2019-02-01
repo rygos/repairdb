@@ -155,7 +155,7 @@ class RepairController extends Controller
             ->where('model_id', '=', $data->model_id)
             ->first();
 
-        $remark_template = 'Aktion: &#13;
+        $remark_template = Carbon::now()->format('d. m.').' - Aktion: &#13;
 ------------&#13;
 Gemeldet: &#13;
 Diagnose: &#13;
