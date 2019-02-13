@@ -233,4 +233,12 @@ Hersteller-Garantie: &#13;';
         return redirect()->action('RepairController@show', $t->id);
     }
 
+    public function upload_file(Request $request){
+        $req = $request->file('file');
+        $path = $req->store('repair');
+
+        $ext = $req->extension();
+        $name = $req->getClientOriginalName();
+    }
+
 }
