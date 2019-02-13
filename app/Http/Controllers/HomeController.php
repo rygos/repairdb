@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repair;
+use App\Models\Rminstzlb;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -40,7 +41,14 @@ class HomeController extends Controller
     }
 
     public function index_active_hh(){
-        $data = Repair::whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->where('call_type_id', '=', 6)->orderBy('id')->get();
+        $res_rminst = Rminstzlb::where('calltype_id', '=', 6)->get();
+        $res_rminst_ids = array();
+
+        foreach($res_rminst as $i){
+            $res_rminst_ids[] = $i->id;
+        }
+
+        $data = Repair::whereIn('rminstzlb_id', $res_rminst_ids)->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
 
         return view('home.index', [
             'data' => $data
