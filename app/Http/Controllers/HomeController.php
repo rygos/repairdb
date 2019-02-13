@@ -38,4 +38,12 @@ class HomeController extends Controller
             'data' => $data
         ]);
     }
+
+    public function index_active_hh(){
+        $data = Repair::whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->where('call_type_id', '=', 6)->orderBy('id')->get();
+
+        return view('home.index', [
+            'data' => $data
+        ]);
+    }
 }

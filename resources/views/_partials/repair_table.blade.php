@@ -84,6 +84,10 @@
             <a href="{{ action('HomeController@index_all') }}">
                 Show all open repairs
             </a>
+             <->
+            <a href="{{ action('HomeController@index_active_hh') }}">
+                Show all open HH repairs
+            </a>
         </td>
     </tr>
 </table>
