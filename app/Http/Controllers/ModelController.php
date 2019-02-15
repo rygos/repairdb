@@ -10,6 +10,7 @@ class ModelController extends Controller
     public function checkeeee(Request $request){
         $eeee = EeeeModel::whereEeee($request->post('eeee'))->get();
 
+        dd($eeee);
         if($eeee->count() != 0){
             return "TRUE";
         }else{
