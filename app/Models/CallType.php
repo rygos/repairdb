@@ -14,6 +14,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType query()
  */
 class CallType extends \App\Models\Base\CallType
 {

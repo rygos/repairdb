@@ -12,6 +12,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset whereToken($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PasswordReset query()
  */
 class PasswordReset extends \App\Models\Base\PasswordReset
 {

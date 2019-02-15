@@ -20,6 +20,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\KvaLimit whereRemark($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\KvaLimit whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\KvaLimit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\KvaLimit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\KvaLimit query()
  */
 class KvaLimit extends \App\Models\Base\KvaLimit
 {

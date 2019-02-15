@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CallType;
 use App\Models\ClosingReason;
 use App\Models\Customer;
+use App\Models\EeeeModel;
 use App\Models\KvaLimit;
 use App\Models\Manufacturer;
 use App\Models\Model;
@@ -88,6 +89,13 @@ class RepairController extends Controller
             'serial' => 'required',
         ]);
 
+        //Get EEEE Code from Serial Number
+        $serial = strtoupper($request->post('serial'));
+        $eeee_code = substr($serial, -4);
+        //Search for EEEE Code
+        $eeee = EeeeModel::whereEeee($eeee_code)->first();
+
+
         $r = new Repair;
         $r->started_at = Carbon::parse($request->post('started_at'))->toDateString();
         $r->rminstzlb_id = insert_zlbrminst(Carbon::parse($request->post('zlb_created_at'))->toDateString(), $request->post('zlb'), $request->post('rminst'), $request->post('call_type'));
@@ -99,23 +107,41 @@ class RepairController extends Controller
         }else{
             $r->customer_id = $request->post('customer');
         }
-        if($request->post('manufacturer_text') != ''){
-            $manu = new Manufacturer;
-            $manu->manufacturer = $request->post('manufacturer_text');
-            $manu->save();
-            $r->manufacturer_id = $manu->id;
+
+        if($eeee === null){
+            // EEEE Code des not exist
+            if($request->post('model_text') != ''){
+                $manu = new Model;
+                $manu->model = $request->post('model_text');
+                $manu->manufacturer_id = $r->manufacturer_id;
+                $manu->save();
+                $model_id = $manu->id;
+            }else{
+                $model_id = $request->post('model');
+            }
+
+            if($request->post('manufacturer_text') != ''){
+                $manu = new Manufacturer;
+                $manu->manufacturer = $request->post('manufacturer_text');
+                $manu->save();
+                $manufacturer_id = $manu->id;
+            }else{
+                $manufacturer_id = $request->post('manufacturer');
+            }
+
+            $ins = new EeeeModel;
+            $ins->eeee = $eeee_code;
+            $ins->model_id = $model_id;
+            $ins->save();
+
         }else{
-            $r->manufacturer_id = $request->post('manufacturer');
+            // EEEE Code exists
+            $model_id = $eeee->model->id;
+            $manufacturer_id = $eeee->model->manufacturer_id;
         }
-        if($request->post('model_text') != ''){
-            $manu = new Model;
-            $manu->model = $request->post('model_text');
-            $manu->manufacturer_id = $r->manufacturer_id;
-            $manu->save();
-            $r->model_id = $manu->id;
-        }else{
-            $r->model_id = $request->post('model');
-        }
+        $r->model_id = $model_id;
+        $r->manufacturer_id = $manufacturer_id;
+
         if($request->post('repair_type_text') != ''){
             $manu = new RepairType;
             $manu->type = $request->post('repair_type_text');

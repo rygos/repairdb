@@ -24,6 +24,9 @@ namespace App\Models;
  * @property-read \App\Models\Spare $spare
  * @property int $type_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair whereTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair query()
  */
 class SparesToRepair extends \App\Models\Base\SparesToRepair
 {

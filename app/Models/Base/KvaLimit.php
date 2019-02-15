@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 16 Nov 2018 08:37:16 +0000.
+ * Date: Thu, 14 Feb 2019 12:57:06 +0000.
  */
 
 namespace App\Models\Base;
@@ -20,6 +20,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit whereCustomerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\KvaLimit whereId($value)

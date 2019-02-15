@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 16 Nov 2018 08:37:16 +0000.
+ * Date: Thu, 14 Feb 2019 12:57:06 +0000.
  */
 
 namespace App\Models\Base;
@@ -20,7 +20,11 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \Illuminate\Database\Eloquent\Collection $votes
  * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereEmailVerifiedAt($value)
@@ -36,4 +40,9 @@ class User extends Eloquent
 	protected $dates = [
 		'email_verified_at'
 	];
+
+	public function votes()
+	{
+		return $this->hasMany(\App\Models\Vote::class);
+	}
 }

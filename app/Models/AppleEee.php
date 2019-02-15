@@ -16,6 +16,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AppleEee whereSpareId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AppleEee whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AppleEee newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AppleEee newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\AppleEee query()
  */
 class AppleEee extends \App\Models\Base\AppleEee
 {

@@ -16,6 +16,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model whereModel($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Model query()
  */
 class Model extends \App\Models\Base\Model
 {

@@ -28,6 +28,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rminstzlb whereCalltypeId($value)
  * @property string $zlb_created_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rminstzlb whereZlbCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rminstzlb newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rminstzlb newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Rminstzlb query()
  */
 class Rminstzlb extends Eloquent
 {

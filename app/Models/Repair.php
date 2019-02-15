@@ -41,6 +41,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereOrderNo($value)
  * @property int $user_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair query()
  */
 class Repair extends \App\Models\Base\Repair
 {

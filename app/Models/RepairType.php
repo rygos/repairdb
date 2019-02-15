@@ -14,6 +14,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairType whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairType whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairType query()
  */
 class RepairType extends \App\Models\Base\RepairType
 {

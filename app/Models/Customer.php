@@ -14,6 +14,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer query()
  */
 class Customer extends \App\Models\Base\Customer
 {

@@ -14,6 +14,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ClosingReason whereReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ClosingReason whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ClosingReason newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ClosingReason newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ClosingReason query()
  */
 class ClosingReason extends \App\Models\Base\ClosingReason
 {

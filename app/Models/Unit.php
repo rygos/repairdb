@@ -20,6 +20,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Unit whereSerial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Unit whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Unit newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Unit newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Unit query()
  */
 class Unit extends \App\Models\Base\Unit
 {

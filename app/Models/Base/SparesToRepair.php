@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 16 Nov 2018 08:37:16 +0000.
+ * Date: Thu, 14 Feb 2019 12:57:06 +0000.
  */
 
 namespace App\Models\Base;
@@ -21,6 +21,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property \Carbon\Carbon $updated_at
  * @property int $type_id
  * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\SparesToRepair whereRepairId($value)

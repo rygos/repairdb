@@ -22,6 +22,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer whereManufacturer($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Manufacturer query()
  */
 class Manufacturer extends Eloquent
 {

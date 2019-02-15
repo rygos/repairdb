@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 16 Nov 2018 08:37:16 +0000.
+ * Date: Thu, 14 Feb 2019 12:57:06 +0000.
  */
 
 namespace App\Models\Base;
@@ -29,6 +29,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $order_no
  * @property int $user_id
  * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosingReasonId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCreatedAt($value)

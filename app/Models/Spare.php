@@ -36,6 +36,9 @@ namespace App\Models;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereSapNo($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare query()
  */
 class Spare extends \App\Models\Base\Spare
 {
