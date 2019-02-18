@@ -136,8 +136,8 @@ class RepairController extends Controller
 
         }else{
             // EEEE Code exists
-            $model_id = $eeee->model->id;
-            $manufacturer_id = $eeee->model->manufacturer_id;
+            $model_id = $eeee->model()->id;
+            $manufacturer_id = $eeee->model()->manufacturer_id;
         }
         $r->model_id = $model_id;
         $r->manufacturer_id = $manufacturer_id;
