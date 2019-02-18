@@ -8,9 +8,9 @@ use Illuminate\Http\Request;
 class ModelController extends Controller
 {
     public function checkeeee(Request $request){
-        $eeee = EeeeModel::whereEeee(substr($request->post('eeee'), -4))->get();
+        $eeee = EeeeModel::whereEeee(substr($request->post('eeee'), -4))->first();
 
-        if($eeee->count() != 0){
+        if($eeee){
             return "TRUE";
         }else{
             return "FALSE";
