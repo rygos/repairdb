@@ -108,27 +108,27 @@ class RepairController extends Controller
             $r->customer_id = $request->post('customer');
         }
 
+        // EEEE Code des not exist
+        if($request->post('model_text') != ''){
+            $manu = new Model;
+            $manu->model = $request->post('model_text');
+            $manu->manufacturer_id = $r->manufacturer_id;
+            $manu->save();
+            $model_id = $manu->id;
+        }else{
+            $model_id = $request->post('model');
+        }
+
+        if($request->post('manufacturer_text') != ''){
+            $manu = new Manufacturer;
+            $manu->manufacturer = $request->post('manufacturer_text');
+            $manu->save();
+            $manufacturer_id = $manu->id;
+        }else{
+            $manufacturer_id = $request->post('manufacturer');
+        }
+
         if($eeee === null){
-            // EEEE Code des not exist
-            if($request->post('model_text') != ''){
-                $manu = new Model;
-                $manu->model = $request->post('model_text');
-                $manu->manufacturer_id = $r->manufacturer_id;
-                $manu->save();
-                $model_id = $manu->id;
-            }else{
-                $model_id = $request->post('model');
-            }
-
-            if($request->post('manufacturer_text') != ''){
-                $manu = new Manufacturer;
-                $manu->manufacturer = $request->post('manufacturer_text');
-                $manu->save();
-                $manufacturer_id = $manu->id;
-            }else{
-                $manufacturer_id = $request->post('manufacturer');
-            }
-
             $ins = new EeeeModel;
             $ins->eeee = $eeee_code;
             $ins->model_id = $model_id;
