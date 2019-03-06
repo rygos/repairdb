@@ -40,3 +40,5 @@ Route::post('kva/save', 'KvaLimitController@save');
 Route::get('stats', 'StatsController@index');
 
 Route::post('/data/checkeeee', 'ModelController@checkeeee');
+
+Route::get('liveview', 'LiveViewController@index');
