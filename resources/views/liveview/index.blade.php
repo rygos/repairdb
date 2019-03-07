@@ -1,10 +1,10 @@
 <html>
 <head>
     {{-- <meta http-equiv="refresh" content="10; URL=http://repair.rmarchiv.tk/liveview"> --}}
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <!-- latest -->
-    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
-    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="//unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
+    <script href="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
         @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
