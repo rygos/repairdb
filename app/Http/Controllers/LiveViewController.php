@@ -25,7 +25,7 @@ class LiveViewController extends Controller
             $data['user'][$i]['mailin'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [9])->count();
             $data['user'][$i]['kva'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [7])->count();
 
-            $data['user'][$i]['closed_total'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [2,11])->whereDate('started_at', Carbon::today())->count();
+            $data['user'][$i]['closed_total'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [2,11])->whereDate('closed_at', Carbon::today())->count();
             if($data['user'][$i]['closed_total'] >= $closed_total_max){
                 $closed_total_max = $data['user'][$i]['closed_total'];
             }
