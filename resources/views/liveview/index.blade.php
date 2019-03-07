@@ -4,7 +4,7 @@
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <!-- latest -->
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="script">
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <style>
         @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
