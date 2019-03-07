@@ -413,9 +413,9 @@
                     <thead>
                     <tr>
                         <th></th>
-                        <th>Marcel</th>
-                        <th>Samira</th>
-                        <th>Dirk</th>
+                        <th>Tech1</th>
+                        <th>Tech2</th>
+                        <th>Tech3</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -472,15 +472,15 @@
                 Closed today
             </h2>
             <p>
-                Marcel: <span id="prog1val"></span><br>
+                Tech1: <span id="prog1val"></span><br>
                 <progress id="prog1" class="nes-progress is-primary" value="" max=""></progress>
             </p>
             <p>
-                Samira: <span id="prog2val"></span><br>
+                Tech2: <span id="prog2val"></span><br>
                 <progress id="prog2" class="nes-progress is-samira" value="" max=""></progress>
             </p>
             <p>
-                Dirk: <span id="prog3val"></span><br>
+                Tech3: <span id="prog3val"></span><br>
                 <progress id="prog3" class="nes-progress is-warning" value="" max=""></progress>
             </p>
         </section>
