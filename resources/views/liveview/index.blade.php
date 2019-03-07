@@ -454,6 +454,8 @@
 </div>
 
 <script>
+    getdata();
+
     function getdata(){
         $.ajax({
             url: '/data/liveview',
@@ -466,7 +468,7 @@
 
             },
             complete: function() {
-                setTimeout(getdata,1000); //After completion of request, time to redo it after a second
+                setTimeout(getdata,5000); //After completion of request, time to redo it after a second
             }
         });
     }
