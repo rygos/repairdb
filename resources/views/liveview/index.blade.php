@@ -463,9 +463,32 @@
             dataType: 'json',
             success: function(resp) {
                 jQuery('#ro1total').html(resp['user'][1]['total']);
-                jQuery('#out2').html(resp[1]);
-                jQuery('#out3').html(resp[2]);
+                jQuery('#ro2total').html(resp['user'][2]['total']);
+                jQuery('#ro3total').html(resp['user'][3]['total']);
 
+                jQuery('#ro1new').html(resp['user'][1]['new']);
+                jQuery('#ro2new').html(resp['user'][2]['new']);
+                jQuery('#ro3new').html(resp['user'][3]['new']);
+
+                jQuery('#ro1diag').html(resp['user'][1]['rep']);
+                jQuery('#ro2diag').html(resp['user'][2]['rep']);
+                jQuery('#ro3diag').html(resp['user'][3]['rep']);
+
+                jQuery('#ro1wfi').html(resp['user'][1]['wfi']);
+                jQuery('#ro2wfi').html(resp['user'][2]['wfi']);
+                jQuery('#ro3wfi').html(resp['user'][3]['wfi']);
+
+                jQuery('#ro1order').html(resp['user'][1]['order']);
+                jQuery('#ro2order').html(resp['user'][2]['order']);
+                jQuery('#ro3order').html(resp['user'][3]['order']);
+
+                jQuery('#ro1mail').html(resp['user'][1]['mail']);
+                jQuery('#ro2mail').html(resp['user'][2]['mail']);
+                jQuery('#ro3mail').html(resp['user'][3]['mail']);
+
+                jQuery('#ro1kva').html(resp['user'][1]['kva']);
+                jQuery('#ro2kva').html(resp['user'][2]['kva']);
+                jQuery('#ro3kva').html(resp['user'][3]['kva']);
             },
             complete: function() {
                 setTimeout(getdata,5000); //After completion of request, time to redo it after a second
