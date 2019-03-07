@@ -450,6 +450,24 @@
             </div>
             </p>
         </section>
+        <section class="topic">
+            <h2 id="usage">
+                <a href="#usage">#</a>
+                Closed today
+            </h2>
+            <p>
+                Marcel: <br>
+                <progress id="prog1" class="nes-progress is-primary" value="" max=""></progress>
+            </p>
+            <p>
+                Samira: <br>
+                <progress id="prog2" class="nes-progress is-primary" value="" max=""></progress>
+            </p>
+            <p>
+                Dirk: <br>
+                <progress id="prog3" class="nes-progress is-primary" value="" max=""></progress>
+            </p>
+        </section>
     </div>
 </div>
 
@@ -489,6 +507,13 @@
                 jQuery('#ro1kva').html(resp['user'][1]['kva']);
                 jQuery('#ro2kva').html(resp['user'][2]['kva']);
                 jQuery('#ro3kva').html(resp['user'][3]['kva']);
+
+                jQuery('#prog1').val(resp['user'][1]['closed_total']);
+                jQuery('#prog1').attr("max", resp['closed_total_max']);
+                jQuery('#prog2').val(resp['user'][2]['closed_total']);
+                jQuery('#prog2').attr("max", resp['closed_total_max']);
+                jQuery('#prog3').val(resp['user'][3]['closed_total']);
+                jQuery('#prog3').attr("max", resp['closed_total_max']);
             },
             complete: function() {
                 setTimeout(getdata,5000); //After completion of request, time to redo it after a second
