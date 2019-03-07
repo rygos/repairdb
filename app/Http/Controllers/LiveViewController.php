@@ -25,7 +25,7 @@ class LiveViewController extends Controller
             $data['user'][$i]['kva'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [7])->count();
 
 
-            $data['user'][$i]['total'] = $data[$i]['total'] + $data[$i]['new'];
+            $data['user'][$i]['total'] = $data['user'][$i]['total'] + $data['user'][$i]['new'];
         }
 
         $data['servertime'] = now();
