@@ -373,6 +373,22 @@
             }
         }
 
+        .nes-progress.is-samira::-webkit-progress-bar {
+            background-color: #fff;
+        }
+
+        .nes-progress.is-samira::-webkit-progress-value {
+            background-color: #EE11BB;
+        }
+
+        .nes-progress.is-samira::-moz-progress-bar {
+            background-color: #EE11BB;
+        }
+
+        .nes-progress.is-samira::-ms-fill {
+            background-color: #EE11BB;
+            border: none
+        }
 
     </style>
 </head>
@@ -461,7 +477,7 @@
             </p>
             <p>
                 Samira: <span id="prog2val"></span><br>
-                <progress id="prog2" class="nes-progress is-success" value="" max=""></progress>
+                <progress id="prog2" class="nes-progress is-samira" value="" max=""></progress>
             </p>
             <p>
                 Dirk: <span id="prog3val"></span><br>
