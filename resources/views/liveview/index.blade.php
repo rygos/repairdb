@@ -460,7 +460,7 @@
                 <progress id="prog1" class="nes-progress is-primary" value="" max=""></progress>
             </p>
             <p>
-                Samira: <span id="prog3val"></span><br>
+                Samira: <span id="prog2val"></span><br>
                 <progress id="prog2" class="nes-progress is-success" value="" max=""></progress>
             </p>
             <p>
