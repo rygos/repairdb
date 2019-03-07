@@ -456,16 +456,16 @@
                 Closed today
             </h2>
             <p>
-                Marcel: <br>
+                Marcel: <div id="prog1val"></div><br>
                 <progress id="prog1" class="nes-progress is-primary" value="" max=""></progress>
             </p>
             <p>
-                Samira: <br>
-                <progress id="prog2" class="nes-progress is-primary" value="" max=""></progress>
+                Samira: <div id="prog3val"></div><br>
+                <progress id="prog2" class="nes-progress is-success" value="" max=""></progress>
             </p>
             <p>
-                Dirk: <br>
-                <progress id="prog3" class="nes-progress is-primary" value="" max=""></progress>
+                Dirk: <div id="prog3val"></div><br>
+                <progress id="prog3" class="nes-progress is-warning" value="" max=""></progress>
             </p>
         </section>
     </div>
