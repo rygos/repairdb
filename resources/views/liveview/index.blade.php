@@ -482,9 +482,9 @@
                 jQuery('#ro2order').html(resp['user'][2]['order']);
                 jQuery('#ro3order').html(resp['user'][3]['order']);
 
-                jQuery('#ro1mail').html(resp['user'][1]['mail']);
-                jQuery('#ro2mail').html(resp['user'][2]['mail']);
-                jQuery('#ro3mail').html(resp['user'][3]['mail']);
+                jQuery('#ro1mail').html(resp['user'][1]['mailin']);
+                jQuery('#ro2mail').html(resp['user'][2]['mailin']);
+                jQuery('#ro3mail').html(resp['user'][3]['mailin']);
 
                 jQuery('#ro1kva').html(resp['user'][1]['kva']);
                 jQuery('#ro2kva').html(resp['user'][2]['kva']);
