@@ -456,15 +456,15 @@
                 Closed today
             </h2>
             <p>
-                Marcel: <div id="prog1val"></div><br>
+                Marcel: <span id="prog1val"></span><br>
                 <progress id="prog1" class="nes-progress is-primary" value="" max=""></progress>
             </p>
             <p>
-                Samira: <div id="prog3val"></div><br>
+                Samira: <span id="prog3val"></span><br>
                 <progress id="prog2" class="nes-progress is-success" value="" max=""></progress>
             </p>
             <p>
-                Dirk: <div id="prog3val"></div><br>
+                Dirk: <span id="prog3val"></span><br>
                 <progress id="prog3" class="nes-progress is-warning" value="" max=""></progress>
             </p>
         </section>
@@ -510,10 +510,13 @@
 
                 jQuery('#prog1').val(resp['user'][1]['closed_total']);
                 jQuery('#prog1').attr("max", resp['closed_total_max']);
+                jQuery('#prog1val').html(resp['user'][1]['closed_total']);
                 jQuery('#prog2').val(resp['user'][2]['closed_total']);
                 jQuery('#prog2').attr("max", resp['closed_total_max']);
+                jQuery('#prog2val').html(resp['user'][2]['closed_total']);
                 jQuery('#prog3').val(resp['user'][3]['closed_total']);
                 jQuery('#prog3').attr("max", resp['closed_total_max']);
+                jQuery('#prog3val').html(resp['user'][3]['closed_total']);
             },
             complete: function() {
                 setTimeout(getdata,5000); //After completion of request, time to redo it after a second
