@@ -8,24 +8,27 @@ use Illuminate\Http\Request;
 class LiveViewController extends Controller
 {
     public function index(){
+        return view('liveview.index');
+    }
 
-        $data_user = array();
+    public function getData(){
+        $data = array();
 
         for ($i = 1; $i <= 3; $i++) {
-            $data_user[$i]['total'] = Repair::whereUserId($i)->whereNotIn('closing_reason_id', [2,11,12])->count();
-            $data_user[$i]['new'] = Repair::whereUserId($i)->whereNull('closing_reason_id')->count();
-            $data_user[$i]['rep'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [5,6])->count();
-            $data_user[$i]['wfi'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [8])->count();
-            $data_user[$i]['order'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [4])->count();
-            $data_user[$i]['mailin'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [9])->count();
-            $data_user[$i]['kva'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [7])->count();
+            $data[$i]['total'] = Repair::whereUserId($i)->whereNotIn('closing_reason_id', [2,11,12])->count();
+            $data[$i]['new'] = Repair::whereUserId($i)->whereNull('closing_reason_id')->count();
+            $data[$i]['rep'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [5,6])->count();
+            $data[$i]['wfi'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [8])->count();
+            $data[$i]['order'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [4])->count();
+            $data[$i]['mailin'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [9])->count();
+            $data[$i]['kva'] = Repair::whereUserId($i)->whereIn('closing_reason_id', [7])->count();
 
 
-            $data_user[$i]['total'] = $data_user[$i]['total'] + $data_user[$i]['new'];
+            $data[$i]['total'] = $data[$i]['total'] + $data[$i]['new'];
         }
 
-        return view('liveview.index', [
-            'du' => $data_user,
-        ]);
+        $data['servertime'] = now();
+
+        return response()->json($data);
     }
 }

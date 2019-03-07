@@ -1,9 +1,10 @@
 <html>
 <head>
-    <meta http-equiv="refresh" content="10; URL=http://repair.rmarchiv.tk/liveview">
+    {{-- <meta http-equiv="refresh" content="10; URL=http://repair.rmarchiv.tk/liveview"> --}}
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <!-- latest -->
     <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" rel="script">
 
     <style>
         @import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
@@ -404,45 +405,45 @@
                     <tbody>
                     <tr>
                         <td>Total</td>
-                        <td>{{ $du[1]['total'] }}</td>
-                        <td>{{ $du[2]['total'] }}</td>
-                        <td>{{ $du[3]['total'] }}</td>
+                        <td id="ro1total"></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>New</td>
-                        <td>{{ $du[1]['new'] }}</td>
-                        <td>{{ $du[2]['new'] }}</td>
-                        <td>{{ $du[3]['new'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>Diag/Repair</td>
-                        <td>{{ $du[1]['rep'] }}</td>
-                        <td>{{ $du[2]['rep'] }}</td>
-                        <td>{{ $du[3]['rep'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>Wait for Info</td>
-                        <td>{{ $du[1]['wfi'] }}</td>
-                        <td>{{ $du[2]['wfi'] }}</td>
-                        <td>{{ $du[3]['wfi'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>Ordered</td>
-                        <td>{{ $du[1]['order'] }}</td>
-                        <td>{{ $du[2]['order'] }}</td>
-                        <td>{{ $du[3]['order'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>Mail-In</td>
-                        <td>{{ $du[1]['mailin'] }}</td>
-                        <td>{{ $du[2]['mailin'] }}</td>
-                        <td>{{ $du[3]['mailin'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     <tr>
                         <td>KVA</td>
-                        <td>{{ $du[1]['kva'] }}</td>
-                        <td>{{ $du[2]['kva'] }}</td>
-                        <td>{{ $du[3]['kva'] }}</td>
+                        <td id=""></td>
+                        <td id=""></td>
+                        <td id=""></td>
                     </tr>
                     </tbody>
                 </table>
@@ -451,5 +452,24 @@
         </section>
     </div>
 </div>
+
+<script>
+    function getdata(){
+        $.ajax({
+            url: '/data/liveview',
+            type: 'GET',
+            dataType: 'json',
+            success: function(resp) {
+                jQuery('#out1').html(resp[0]);
+                jQuery('#out2').html(resp[1]);
+                jQuery('#out3').html(resp[2]);
+
+            },
+            complete: function() {
+                setTimeout(getdata,1000); //After completion of request, time to redo it after a second
+            }
+        });
+    }
+</script>
 </body>
 </html>

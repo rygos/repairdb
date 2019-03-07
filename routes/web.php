@@ -42,3 +42,4 @@ Route::get('stats', 'StatsController@index');
 Route::post('/data/checkeeee', 'ModelController@checkeeee');
 
 Route::get('liveview', 'LiveViewController@index');
+Route::get('/data/liveview', 'LiveViewController@getData');
