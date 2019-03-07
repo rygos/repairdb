@@ -462,7 +462,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(resp) {
-                jQuery('#ro1total').html(resp[user][1]['total']);
+                jQuery('#ro1total').html(resp['user'][1]['total']);
                 jQuery('#out2').html(resp[1]);
                 jQuery('#out3').html(resp[2]);
 
