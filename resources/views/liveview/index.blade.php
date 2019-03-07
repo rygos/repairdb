@@ -406,44 +406,44 @@
                     <tr>
                         <td>Total</td>
                         <td id="ro1total"></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro2total"></td>
+                        <td id="ro3total"></td>
                     </tr>
                     <tr>
                         <td>New</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1new"></td>
+                        <td id="ro2new"></td>
+                        <td id="ro3new"></td>
                     </tr>
                     <tr>
                         <td>Diag/Repair</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1diag"></td>
+                        <td id="ro2diag"></td>
+                        <td id="ro3diag"></td>
                     </tr>
                     <tr>
                         <td>Wait for Info</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1wfi"></td>
+                        <td id="ro2wfi"></td>
+                        <td id="ro3wfi"></td>
                     </tr>
                     <tr>
                         <td>Ordered</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1order"></td>
+                        <td id="ro2order"></td>
+                        <td id="ro3order"></td>
                     </tr>
                     <tr>
                         <td>Mail-In</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1mail"></td>
+                        <td id="ro2mail"></td>
+                        <td id="ro3mail"></td>
                     </tr>
                     <tr>
                         <td>KVA</td>
-                        <td id=""></td>
-                        <td id=""></td>
-                        <td id=""></td>
+                        <td id="ro1kva"></td>
+                        <td id="ro2kva"></td>
+                        <td id="ro3kva"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -460,7 +460,7 @@
             type: 'GET',
             dataType: 'json',
             success: function(resp) {
-                jQuery('#out1').html(resp[0]);
+                jQuery('#ro1total').html(resp[user][1]['total']);
                 jQuery('#out2').html(resp[1]);
                 jQuery('#out3').html(resp[2]);
 
