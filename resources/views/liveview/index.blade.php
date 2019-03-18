@@ -544,8 +544,8 @@
                 jQuery('#prog3').attr("max", resp['closed_total_max']);
                 jQuery('#prog3val').html(resp['user'][3]['closed_total']);
 
-                jQuery('#goal1val').html(resp('goal'));
-                jQuery('#goalprog').val(resp('goal'));
+                jQuery('#goal1val').html(resp['goal']);
+                jQuery('#goalprog').val(resp['goal']);
             },
             complete: function() {
                 setTimeout(getdata,5000); //After completion of request, time to redo it after a second
