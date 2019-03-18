@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Repair;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Http\Request;
 
 class LiveViewController extends Controller
@@ -32,6 +33,10 @@ class LiveViewController extends Controller
 
             $data['user'][$i]['total'] = $data['user'][$i]['total'] + $data['user'][$i]['new'];
         }
+
+        $quarterdate = new Carbon('-3 month');
+        $firstofquarter = $quarterdate->firstOfQuarter();
+        $data['goal'] = Repair::whereIn('closing_reason_id', [2])->whereDate('closed_at', '>=', $quarterdate->firstOfQuarter())->count();
 
         $data['servertime'] = now();
         $data['closed_total_max'] = $closed_total_max;

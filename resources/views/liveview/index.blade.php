@@ -466,6 +466,16 @@
             </div>
             </p>
         </section>
+        <section class="topc">
+            <h2 id="goal">
+                <a href="#goal">#</a>
+                Quarter Goal
+            </h2>
+            <p>
+                Goal: <span id="goal1val"></span>/200<br>
+                <progress id="goalprog" class="nes-progress is-error" value="" max="200"></progress>
+            </p>
+        </section>
         <section class="topic">
             <h2 id="usage">
                 <a href="#usage">#</a>
@@ -533,6 +543,9 @@
                 jQuery('#prog3').val(resp['user'][3]['closed_total']);
                 jQuery('#prog3').attr("max", resp['closed_total_max']);
                 jQuery('#prog3val').html(resp['user'][3]['closed_total']);
+
+                jQuery('#goal1val').html(resp('goal'));
+                jQuery('#goalprog').val(resp('goal'));
             },
             complete: function() {
                 setTimeout(getdata,5000); //After completion of request, time to redo it after a second
