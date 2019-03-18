@@ -36,7 +36,8 @@ class LiveViewController extends Controller
 
         $quarterdate = new Carbon('-3 month');
         $firstofquarter = $quarterdate->firstOfQuarter();
-        $data['goal'] = Repair::whereIn('closing_reason_id', [2])->whereDate('closed_at', '>=', $quarterdate->firstOfQuarter())->count();
+        //$data['goal'] = Repair::whereIn('closing_reason_id', [2])->whereDate('closed_at', '>=', $quarterdate->firstOfQuarter())->count();
+        $data['goal'] = Repair::whereIn('closing_reason_id', [2])->whereDate('closed_at', '>=', Carbon::now()->firstOfMonth())->count();
 
         $data['servertime'] = now();
         $data['closed_total_max'] = $closed_total_max;
