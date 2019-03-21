@@ -45,3 +45,4 @@ Route::get('liveview', 'LiveViewController@index');
 Route::get('/data/liveview', 'LiveViewController@getData');
 
 Route::get('overtime', 'OvertimeController@index');
+Route::post('overtime', 'OvertimeController@store');
