@@ -3,6 +3,7 @@
     <li><a href="{{ action('RepairController@create') }}">Add Repair</a></li>
     <li><a href="{{ action('PartsController@create') }}">Add Spares</a></li>
     <li><a href="{{ action('StatsController@index') }}">Stats</a></li>
+    <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
     <li>
         {!! Form::open(['method' => 'POST', 'action' => 'SearchController@searchProcess', 'style' => 'display: inline']) !!}
         {!! Form::text('term') !!}

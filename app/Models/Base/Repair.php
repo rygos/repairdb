@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 14 Feb 2019 12:57:06 +0000.
+ * Date: Thu, 21 Mar 2019 08:34:40 +0000.
  */
 
 namespace App\Models\Base;
@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Repair
- *
+ * 
  * @property int $id
  * @property \Carbon\Carbon $started_at
  * @property int $rminstzlb_id
@@ -28,27 +28,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $g_no
  * @property int $order_no
  * @property int $user_id
+ *
  * @package App\Models\Base
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosingReasonId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCustomerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereGNo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereManufacturerId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereModelId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereOrderNo($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereRemarks($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereRepairTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereRminstzlbId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereStartedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUnitId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUserId($value)
- * @mixin \Eloquent
  */
 class Repair extends Eloquent
 {

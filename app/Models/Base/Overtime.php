@@ -10,33 +10,32 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Vote
+ * Class Overtime
  * 
  * @property int $id
  * @property int $user_id
- * @property int $option_id
+ * @property \Carbon\Carbon $overtime_at
+ * @property \Carbon\Carbon $started_at
+ * @property \Carbon\Carbon $ended_at
+ * @property int $overtime_minutes
+ * @property string $reason
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * 
- * @property \App\Models\Option $option
- * @property \App\Models\User $user
  *
  * @package App\Models\Base
  */
-class Vote extends Eloquent
+class Overtime extends Eloquent
 {
+	protected $table = 'overtime';
+
 	protected $casts = [
 		'user_id' => 'int',
-		'option_id' => 'int'
+		'overtime_minutes' => 'int'
 	];
 
-	public function option()
-	{
-		return $this->belongsTo(\App\Models\Option::class);
-	}
-
-	public function user()
-	{
-		return $this->belongsTo(\App\Models\User::class);
-	}
+	protected $dates = [
+		'overtime_at',
+		'started_at',
+		'ended_at'
+	];
 }
