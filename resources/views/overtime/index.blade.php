@@ -10,5 +10,23 @@
             <th>Minutes</th>
             <th>Reason</th>
         </tr>
+        <tr>
+            <td class="nav" colspan="4">Sum:</td>
+            <td>{{ \App\Models\Overtime::whereUserId(Auth::id())->sum('overtime_minutes')/60 }}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="6">Add Row</td>
+        </tr>
+        {{ Form::open(['action' => 'OvertimeController@store']) }}
+        <tr>
+            <td></td>
+            <td>{{ Form::date('overtime_date') }}</td>
+            <td>{{ Form::time('started_at') }}</td>
+            <td>{{ Form::time('ended_at') }}</td>
+            <td></td>
+            <td>{{ Form::text('reason') }}</td>
+        </tr>
+        {{ Form::close() }}
     </table>
 @endsection
