@@ -26,6 +26,7 @@ class OvertimeController extends Controller
         $preason = $request->post('reason');
 
         $ot = new Overtime;
+        $ot->user_id = \Auth::id();
         $ot->overtime_at = Carbon::parse($povertime_date);
         $ot->started_at = Carbon::parse($pstart);
         $ot->ended_at = Carbon::parse($pend);
