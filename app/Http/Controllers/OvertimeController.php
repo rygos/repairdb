@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Overtime;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OvertimeController extends Controller
@@ -19,7 +20,18 @@ class OvertimeController extends Controller
     }
 
     public function store(Request $request){
+        $povertime_date = $request->post('overtime_date');
+        $pstart = $request->post('started_at');
+        $pend = $request->post('ended_at');
+        $preason = $request->post('reason');
 
+        $ot = new Overtime;
+        $ot->overtime_at = Carbon::parse($povertime_date);
+        $ot->started_at = Carbon::parse($pstart);
+        $ot->ended_at = Carbon::parse($pend);
+        $ot->reason = $preason;
+        $ot->overtime_minutes = Carbon::parse($pend)->diffInMinutes(Carbon::parse($pstart));
+        $ot->save();
 
         return redirect()->action('OvertimeController@index');
     }
