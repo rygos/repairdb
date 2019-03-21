@@ -15,8 +15,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $user_id
  * @property \Carbon\Carbon $overtime_at
- * @property \Carbon\Carbon $started_at
- * @property \Carbon\Carbon $ended_at
+ * @property string $started_at
+ * @property string $ended_at
  * @property int $overtime_minutes
  * @property string $reason
  * @property \Carbon\Carbon $created_at
@@ -34,8 +34,6 @@ class Overtime extends Eloquent
 	];
 
 	protected $dates = [
-		'overtime_at',
-		'started_at',
-		'ended_at'
+		'overtime_at'
 	];
 }
