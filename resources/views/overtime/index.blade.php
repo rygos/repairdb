@@ -13,8 +13,8 @@
         </tr>
         @foreach($data as $row)
             <tr>
-                <td>{{ $row->created_at }}</td>
-                <td>{{ $row->overtime_at }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->created_at)->format('d.m.Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->overtime_at)->format('d.m.Y') }}</td>
                 <td>{{ $row->started_at }}</td>
                 <td>{{ $row->ended_at }}</td>
                 <td>{{ round($row->overtime_minutes * 0.0166666666667, 2) }}</td>
