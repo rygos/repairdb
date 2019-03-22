@@ -19,7 +19,12 @@
                 <td>{{ $row->ended_at }}</td>
                 <td>{{ round($row->overtime_minutes * 0.0166666666667, 2) }}</td>
                 <td>{{ $row->reason }}</td>
-                <td></td>
+                <td>
+                    {{ Form::open(['action' => 'OvertimeController@delete']) }}
+                    {{ Form::hidden('row_id', $row->id) }}
+                    {{ Form::submit() }}
+                    {{ Form::close() }}
+                </td>
             </tr>
         @endforeach
         <tr>
