@@ -17,14 +17,14 @@
                 <td>{{ $row->overtime_at }}</td>
                 <td>{{ $row->started_at }}</td>
                 <td>{{ $row->ended_at }}</td>
-                <td>{{ $row->overtime_minutes * 0.0166666666667 }}</td>
+                <td>{{ round($row->overtime_minutes * 0.0166666666667, 2) }}</td>
                 <td>{{ $row->reason }}</td>
                 <td></td>
             </tr>
         @endforeach
         <tr>
             <td class="nav" colspan="4" style="text-align: right;">Sum Hours:</td>
-            <td>{{ \App\Models\Overtime::whereUserId(Auth::id())->sum('overtime_minutes')/60 }}</td>
+            <td>{{ round(\App\Models\Overtime::whereUserId(Auth::id())->sum('overtime_minutes')/60, 2) }}</td>
             <td class="nav" colspan="2"></td>
         </tr>
         <tr>
@@ -36,7 +36,10 @@
             <td>{{ Form::date('overtime_date') }}</td>
             <td>{{ Form::time('started_at') }}</td>
             <td>{{ Form::time('ended_at') }}</td>
-            <td></td>
+            <td>
+                Plus: {{ Form::radio('type', 'plus' , true) }}<br>
+                Minus: {{ Form::radio('type', 'minus' , false) }}
+            </td>
             <td>{{ Form::text('reason') }}</td>
             <td>{{ Form::submit() }}</td>
         </tr>

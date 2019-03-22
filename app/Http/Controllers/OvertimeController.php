@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class OvertimeController extends Controller
 {
     public function index(){
-        $data = Overtime::whereUserId(\Auth::id())->orderBy('created_at', 'asc')->get();
+        $data = Overtime::whereUserId(\Auth::id())->orderBy('overtime_at', 'asc')->get();
         $ot_minutes = Overtime::whereUserId(\Auth::id())->sum('overtime_minutes');
         $overtime_sum = $ot_minutes * 0.0166666666667;
 
@@ -31,7 +31,13 @@ class OvertimeController extends Controller
         $ot->started_at = Carbon::parse($pstart);
         $ot->ended_at = Carbon::parse($pend);
         $ot->reason = $preason;
-        $ot->overtime_minutes = Carbon::parse($pend)->diffInMinutes(Carbon::parse($pstart));
+        $overtime_minutes = Carbon::parse($pend)->diffInMinutes(Carbon::parse($pstart));
+        if($request->post('type') == 'plus'){
+            $ot->overtime_minutes = $overtime_minutes;
+        }else{
+            $ot->overtime_minutes = -$overtime_minutes;
+        }
+
         $ot->save();
 
         return redirect()->action('OvertimeController@index');
