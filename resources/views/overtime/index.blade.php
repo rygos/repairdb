@@ -22,7 +22,7 @@
                 <td>
                     {{ Form::open(['action' => 'OvertimeController@delete']) }}
                     {{ Form::hidden('row_id', $row->id) }}
-                    {{ Form::submit() }}
+                    {{ Form::submit('Delete') }}
                     {{ Form::close() }}
                 </td>
             </tr>
