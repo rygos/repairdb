@@ -35,7 +35,6 @@
         </tr>
         {{ Form::open(['action' => 'OvertimeController@store']) }}
         <tr>
-            <td></td>
             <td>{{ Form::date('overtime_date') }}</td>
             <td>{{ Form::time('started_at') }}</td>
             <td>{{ Form::time('ended_at') }}</td>
