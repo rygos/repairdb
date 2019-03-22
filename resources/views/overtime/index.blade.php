@@ -15,8 +15,8 @@
             <tr>
                 <td>{{ \Carbon\Carbon::parse($row->created_at)->format('d.m.Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($row->overtime_at)->format('d.m.Y') }}</td>
-                <td>{{ $row->started_at }}</td>
-                <td>{{ $row->ended_at }}</td>
+                <td>{{ substr($row->started_at, 0, -3) }}</td>
+                <td>{{ substr($row->ended_at, 0, -3) }}</td>
                 <td>{{ round($row->overtime_minutes * 0.0166666666667, 2) }}</td>
                 <td>{{ $row->reason }}</td>
                 <td>
