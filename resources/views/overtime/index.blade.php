@@ -3,7 +3,6 @@
 @section('content')
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
-            <th>Created at</th>
             <th>Overtime date</th>
             <th>Start time</th>
             <th>End time</th>
@@ -13,7 +12,6 @@
         </tr>
         @foreach($data as $row)
             <tr>
-                <td>{{ \Carbon\Carbon::parse($row->created_at)->format('d.m.Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($row->overtime_at)->format('d.m.Y') }}</td>
                 <td>{{ substr($row->started_at, 0, -3) }}</td>
                 <td>{{ substr($row->ended_at, 0, -3) }}</td>
@@ -28,12 +26,12 @@
             </tr>
         @endforeach
         <tr>
-            <td class="nav" colspan="4" style="text-align: right;">Sum Hours:</td>
+            <td class="nav" colspan="3" style="text-align: right;">Sum Hours:</td>
             <td>{{ round(\App\Models\Overtime::whereUserId(Auth::id())->sum('overtime_minutes')/60, 2) }}</td>
             <td class="nav" colspan="2"></td>
         </tr>
         <tr>
-            <td colspan="7">Add Row</td>
+            <td colspan="6">Add Row</td>
         </tr>
         {{ Form::open(['action' => 'OvertimeController@store']) }}
         <tr>
