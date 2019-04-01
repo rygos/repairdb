@@ -121,7 +121,7 @@ class RepairController extends Controller
         if($request->post('model_text') != ''){
             $manu = new Model;
             $manu->model = $request->post('model_text');
-            $manu->manufacturer_id = $r->manufacturer_id;
+            $manu->manufacturer_id = $manufacturer_id;
             $manu->save();
             $model_id = $manu->id;
         }else{
