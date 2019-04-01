@@ -56,4 +56,16 @@ class Spare extends \App\Models\Base\Spare
 		'price_replace_date',
 		'price_stock_date'
 	];
+
+    public function manufacturer(){
+        return $this->hasOne('App\Models\Manufacturer', 'id', 'manufacturer_id')->first();
+    }
+
+    public function model(){
+        return $this->hasOne('App\Models\Model', 'id', 'model_id')->first();
+    }
+
+    public function customer(){
+        return $this->hasOne('App\Models\Customer', 'id', 'customer_id')->first();
+    }
 }

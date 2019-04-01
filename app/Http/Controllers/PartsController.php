@@ -21,7 +21,7 @@ class PartsController extends Controller
      */
     public function index()
     {
-        $data = Spare::all();
+        $data = Spare::whereManufacturerId(3)->orderBy('sap_no')->get();
 
         return view('spares.index', [
             'data' => $data,
