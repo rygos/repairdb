@@ -1,7 +1,8 @@
 <ul>
     <li><a href="{{ action('HomeController@index') }}">Home</a></li>
+    <li><a href="{{ action('PartsController@index') }}">Spares</a></li>
     <li><a href="{{ action('RepairController@create') }}">Add Repair</a></li>
-    <li><a href="{{ action('PartsController@create') }}">Add Spares</a></li>
+    <li><a href="{{ action('PartsController@create') }}">Add Spare</a></li>
     <li><a href="{{ action('StatsController@index') }}">Stats</a></li>
     <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
     <li>

@@ -21,7 +21,11 @@ class PartsController extends Controller
      */
     public function index()
     {
-        //
+        $data = Spare::all();
+
+        return view('spares.index', [
+            'data' => $data,
+        ]);
     }
 
     /**
