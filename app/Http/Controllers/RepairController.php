@@ -108,6 +108,15 @@ class RepairController extends Controller
             $r->customer_id = $request->post('customer');
         }
 
+        if($request->post('manufacturer_text') != ''){
+            $manu = new Manufacturer;
+            $manu->manufacturer = $request->post('manufacturer_text');
+            $manu->save();
+            $manufacturer_id = $manu->id;
+        }else{
+            $manufacturer_id = $request->post('manufacturer');
+        }
+
         // EEEE Code des not exist
         if($request->post('model_text') != ''){
             $manu = new Model;
@@ -117,15 +126,6 @@ class RepairController extends Controller
             $model_id = $manu->id;
         }else{
             $model_id = $request->post('model');
-        }
-
-        if($request->post('manufacturer_text') != ''){
-            $manu = new Manufacturer;
-            $manu->manufacturer = $request->post('manufacturer_text');
-            $manu->save();
-            $manufacturer_id = $manu->id;
-        }else{
-            $manufacturer_id = $request->post('manufacturer');
         }
 
         if($eeee === null){
