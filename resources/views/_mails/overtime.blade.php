@@ -62,7 +62,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $overtime->overtime_at }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $overtime_at }}</span>
                         </p>
                     </td>
                 </tr>
@@ -79,7 +79,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $overtime->started_at }} / {{ $overtime->ended_at }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $started_at }} / {{ $ended_at }}</span>
                         </p>
                     </td>
                 </tr>
@@ -96,7 +96,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ round($overtime->overtime_minutes * 0.0166666666667, 2) }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ round($overtime_minutes * 0.0166666666667, 2) }}</span>
                         </p>
                     </td>
                 </tr>

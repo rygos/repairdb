@@ -33,6 +33,12 @@ class OvertimeMail extends Mailable
 
         return $this->from(\Auth::getUser()->email)
             ->subject($subject)
-            ->view('_mails.overtime');
+            ->view('_mails.overtime')
+            ->with([
+                'overtime_at' => $this->overtime->overtime_at,
+                'started_at' => $this->overtime->started_at,
+                'ended_at' => $this->overtime->ended_at,
+                'overtime_minutes' => $this->overtime->overtime_minutes,
+            ]);
     }
 }
