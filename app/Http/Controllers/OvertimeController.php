@@ -44,7 +44,7 @@ class OvertimeController extends Controller
     }
 
     public function delete(Request $request){
-        Overtime::destroy($request->post('id'));
+        Overtime::destroy($request->post('row_id'));
 
         return redirect()->action('OvertimeController@index');
     }
