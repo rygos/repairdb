@@ -94,7 +94,7 @@ class PartsController extends Controller
      */
     public function show($id)
     {
-        //
+        //WIP
     }
 
     /**
