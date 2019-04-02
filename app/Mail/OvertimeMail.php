@@ -39,6 +39,7 @@ class OvertimeMail extends Mailable
                 'started_at' => $this->overtime->started_at,
                 'ended_at' => $this->overtime->ended_at,
                 'overtime_minutes' => $this->overtime->overtime_minutes,
+                'reason' => $this->overtime->reason,
             ]);
     }
 }
