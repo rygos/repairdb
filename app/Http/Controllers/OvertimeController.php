@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OvertimeMail;
 use App\Models\Overtime;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,6 +40,8 @@ class OvertimeController extends Controller
         }
 
         $ot->save();
+
+        \Mail::to('marcel.hering@computacenter.com')->send(new OvertimeMail($ot));
 
         return redirect()->action('OvertimeController@index');
     }
