@@ -21,11 +21,10 @@ class OvertimeMail extends Mailable
     {
         $this->overtime = $overtime;
         if(\Auth::check()){
-            $this->email = \Auth::getUser()->email;
             $this->username = \Auth::getUser()->name;
-        }else{
-            $this->email = 'donotreply@rmarchiv.tk';
         }
+
+        $this->email = 'donotreply@rmarchiv.tk';
 
     }
 
@@ -38,7 +37,7 @@ class OvertimeMail extends Mailable
     {
         $subject = "Erfassung Überstunden / Minusstunden";
 
-        return $this->from($this->email)
+        return $this->from($this->email, 'AppleDB Überstunden')
             ->subject($subject)
             ->view('_mails.overtime')
             ->with([
