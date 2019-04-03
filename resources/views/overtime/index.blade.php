@@ -36,7 +36,7 @@
         <tr>
             <td class="nav" colspan="3" style="text-align: right;">Sum Hours:</td>
             <td>{{ round(\App\Models\Overtime::whereUserId(Auth::id())->sum('overtime_minutes')/60, 2) }}</td>
-            <td class="nav" colspan="2"></td>
+            <td class="nav" colspan="3"></td>
         </tr>
         <tr>
             <td colspan="7">Add Row</td>

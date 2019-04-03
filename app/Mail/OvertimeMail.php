@@ -20,6 +20,7 @@ class OvertimeMail extends Mailable
     public function __construct(Overtime $overtime)
     {
         $this->overtime = $overtime;
+        $this->email = \Auth::getUser()->email;
     }
 
     /**
@@ -31,7 +32,7 @@ class OvertimeMail extends Mailable
     {
         $subject = "Erfassung Überstunden / Minusstunden";
 
-        return $this->from(\Auth::getUser()->email)
+        return $this->from($this->email)
             ->subject($subject)
             ->view('_mails.overtime')
             ->with([
