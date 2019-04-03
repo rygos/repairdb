@@ -41,13 +41,24 @@ class OvertimeController extends Controller
 
         $ot->save();
 
-        \Mail::to('marcel.hering@computacenter.com')->send(new OvertimeMail($ot));
-
         return redirect()->action('OvertimeController@index');
     }
 
     public function delete(Request $request){
         Overtime::destroy($request->post('row_id'));
+
+        return redirect()->action('OvertimeController@index');
+    }
+
+    public function send($id){
+        $ot = Overtime::whereId($id)->first();
+
+        \Mail::to('marcel.hering@computacenter.com')
+            ->cc('samira.brost@computacenter.com')
+            ->send(new OvertimeMail($ot));
+
+        $ot->submitted = 1;
+        $ot->save();
 
         return redirect()->action('OvertimeController@index');
     }

@@ -8,6 +8,7 @@
             <th>End time</th>
             <th>Duration</th>
             <th>Reason</th>
+            <th>Submitted</th>
             <th>Action</th>
         </tr>
         @foreach($data as $row)
@@ -17,6 +18,13 @@
                 <td>{{ substr($row->ended_at, 0, -3) }}</td>
                 <td>{{ round($row->overtime_minutes * 0.0166666666667, 2) }}</td>
                 <td>{{ $row->reason }}</td>
+                <td>
+                    @if($row->submitted == 1)
+                        &check;
+                    @else
+                        <a href="{{ action('OvertimeController@send', [$row->id]) }}">Submit</a>
+                    @endif
+                </td>
                 <td>
                     {{ Form::open(['action' => 'OvertimeController@delete']) }}
                     {{ Form::hidden('row_id', $row->id) }}
@@ -31,7 +39,7 @@
             <td class="nav" colspan="2"></td>
         </tr>
         <tr>
-            <td colspan="6">Add Row</td>
+            <td colspan="7">Add Row</td>
         </tr>
         {{ Form::open(['action' => 'OvertimeController@store']) }}
         <tr>
@@ -42,7 +50,7 @@
                 Plus: {{ Form::radio('type', 'plus' , true) }}<br>
                 Minus: {{ Form::radio('type', 'minus' , false) }}
             </td>
-            <td>{{ Form::text('reason') }}</td>
+            <td colspan="2">{{ Form::text('reason') }}</td>
             <td>{{ Form::submit() }}</td>
         </tr>
         {{ Form::close() }}
