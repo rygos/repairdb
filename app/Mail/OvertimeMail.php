@@ -20,7 +20,13 @@ class OvertimeMail extends Mailable
     public function __construct(Overtime $overtime)
     {
         $this->overtime = $overtime;
-        $this->email = \Auth::getUser()->email;
+        if(\Auth::check()){
+            $this->email = \Auth::getUser()->email;
+            $this->username = \Auth::getUser()->name;
+        }else{
+            $this->email = 'donotreply@rmarchiv.tk';
+        }
+
     }
 
     /**
@@ -41,6 +47,7 @@ class OvertimeMail extends Mailable
                 'ended_at' => $this->overtime->ended_at,
                 'overtime_minutes' => $this->overtime->overtime_minutes,
                 'reason' => $this->overtime->reason,
+                'username' => $this->username,
             ]);
     }
 }

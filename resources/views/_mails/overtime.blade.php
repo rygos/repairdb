@@ -45,7 +45,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ Auth::getUser()->name }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $username }}</span>
                         </p>
                     </td>
                 </tr>
