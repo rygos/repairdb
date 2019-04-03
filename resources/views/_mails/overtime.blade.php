@@ -6,7 +6,7 @@
             style="width:474.25pt;border:solid #009DDC 1.0pt;background:#009DDC;padding:5.65pt 5.4pt 5.65pt 5.4pt;height:23.6pt">
             <p class="MsoNormal"
                style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
-                <span style="font-size:20.0pt;font-family&quot;Arial&quot;,sans-serif">Erfassung =DCberstunden / Minusstunden<span
+                <span style="font-size:20.0pt;font-family&quot;Arial&quot;,sans-serif">Erfassung Überstunden / Minusstunden<span
                         style="color:#1F497D"></span></span></p>
         </td>
     </tr>
@@ -62,7 +62,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $overtime_at }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ \Carbon\Carbon::parse($overtime_at)->format('d.m.Y') }}</span>
                         </p>
                     </td>
                 </tr>
@@ -79,7 +79,7 @@
                         <p class="MsoNormal"
                            style="mso-element:frame;mso-element-frame-hspace:7.05pt;mso-element-wrap:around;mso-element-anchor-vertical:paragraph;mso-element-anchor-horizontal:column;mso-height-rule:exactly">
                             <span
-                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ $started_at }} / {{ $ended_at }}</span>
+                                style="font-family:&quot;Arial&quot;,sans-serif;color:black;mso-fareast-language:DE">{{ substr($started_at, 0, -3) }} / {{ substr($ended_at, 0, -3) }}</span>
                         </p>
                     </td>
                 </tr>
