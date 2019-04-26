@@ -280,38 +280,42 @@
                         <tr>
                             <td>{{ $log->created_at }}</td>
                             <td>{!! $log->log !!}</td>
-                            @php $reason = \App\Models\ClosingReason::whereId($log->closing_reason_id)->first()->reason; @endphp
-                            @switch ($reason)
-                                @case('DOA')
-                                <td style="background-color: red; color: white;">DOA</td>
-                                @break
-                                @case('WIB')
-                                <td style="background-color: yellow; color: black;">WIB</td>
-                                @break
-                                @case('ORDERED')
-                                <td style="background-color: orange; color: green">ORDERED</td>
-                                @break
-                                @case('SUCCESS')
-                                <td style="background-color: green;">SUCCESS</td>
-                                @break
-                                @case('NDF')
-                                <td style="background-color: green;">NDF</td>
-                                @break
-                                @case('WAIT FOR INFO')
-                                <td style="background-color: blue;">WAIT FOR INFO</td>
-                                @break
-                                @case('KVA')
-                                <td style="background-color: purple;">KVA</td>
-                                @break
-                                @case('MAIL-IN')
-                                <td style="background-color: hotpink; color: white;">MAIL-IN</td>
-                                @break
-                                @case('REPAIR HH')
-                                <td style="background-color: white; color: black;">REPAIR HH</td>
-                                @break
-                                @default
-                                <td>{{ $reason }}</td>
-                            @endswitch
+                            @if(!$log->closing_reason_id)
+                                <td style="background-color: green; color: white;">NEW</td>
+                            @else
+                                @php $reason = \App\Models\ClosingReason::whereId($log->closing_reason_id)->first()->reason; @endphp
+                                @switch ($reason)
+                                    @case('DOA')
+                                    <td style="background-color: red; color: white;">DOA</td>
+                                    @break
+                                    @case('WIB')
+                                    <td style="background-color: yellow; color: black;">WIB</td>
+                                    @break
+                                    @case('ORDERED')
+                                    <td style="background-color: orange; color: green">ORDERED</td>
+                                    @break
+                                    @case('SUCCESS')
+                                    <td style="background-color: green;">SUCCESS</td>
+                                    @break
+                                    @case('NDF')
+                                    <td style="background-color: green;">NDF</td>
+                                    @break
+                                    @case('WAIT FOR INFO')
+                                    <td style="background-color: blue;">WAIT FOR INFO</td>
+                                    @break
+                                    @case('KVA')
+                                    <td style="background-color: purple;">KVA</td>
+                                    @break
+                                    @case('MAIL-IN')
+                                    <td style="background-color: hotpink; color: white;">MAIL-IN</td>
+                                    @break
+                                    @case('REPAIR HH')
+                                    <td style="background-color: white; color: black;">REPAIR HH</td>
+                                    @break
+                                    @default
+                                    <td>{{ $reason }}</td>
+                                @endswitch
+                            @endif
                         </tr>
                     @endforeach
                 </table>
