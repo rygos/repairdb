@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Customer;
 use App\Models\Manufacturer;
 use App\Models\Model;
+use App\Models\ReapirLog;
 use App\Models\Repair;
 use App\Models\Spare;
 use App\Models\SparesToRepair;
@@ -94,7 +95,11 @@ class PartsController extends Controller
      */
     public function show($id)
     {
-        //WIP
+        $part = Spare::whereId($id)->first();
+
+        return view('spares.show', [
+            'spare' => $part,
+        ]);
     }
 
     /**
@@ -150,10 +155,30 @@ class PartsController extends Controller
         $sr->spare_id = $spare_id;
         $sr->save();
 
+        $rep = Repair::whereId($repair_id)->first();
+
+        $log = new ReapirLog();
+        $log->log = 'Add Spare: '.$spare->manufacturer_part_no.' - '.$spare->manufacturer_part_desc;
+        $log->repair_id = $rep->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $rep->closing_reason_id;
+        $log->save();
+
         return \Redirect::action('RepairController@show', $repair_id);
     }
 
     public function destroyFromRepair(Request $request){
+        $spare = SparesToRepair::whereId($request->post('srid'))->first();
+
+        $rep = Repair::whereId($spare->repair_id)->first();
+
+        $log = new ReapirLog();
+        $log->log = 'Remove Spare: '.$spare->spare->manufacturer_part_no.' - '.$spare->spare->manufacturer_part_desc;
+        $log->repair_id = $rep->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $rep->closing_reason_id;
+        $log->save();
+
         $item = SparesToRepair::destroy($request->post('srid'));
 
         return \Redirect::action('RepairController@show', $request->post('repair_id'));
@@ -165,6 +190,15 @@ class PartsController extends Controller
         $sparerepair->serial_old = $request->get('serial_old');
         $sparerepair->type_id = $request->get('type_id');
         $sparerepair->save();
+
+        $rep = Repair::whereId($sparerepair->repair_id)->first();
+
+        $log = new ReapirLog();
+        $log->log = 'Change Spare Serial: '.$sparerepair->spare->manufacturer_part_no.' - '.$sparerepair->spare->manufacturer_part_desc.'<br>Old: '.$sparerepair->serial_old. ' - New: '.$sparerepair->serial_new;
+        $log->repair_id = $rep->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $rep->closing_reason_id;
+        $log->save();
 
         return redirect()->action('RepairController@show', $request->get('repair_id'));
 

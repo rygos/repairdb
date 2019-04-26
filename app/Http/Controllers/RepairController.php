@@ -9,6 +9,7 @@ use App\Models\EeeeModel;
 use App\Models\KvaLimit;
 use App\Models\Manufacturer;
 use App\Models\Model;
+use App\Models\ReapirLog;
 use App\Models\Repair;
 use App\Models\RepairType;
 use App\Models\Spare;
@@ -155,6 +156,13 @@ class RepairController extends Controller
         $r->user_id = \Auth::id();
         $r->save();
 
+        $log = new ReapirLog;
+        $log->log = 'Repair created in database.';
+        $log->repair_id = $r->id;
+        $log->user_id = \Auth::id();
+        $log->save();
+
+
         return redirect()->action('RepairController@show', $r->id);
     }
 
@@ -187,8 +195,10 @@ Gemeldet: &#13;
 Diagnose: &#13;
 MRI: &#13;
 -------------
-Kostenpflichtig: &#13;
+Kostenpflichtig: EUR &#13;
 Hersteller-Garantie: &#13;';
+
+        $replog = ReapirLog::whereRepairId($data->id)->get();
 
         return view('repair.show',[
             'data' => $data,
@@ -196,6 +206,7 @@ Hersteller-Garantie: &#13;';
             'spares' => $spares_res,
             'kva' => $kva,
             'remark_template' => $remark_template,
+            'replog' => $replog,
         ]);
     }
 
@@ -238,6 +249,13 @@ Hersteller-Garantie: &#13;';
         $rep->remarks = $request->post('remark');
         $rep->save();
 
+        $log = new ReapirLog;
+        $log->log = 'Remarks updated to: <br>'.$rep->remarks;
+        $log->repair_id = $rep->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $rep->closing_reason_id;
+        $log->save();
+
         return redirect()->action('RepairController@show', $rep->id);
     }
 
@@ -247,6 +265,13 @@ Hersteller-Garantie: &#13;';
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 
+        $log = new ReapirLog;
+        $log->log = 'Change Repair state to: '.$rep->closing_reason->reason;
+        $log->repair_id = $rep->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $rep->closing_reason_id;
+        $log->save();
+
         return redirect()->action('RepairController@show', $rep->id);
     }
 
@@ -255,6 +280,13 @@ Hersteller-Garantie: &#13;';
         $t->order_no = $request->post('orderno');
         $t->g_no = $request->post('gno');
         $t->save();
+
+        $log = new ReapirLog;
+        $log->log = 'Change G-No/OderNo: '.$t->g_no.'/'.$t->order_no;
+        $log->repair_id = $t->id;
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = $t->closing_reason_id;
+        $log->save();
 
         return redirect()->action('RepairController@show', $t->id);
     }

@@ -10,21 +10,25 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class AppleEee
+ * Class ReapirLog
  * 
  * @property int $id
- * @property int $spare_id
- * @property string $eee
+ * @property int $repair_id
+ * @property string $log
+ * @property int $closing_reason_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int $user_id
  *
  * @package App\Models\Base
  */
-class AppleEee extends Eloquent
+class ReapirLog extends Eloquent
 {
-	protected $table = 'apple_eee';
+	protected $table = 'reapir_log';
 
 	protected $casts = [
-		'spare_id' => 'int'
+		'repair_id' => 'int',
+		'closing_reason_id' => 'int',
+		'user_id' => 'int'
 	];
 }

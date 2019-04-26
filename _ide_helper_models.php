@@ -30,6 +30,31 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\ReapirLog
+ *
+ * @property int $id
+ * @property int $repair_id
+ * @property string $log
+ * @property int|null $closing_reason_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $user_id
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereClosingReasonId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereLog($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereRepairId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\ReapirLog whereUserId($value)
+ */
+	class ReapirLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Vote
  *
  * @property int $id
@@ -447,6 +472,7 @@ namespace App\Models{
  * @property string $reason
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $submitted
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime query()
@@ -457,6 +483,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereOvertimeMinutes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereSubmitted($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Overtime whereUserId($value)
  */
@@ -501,6 +528,32 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\PasswordReset whereToken($value)
  */
 	class PasswordReset extends \Eloquent {}
+}
+
+namespace App\Models\Base{
+/**
+ * Class ReapirLog
+ *
+ * @property int $id
+ * @property int $repair_id
+ * @property string $log
+ * @property int $closing_reason_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property int $user_id
+ * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereClosingReasonId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereLog($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereRepairId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\ReapirLog whereUserId($value)
+ */
+	class ReapirLog extends \Eloquent {}
 }
 
 namespace App\Models\Base{
@@ -917,6 +970,7 @@ namespace App\Models\Base{
  * @property string $reason
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int $submitted
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime newQuery()
@@ -928,6 +982,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereOvertimeMinutes($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereReason($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereSubmitted($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Overtime whereUserId($value)
  */

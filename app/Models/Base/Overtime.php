@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Thu, 21 Mar 2019 08:34:40 +0000.
+ * Date: Thu, 25 Apr 2019 13:56:30 +0000.
  */
 
 namespace App\Models\Base;
@@ -15,12 +15,13 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $id
  * @property int $user_id
  * @property \Carbon\Carbon $overtime_at
- * @property string $started_at
- * @property string $ended_at
+ * @property \Carbon\Carbon $started_at
+ * @property \Carbon\Carbon $ended_at
  * @property int $overtime_minutes
  * @property string $reason
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int $submitted
  *
  * @package App\Models\Base
  */
@@ -30,10 +31,13 @@ class Overtime extends Eloquent
 
 	protected $casts = [
 		'user_id' => 'int',
-		'overtime_minutes' => 'int'
+		'overtime_minutes' => 'int',
+		'submitted' => 'int'
 	];
 
 	protected $dates = [
-		'overtime_at'
+		'overtime_at',
+		'started_at',
+		'ended_at'
 	];
 }

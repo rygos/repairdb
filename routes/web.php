@@ -35,6 +35,7 @@ Route::post('spare/store', 'PartsController@store');
 Route::post('spare/update_sn', 'PartsController@updateSpareSn');
 Route::post('spare/addrepair/{repair_id}', 'PartsController@addToRepair');
 Route::post('spare/removefromrepair', 'PartsController@destroyFromRepair');
+Route::get('spare/{id}', 'PartsController@show');
 
 Route::post('kva/save', 'KvaLimitController@save');
 
@@ -49,3 +50,6 @@ Route::get('overtime', 'OvertimeController@index');
 Route::post('overtime', 'OvertimeController@store');
 Route::post('overtime/delete', 'OvertimeController@delete');
 Route::get('overtime/{id}/send', 'OvertimeController@send');
+
+Route::get('models', 'ModelController@index');
+Route::get('models/{id}', 'ModelController@show');

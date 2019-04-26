@@ -92,4 +92,8 @@ class Repair extends \App\Models\Base\Repair
     public function user(){
 	    return $this->hasOne('App\Models\User', 'id', 'user_id')->first();
     }
+
+    public function closing_reason(){
+	    return $this->hasOne('App\Models\ClosingReason', 'id', 'closing_reason_id')->first();
+    }
 }
