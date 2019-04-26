@@ -265,8 +265,10 @@ Hersteller-Garantie: &#13;';
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 
+        $reason = ClosingReason::whereId($rep->closing_reason_id)->first();
+
         $log = new ReapirLog;
-        $log->log = 'Change Repair state to: '.$rep->closing_reason->reason;
+        $log->log = 'Change Repair state to: '.$reason->reason;
         $log->repair_id = $rep->id;
         $log->user_id = \Auth::id();
         $log->closing_reason_id = $rep->closing_reason_id;
