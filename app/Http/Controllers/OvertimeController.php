@@ -14,6 +14,8 @@ class OvertimeController extends Controller
         $ot_minutes = Overtime::whereUserId(\Auth::id())->sum('overtime_minutes');
         $overtime_sum = $ot_minutes * 0.0166666666667;
 
+        dd($data);
+
         return view('overtime.index', [
             'data' => $data,
             'ot_sum' => $overtime_sum,
