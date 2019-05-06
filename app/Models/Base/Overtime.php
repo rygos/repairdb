@@ -32,12 +32,13 @@ class Overtime extends Eloquent
 	protected $casts = [
 		'user_id' => 'int',
 		'overtime_minutes' => 'int',
-		'submitted' => 'int'
+		'submitted' => 'int',
+        'started_at',
+        'ended_at'
 	];
 
 	protected $dates = [
 		'overtime_at',
-		'started_at',
-		'ended_at'
+
 	];
 }
