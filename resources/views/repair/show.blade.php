@@ -275,6 +275,7 @@
                         <th>DATE</th>
                         <th>LOG</th>
                         <th>STATUS AT LOG-TIME</th>
+                        <th>TECHNICIAN</th>
                     </tr>
                     @foreach($replog as $log)
                         <tr>
@@ -316,6 +317,7 @@
                                     <td>{{ $reason }}</td>
                                 @endswitch
                             @endif
+                            <td>{{ \App\Models\User::whereId($log->user_id)->name }}</td>
                         </tr>
                     @endforeach
                 </table>
