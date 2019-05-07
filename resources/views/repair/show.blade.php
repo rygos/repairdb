@@ -317,7 +317,7 @@
                                     <td>{{ $reason }}</td>
                                 @endswitch
                             @endif
-                            <td>{{ \App\Models\User::whereId($log->user_id)->name }}</td>
+                            <td>{{ \App\Models\User::where('id', $log->user_id)->first()->name }}</td>
                         </tr>
                     @endforeach
                 </table>
