@@ -30,14 +30,27 @@
     {!! Form::close() !!}
 
     @foreach($data as $item)
+        @php
+        if($item->unit){
+            $model = App\Models\Model::whereId($item->unit->model_id)->first();
+            $repair = App\Models\Repair::whereUnitId($item->unit->id)->first();
+        }
+        @endphp
         <tr>
             <td>{{ $item->id }}</td>
             <td>{{ $item->serial }}</td>
             <td>{{ $item->imei }}</td>
-            <td>{{ App\Models\Model::whereId($item->unit->model_id)->first()->model }}</td>
-            <td>{{ App\Models\Repair::whereUnitId($item->unit->id)->first()->rminst()->calltype()->type }}</td>
-            <td>{{ App\Models\Repair::whereUnitId($item->unit->id)->first()->rminst()->rminst }}</td>
-            <td>{{ App\Models\Repair::whereUnitId($item->unit->id)->first()->customer()->customer }}</td>
+            @if($item->unit)
+                <td>{{ $model->model }}</td>
+                <td>{{ $repair->rminst()->calltype()->type }}</td>
+                <td>{{ $repair->rminst()->rminst }}</td>
+                <td>{{ $repair->customer()->customer }}</td>
+            @else
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            @endif
             <td>{{ $item->package }}</td>
             <td>{{ $item->scraped }}</td>
             <td></td>
