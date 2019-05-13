@@ -32,4 +32,10 @@ class Unit extends \App\Models\Base\Unit
 		'model_id',
 		'customer_id'
 	];
+
+	public function model(){
+	    return $this->hasOne('App\Models\Model', 'id', 'model_id')->first();
+    }
+
+
 }

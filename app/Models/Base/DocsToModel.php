@@ -10,16 +10,22 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class ClosingReason
+ * Class DocsToModel
  * 
  * @property int $id
- * @property string $reason
+ * @property int $doc_id
+ * @property int $model_id
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models\Base
  */
-class ClosingReason extends Eloquent
+class DocsToModel extends Eloquent
 {
-	protected $table = 'closing_reason';
+	protected $table = 'docs_to_model';
+
+	protected $casts = [
+		'doc_id' => 'int',
+		'model_id' => 'int'
+	];
 }

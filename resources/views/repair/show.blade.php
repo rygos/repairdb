@@ -5,7 +5,7 @@
         <table id="pouetbox_prodmain">
             <tbody>
                 <tr id="prodheader">
-                    <th colspan='2'>
+                    <th colspan='3'>
                         <span id='title'><big>{{ 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb }}</big></span>
                         <div id='nfo'></div>
                     </th>
@@ -106,6 +106,9 @@
                             </tr>
 
                         </table>
+                    </td>
+                    <td>
+                        Documentation: <br>
                     </td>
                 </tr>
             </tbody>
@@ -237,17 +240,18 @@
             <div class="content" style=" text-align: center;">
                 {!! Form::open(['action' => 'RepairController@storeremark']) !!}
                 {!! Form::hidden('repair_id', $data->id) !!}
-                <button onclick="add_action()">Add Action</button>
                 @if($data->remarks == '')
                     {!! Form::textarea('remark', $remark_template, ['cols' => '100', 'id' => 'remark']) !!}
                 @else
                     {!! Form::textarea('remark', $data->remarks, ['cols' => '100', 'id' => 'remark']) !!}
                 @endif
                 <br>
+                <button onclick="add_action()">Add Action</button>
                 {!! Form::submit('Submit') !!}
                 {!! Form::close() !!}
             </div>
         </div>
+
         <div class="pouettbl" id="pouet_chage_status" style="width: 100%;">
             <h2>Change Status</h2>
             <div class="content" style="text-align: center">
@@ -264,9 +268,9 @@
                         @endforeach
                     </tr>
                 </table>
-
             </div>
         </div>
+
         <div class="pouettbl" id="pouet_replog" style="width: 100%;">
             <h2>Repair log</h2>
             <div class="content">

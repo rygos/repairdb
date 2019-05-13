@@ -99,6 +99,50 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Doc
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $text
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Doc whereUserId($value)
+ */
+	class Doc extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DocsToModel
+ *
+ * @property int $id
+ * @property int $doc_id
+ * @property int $model_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel whereDocId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsToModel whereUpdatedAt($value)
+ */
+	class DocsToModel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\ClosingReason
  *
  * @property int $id
@@ -287,6 +331,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer query()
  */
 	class Customer extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DocsLog
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $text
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\DocsLog whereUserId($value)
+ */
+	class DocsLog extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -602,6 +669,52 @@ namespace App\Models\Base{
 
 namespace App\Models\Base{
 /**
+ * Class Doc
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $text
+ * @property int $user_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Doc whereUserId($value)
+ */
+	class Doc extends \Eloquent {}
+}
+
+namespace App\Models\Base{
+/**
+ * Class DocsToModel
+ *
+ * @property int $id
+ * @property int $doc_id
+ * @property int $model_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel whereDocId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel whereModelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsToModel whereUpdatedAt($value)
+ */
+	class DocsToModel extends \Eloquent {}
+}
+
+namespace App\Models\Base{
+/**
  * Class ClosingReason
  *
  * @property int $id
@@ -788,6 +901,30 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Customer whereUpdatedAt($value)
  */
 	class Customer extends \Eloquent {}
+}
+
+namespace App\Models\Base{
+/**
+ * Class DocsLog
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $text
+ * @property int $user_id
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\DocsLog whereUserId($value)
+ */
+	class DocsLog extends \Eloquent {}
 }
 
 namespace App\Models\Base{
@@ -1013,6 +1150,34 @@ namespace App\Models\Base{
 
 namespace App\Models\Base{
 /**
+ * Class Scrap
+ *
+ * @property int $id
+ * @property string $serial
+ * @property string $imei
+ * @property string $package
+ * @property int $scraped
+ * @property \Carbon\Carbon $scrape_date
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @package App\Models\Base
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereImei($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap wherePackage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereScrapeDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereScraped($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereSerial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Scrap whereUpdatedAt($value)
+ */
+	class Scrap extends \Eloquent {}
+}
+
+namespace App\Models\Base{
+/**
  * Class Repair
  *
  * @property int $id
@@ -1073,6 +1238,33 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\RepairType whereUpdatedAt($value)
  */
 	class RepairType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Scrap
+ *
+ * @property int $id
+ * @property string $serial
+ * @property string $imei
+ * @property string $package
+ * @property int $scraped
+ * @property \Illuminate\Support\Carbon $scrape_date
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereImei($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap wherePackage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereScrapeDate($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereScraped($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereSerial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Scrap whereUpdatedAt($value)
+ */
+	class Scrap extends \Eloquent {}
 }
 
 namespace App\Models{

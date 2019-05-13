@@ -10,19 +10,28 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Model
+ * Class Scrap
  * 
  * @property int $id
- * @property int $manufacturer_id
- * @property string $model
+ * @property string $serial
+ * @property string $imei
+ * @property string $package
+ * @property int $scraped
+ * @property \Carbon\Carbon $scrape_date
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models\Base
  */
-class Model extends Eloquent
+class Scrap extends Eloquent
 {
+	protected $table = 'scrap';
+
 	protected $casts = [
-		'manufacturer_id' => 'int'
+		'scraped' => 'int'
+	];
+
+	protected $dates = [
+		'scrape_date'
 	];
 }
