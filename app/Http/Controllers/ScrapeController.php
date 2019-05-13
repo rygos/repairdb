@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ScrapeController extends Controller
 {
     public function index(){
-        $data = Scrap::whereScraped(0)->get();
+        $data = Scrap::whereScraped(0)->orderByDesc('id')->get();
 
         return view('scrape.index', [
             'data' => $data,
