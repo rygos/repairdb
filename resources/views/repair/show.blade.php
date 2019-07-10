@@ -285,7 +285,7 @@
                         @endif
                         @foreach($reasons as $i)
                             @if($reason == 'KVA')
-                                @if(substr($i->reason, 5) == 'KVA -')
+                                @if(substr($i->reason, 0, 5) == 'KVA -')
                                     <td>
                                     {!! Form::open(['action' => 'RepairController@changestate']) !!}
                                     {!! Form::hidden('repair_id', $data->id) !!}
@@ -295,7 +295,7 @@
                                     </td>
                                 @endif
                             @else
-                                @if(substr($i->reason, 5) != 'KVA -')
+                                @if(substr($i->reason, 0, 5) != 'KVA -')
                                     <td>
                                         {!! Form::open(['action' => 'RepairController@changestate']) !!}
                                         {!! Form::hidden('repair_id', $data->id) !!}
