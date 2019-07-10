@@ -11,10 +11,10 @@
                         @php $reason = \App\Models\ClosingReason::whereId($data->closing_reason_id)->first()->reason; @endphp
                         @switch ($reason)
                             @case('KVA - ABGELEHNT')
-                                @php $style = 'style="background-color: red"' @endphp
+                                @php $style = 'style="background-color: red;"' @endphp
                                 @break
                             @case('KVA - GENEHMIGT')
-                                @php $style = 'style="background-color: green"' @endphp
+                                @php $style = 'style="background-color: green;"' @endphp
                                 @break
                             @default
                                 @php $style = '' @endphp
