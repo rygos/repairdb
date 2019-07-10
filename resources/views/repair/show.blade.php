@@ -5,7 +5,22 @@
         <table id="pouetbox_prodmain">
             <tbody>
                 <tr id="prodheader">
-                    <th colspan='3'>
+                    @if(!$data->closing_reason_id)
+                        @php $style = '' @endphp
+                    @else
+                        @php $reason = \App\Models\ClosingReason::whereId($data->closing_reason_id)->first()->reason; @endphp
+                        @switch ($reason)
+                            @case('KVA - ABGELEHNT')
+                                @php $style = 'style="background-color: red"' @endphp
+                                @break
+                            @case('KVA - GENEHMIGT')
+                                @php $style = 'style="background-color: green"' @endphp
+                                @break
+                            @default
+                                @php $style = '' @endphp
+                        @endswitch
+                    @endif
+                    <th colspan='3' {{ $style }}>
                         <span id='title'><big>{{ 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb }}</big></span>
                         <div id='nfo'></div>
                     </th>
@@ -62,6 +77,12 @@
                                         @break
                                         @case('REPAIR HH')
                                         <td style="background-color: white; color: black;">REPAIR HH</td>
+                                        @break
+                                        @case('KVA - ABGELEHNT')
+                                        <td style="background-color: purple;color:red;">KVA - ABGELEHNT</td>
+                                        @break
+                                        @case('KVA - GENEHMIGT')
+                                        <td style="background-color: purple;color:green">KVA - GENEHMIGT</td>
                                         @break
                                         @default
                                         <td>{{ $reason }}</td>
@@ -257,14 +278,33 @@
             <div class="content" style="text-align: center">
                 <table>
                     <tr>
+                        @if(!$data->closing_reason_id)
+                            @php $reason = '' @endphp
+                        @else
+                            @php $reason = \App\Models\ClosingReason::whereId($data->closing_reason_id)->first()->reason; @endphp
+                        @endif
                         @foreach($reasons as $i)
-                            <td>
-                            {!! Form::open(['action' => 'RepairController@changestate']) !!}
-                            {!! Form::hidden('repair_id', $data->id) !!}
-                            {!! Form::hidden('reason_id', $i->id) !!}
-                            {!! Form::submit($i->reason, ['style' => 'margin-left: 15px; margin-right: 15px']) !!}
-                            {!! Form::close() !!}
-                            </td>
+                            @if($reason == 'KVA')
+                                @if(substr($i->reason, 5) == 'KVA -')
+                                    <td>
+                                    {!! Form::open(['action' => 'RepairController@changestate']) !!}
+                                    {!! Form::hidden('repair_id', $data->id) !!}
+                                    {!! Form::hidden('reason_id', $i->id) !!}
+                                    {!! Form::submit($i->reason, ['style' => 'margin-left: 15px; margin-right: 15px']) !!}
+                                    {!! Form::close() !!}
+                                    </td>
+                                @endif
+                            @else
+                                @if(substr($i->reason, 5) == 'KVA -')
+                                    <td>
+                                        {!! Form::open(['action' => 'RepairController@changestate']) !!}
+                                        {!! Form::hidden('repair_id', $data->id) !!}
+                                        {!! Form::hidden('reason_id', $i->id) !!}
+                                        {!! Form::submit($i->reason, ['style' => 'margin-left: 15px; margin-right: 15px']) !!}
+                                        {!! Form::close() !!}
+                                    </td>
+                                @endif
+                            @endif
                         @endforeach
                     </tr>
                 </table>
@@ -316,6 +356,12 @@
                                     @break
                                     @case('REPAIR HH')
                                     <td style="background-color: white; color: black;">REPAIR HH</td>
+                                    @break
+                                    @case('KVA - ABGELEHNT')
+                                    <td style="background-color: purple;color:red;">KVA - ABGELEHNT</td>
+                                    @break
+                                    @case('KVA - GENEHMIGT')
+                                    <td style="background-color: purple;color:green">KVA - GENEHMIGT</td>
                                     @break
                                     @default
                                     <td>{{ $reason }}</td>
