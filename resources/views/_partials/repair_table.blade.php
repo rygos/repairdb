@@ -21,7 +21,24 @@
     </tr>
     @php $counter = 1; @endphp
     @foreach($data as $item)
-    <tr>
+
+        @if(!$item->closing_reason_id)
+
+        @else
+            @php $reason = \App\Models\ClosingReason::whereId($item->closing_reason_id)->first()->reason; @endphp
+            @switch ($reason)
+                @case('KVA - ABGELEHNT')
+                @php $style = 'style="background-color: red;"' @endphp
+                @break
+                @case('KVA - GENEHMIGT')
+                @php $style = 'style="background-color: green;"' @endphp
+                @break
+                @default
+                @php $style = '' @endphp
+            @endswitch
+        @endif
+
+    <tr {!! $style !!}>
         <td>{{ $counter }}</td>
         <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->id }}</a></td>
         <td>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
@@ -68,6 +85,12 @@
                     @break
                 @case('REPAIR HH')
                     <td style="background-color: white; color: black;">REPAIR HH</td>
+                    @break
+                @case('KVA - ABGELEHNT')
+                    <td style="background-color: purple;color:red;">KVA - ABGELEHNT</td>
+                    @break
+                @case('KVA - GENEHMIGT')
+                    <td style="background-color: purple;color:green">KVA - GENEHMIGT</td>
                     @break
                 @default
                     <td>{{ $reason }}</td>
