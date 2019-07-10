@@ -20,7 +20,7 @@
                                 @php $style = '' @endphp
                         @endswitch
                     @endif
-                    <th colspan='3' {{ $style }}>
+                    <th colspan='3' {!! $style !!}>
                         <span id='title'><big>{{ 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb }}</big></span>
                         <div id='nfo'></div>
                     </th>
