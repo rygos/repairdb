@@ -295,7 +295,7 @@
                                     </td>
                                 @endif
                             @else
-                                @if(substr($i->reason, 5) == 'KVA -')
+                                @if(substr($i->reason, 5) != 'KVA -')
                                     <td>
                                         {!! Form::open(['action' => 'RepairController@changestate']) !!}
                                         {!! Form::hidden('repair_id', $data->id) !!}
