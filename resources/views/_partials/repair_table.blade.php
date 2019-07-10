@@ -38,22 +38,22 @@
             @endswitch
         @endif
 
-    <tr {!! $style !!}>
-        <td>{{ $counter }}</td>
-        <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->id }}</a></td>
-        <td>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
-        <td>{{ \Carbon\Carbon::parse($item->started_at)->toDateString() }}</td>
-        <td>{{ $item->rminst()->calltype()->type }}</td>
-        <td>{{ $item->rminst()->rminst }}</td>
-        <td><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->rminst()->zlb }}</a></td>
-        <td>{{ $item->customer()->customer }}</td>
-        <td>{{ $item->unit()->serial }}</td>
-        <td>{{ $item->manufacturer()->manufacturer }}</td>
-        <td>{{ $item->model()->model }}</td>
-        <td>{{ $item->reptype()->type }}</td>
-        <td>{{ $item->spares()->count() }}</td>
-        <td>{{ $item->g_no }}</td>
-        <td>{{ $item->order_no }}</td>
+    <tr>
+        <td  {!! $style !!}>{{ $counter }}</td>
+        <td {!! $style !!}><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->id }}</a></td>
+        <td {!! $style !!}>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
+        <td {!! $style !!}>{{ \Carbon\Carbon::parse($item->started_at)->toDateString() }}</td>
+        <td {!! $style !!}>{{ $item->rminst()->calltype()->type }}</td>
+        <td {!! $style !!}>{{ $item->rminst()->rminst }}</td>
+        <td {!! $style !!}><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->rminst()->zlb }}</a></td>
+        <td {!! $style !!}>{{ $item->customer()->customer }}</td>
+        <td {!! $style !!}>{{ $item->unit()->serial }}</td>
+        <td {!! $style !!}>{{ $item->manufacturer()->manufacturer }}</td>
+        <td {!! $style !!}>{{ $item->model()->model }}</td>
+        <td {!! $style !!}>{{ $item->reptype()->type }}</td>
+        <td {!! $style !!}>{{ $item->spares()->count() }}</td>
+        <td {!! $style !!}>{{ $item->g_no }}</td>
+        <td {!! $style !!}>{{ $item->order_no }}</td>
         @if(!$item->closing_reason_id)
             <td style="background-color: green; color: white;">NEW</td>
         @else
@@ -97,8 +97,8 @@
             @endswitch
         @endif
 
-        <td>{{ substr($item->remarks, 0, 50) }}</td>
-        <td>{{ $item->user()->name }}</td>
+        <td {!! $style !!}>{{ substr($item->remarks, 0, 50) }}</td>
+        <td {!! $style !!}>{{ $item->user()->name }}</td>
     </tr>
     @php $counter += 1; @endphp
     @endforeach
