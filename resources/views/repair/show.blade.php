@@ -192,10 +192,12 @@
                                 {!! Form::text('serial_new', $item->serial_new, ['id' => 'snew']) !!}
                             </td>
                             <td {!! $scrap_done !!}>
-                                @if($scrap_pack == '')
-                                    {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
-                                @else
-                                    <a href="{{ action('ScrapeController@index', $scrap_pack) }}">{{ $scrap_pack }}</a>
+                                @if($scrap)
+                                    @if($scrap_pack == '')
+                                        {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
+                                    @else
+                                        <a href="{{ action('ScrapeController@index', $scrap_pack) }}">{{ $scrap_pack }}</a>
+                                    @endif
                                 @endif
                             </td>
                             <td {!! $scrap_done !!}>
