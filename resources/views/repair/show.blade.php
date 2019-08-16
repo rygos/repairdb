@@ -161,11 +161,22 @@
                         @php
                             $sum_replace += $item->spare->price_replace;
                             $sum_stock += $item->spare->price_stock
+                            $scrap_done = '';
+                            $scrap = \App\Models\Scrap::whereSerial($item->serial_old)->first();
+                            if($scrap){
+                                if($scrap->scraped == 1){
+                                    $scrap_done = 'style="background-color: red"';
+                                }else{
+                                    $scrap_done = 'style="background-color: orange"';
+                                }
+                            }else{
+                                $scrap_done = '';
+                            }
                         @endphp
                         {!! Form::open(['action' => 'PartsController@updateSpareSn']) !!}
                         {!! Form::hidden('sparerepair_id', $item->id) !!}
                         {!! Form::hidden('repair_id', $data->id) !!}
-                        <tr>
+                        <tr {{ $scrap_done }}>
                             <td>{{ $item->spare->sap_no }}</td>
                             <td>{{ $item->spare->sap_desc }}</td>
                             <td>{{ $item->spare->manufacturer_part_no }}</td>
