@@ -160,7 +160,7 @@
                     @foreach($data->spares() as $item)
                         @php
                             $sum_replace += $item->spare->price_replace;
-                            $sum_stock += $item->spare->price_stock
+                            $sum_stock += $item->spare->price_stock;
                             $scrap_done = '';
                             $scrap = \App\Models\Scrap::whereSerial($item->serial_old)->first();
                             if($scrap){
