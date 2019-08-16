@@ -162,8 +162,10 @@
                             $sum_replace += $item->spare->price_replace;
                             $sum_stock += $item->spare->price_stock;
                             $scrap_done = '';
+                            $scrap_pack = '';
                             $scrap = \App\Models\Scrap::whereSerial($item->serial_old)->first();
                             if($scrap){
+                                $scrap_pack = $scrap->package;
                                 if($scrap->scraped == 1){
                                     $scrap_done = 'style="background-color: red"';
                                 }else{
@@ -190,7 +192,11 @@
                                 {!! Form::text('serial_new', $item->serial_new, ['id' => 'snew']) !!}
                             </td>
                             <td {!! $scrap_done !!}>
-                                {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
+                                @if($scrap_pack == '')
+                                    {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
+                                @else
+                                    <a href="{{ action('ScrapeController@index', $scrap_pack) }}">{{ $scrap_pack }}</a>
+                                @endif
                             </td>
                             <td {!! $scrap_done !!}>
                                 {!! Form::submit('Save') !!}
