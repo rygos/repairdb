@@ -17,10 +17,12 @@ class CreateScrapTable extends Migration
             $table->increments('id');
             $table->text('serial');
             $table->text('imei')->nullable();
-            $table->text('package');
+            $table->text('package')->nullable();
             $table->integer('scraped')->nullable();
             $table->dateTime('scrape_date')->nullable();
             $table->timestamps();
+
+            $table->index('package');
         });
     }
 
