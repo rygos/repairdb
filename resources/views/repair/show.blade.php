@@ -198,6 +198,8 @@
                                     @else
                                         <a href="{{ action('ScrapeController@index', $scrap_pack) }}">{{ $scrap_pack }}</a>
                                     @endif
+                                @else
+                                    {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
                                 @endif
                             </td>
                             <td {!! $scrap_done !!}>
