@@ -45,7 +45,7 @@
         <td>{!! Form::submit('Send') !!}</td>
     </tr>
     {!! Form::close() !!}
-
+    @php $i = 0; @endphp
     @foreach($data as $item)
         @php
         $i += 1;
