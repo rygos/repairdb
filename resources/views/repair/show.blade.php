@@ -176,27 +176,27 @@
                         {!! Form::open(['action' => 'PartsController@updateSpareSn']) !!}
                         {!! Form::hidden('sparerepair_id', $item->id) !!}
                         {!! Form::hidden('repair_id', $data->id) !!}
-                        <tr {{ $scrap_done }}>
-                            <td>{{ $item->spare->sap_no }}</td>
-                            <td>{{ $item->spare->sap_desc }}</td>
-                            <td>{{ $item->spare->manufacturer_part_no }}</td>
-                            <td>{{ $item->spare->manufacturer_part_desc }}</td>
-                            <td>{{ $item->spare->price_stock }}</td>
-                            <td>{{ $item->spare->price_replace }}</td>
-                            <td>
+                        <tr>
+                            <td {!! $scrap_done !!}>{{ $item->spare->sap_no }}</td>
+                            <td {!! $scrap_done !!}>{{ $item->spare->sap_desc }}</td>
+                            <td {!! $scrap_done !!}>{{ $item->spare->manufacturer_part_no }}</td>
+                            <td {!! $scrap_done !!}>{{ $item->spare->manufacturer_part_desc }}</td>
+                            <td {!! $scrap_done !!}>{{ $item->spare->price_stock }}</td>
+                            <td {!! $scrap_done !!}>{{ $item->spare->price_replace }}</td>
+                            <td {!! $scrap_done !!}>
                                 {!! Form::text('serial_old', $item->serial_old, ['id' => 'sold']) !!}
                             </td>
-                            <td>
+                            <td {!! $scrap_done !!}>
                                 {!! Form::text('serial_new', $item->serial_new, ['id' => 'snew']) !!}
                             </td>
-                            <td>
+                            <td {!! $scrap_done !!}>
                                 {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
                             </td>
-                            <td>
+                            <td {!! $scrap_done !!}>
                                 {!! Form::submit('Save') !!}
                                 {!! Form::close() !!}
                             </td>
-                            <td>
+                            <td {!! $scrap_done !!}>
                                 {!! Form::open(['method' => 'POST', 'action' => 'PartsController@destroyFromRepair']) !!}
                                 {!! Form::hidden('srid', $item->id) !!}
                                 {!! Form::hidden('repair_id', $data->id) !!}
