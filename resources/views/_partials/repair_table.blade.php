@@ -23,7 +23,7 @@
     @foreach($data as $item)
 
         @if(!$item->closing_reason_id)
-
+            @php $style = '' @endphp
         @else
             @php $reason = \App\Models\ClosingReason::whereId($item->closing_reason_id)->first()->reason; @endphp
             @switch ($reason)
