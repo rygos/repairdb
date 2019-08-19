@@ -74,30 +74,17 @@ class ScrapeController extends Controller
         $content = 'id,serial,imei,model,rminst,customer'.PHP_EOL;
 
         foreach ($data as $i){
-            $model_db = null;
-            $repair_db = null;
-            $model = '';
-            $customer = '';
             $rminst = '';
+            $customer = '';
+            $model = '';
+
             if($i->unit){
                 $model_db = Model::whereId($i->unit->model_id)->first();
                 $repair_db = Repair::whereUnitId($i->unit->id)->first();
-            }
-
-            if(!is_null($model_db)){
                 $model = $model_db->model;
-            }else{
-                $model = '';
-            }
-
-            if(!is_null($repair_db)){
                 $rminst = $repair_db->rminst()->rminst;
                 $customer = $repair_db->customer()->customer;
-            }else{
-                $rminst = '';
-                $customer = '';
             }
-
 
             $content .= $i->id.','.$i->serial.','.$i->imei.',"'.$model.'",'.$rminst.','.$customer.PHP_EOL;
         }
