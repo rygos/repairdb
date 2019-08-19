@@ -75,11 +75,26 @@ class ScrapeController extends Controller
 
         foreach ($data as $i){
             if($i->unit){
-                $model = Model::whereId($i->unit->model_id)->first();
-                $repair = Repair::whereUnitId($i->unit->id)->first();
+                $model_db = Model::whereId($i->unit->model_id)->first();
+                $repair_db = Repair::whereUnitId($i->unit->id)->first();
             }
 
-            $content .= $i->id.','.$i->serial.','.$i->imei.',"'.$model->model.'",'.$repair->rminst()->rminst.','.$repair->customer()->customer.PHP_EOL;
+            if($model_db){
+                $model = $model_db->model;
+            }else{
+                $model = '';
+            }
+
+            if($repair_db){
+                $rminst = $repair_db->rminst()->rminst;
+                $customer = $repair_db->customer()->customer;
+            }else{
+                $rminst = '';
+                $customer = '';
+            }
+
+
+            $content .= $i->id.','.$i->serial.','.$i->imei.',"'.$model.'",'.$rminst.','.$customer.PHP_EOL;
         }
 
         $filename = 'export_scrape.csv';
