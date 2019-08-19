@@ -79,7 +79,7 @@ class ScrapeController extends Controller
                 $repair = Repair::whereUnitId($i->unit->id)->first();
             }
 
-            $content .= $i->id.','.$i->serial.','.$i->imei.','.$model->model.','.$repair->rminst()->rminst.','.$repair->customer()->customer.PHP_EOL;
+            $content .= $i->id.','.$i->serial.','.$i->imei.',"'.$model->model.'"",'.$repair->rminst()->rminst.','.$repair->customer()->customer.PHP_EOL;
         }
 
         $filename = 'export_scrape.csv';
