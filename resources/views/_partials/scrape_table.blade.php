@@ -77,7 +77,22 @@
         </tr>
     @endforeach
     <tr class="sortable">
-        <td colspan="11"></td>
-        <td><a href="{{ action('ScrapeController@create_pack') }}">Create Package</a></td>
+        <td colspan="10"></td>
+        <td>
+            @php
+                $packno = 0;
+                if($data and $data->count() != 0){
+                    $packno = $data->first()->package;
+                }else{
+                    $packno = 0;
+                }
+            @endphp
+            <a href="{{ action('ScrapeController@export', [$packno]) }}">Export CSV</a>
+        </td>
+        <td>
+            @if($packview == 0)
+                <a href="{{ action('ScrapeController@create_pack') }}">Create Package</a>
+            @endif
+        </td>
     </tr>
 </table>

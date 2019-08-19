@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Model;
+use App\Models\Repair;
 use App\Models\Scrap;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -9,10 +11,12 @@ use Illuminate\Http\Request;
 class ScrapeController extends Controller
 {
     public function index($pack = null){
+        $packview = 0;
         if(is_null($pack)){
             $data = Scrap::whereScraped(0)->orderByDesc('id')->get();
         }else{
             $data = Scrap::wherePackage($pack)->orderByDesc('id')->get();
+            $packview = 1;
         }
 
 
@@ -23,6 +27,7 @@ class ScrapeController extends Controller
         return view('scrape.index', [
             'data' => $data,
             'packs' => $packs,
+            'packview' => $packview,
         ]);
     }
 
@@ -55,5 +60,34 @@ class ScrapeController extends Controller
         //dd($items);
 
         return redirect()->action('ScrapeController@index');
+    }
+
+    public function export($pack){
+        if($pack == 0){
+            //Load List of Units without Package
+            $data = Scrap::whereScraped(0)->orderByDesc('id')->get();
+        }else{
+            //Load Packed Units
+            $data = Scrap::wherePackage($pack)->orderByDesc('id')->get();
+        }
+
+        $content = 'id,serial,imei,model,rminst,customer'.PHP_EOL;
+
+        foreach ($data as $i){
+            if($i->unit){
+                $model = Model::whereId($i->unit->model_id)->first();
+                $repair = Repair::whereUnitId($i->unit->id)->first();
+            }
+
+            $content .= $i->id.','.$i->serial.','.$i->imei.','.$model->model.','.$repair->rminst()->rminst.','.$repair->customer()->customer.PHP_EOL;
+        }
+
+        $filename = 'export_scrape.csv';
+        $headers = [
+            'Content-type' => 'text/plain',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+        ];
+
+        return \Response::make($content, 200, $headers);
     }
 }
