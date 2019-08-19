@@ -45,12 +45,14 @@ class ScrapeController extends Controller
         $package = time();
         $time = Carbon::now();
 
-        Scrap::whereScraped(0)
+        $items = Scrap::where('scraped', '=', 0)
             ->update([
                 'scraped' => '1',
                 'scrape_date' => $time,
                 'package' => $package,
             ]);
+
+        dd($items);
 
         return redirect()->action('ScrapeController@index');
     }

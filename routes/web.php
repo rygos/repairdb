@@ -54,6 +54,7 @@ Route::get('overtime/{id}/send', 'OvertimeController@send');
 Route::get('models', 'ModelController@index');
 Route::get('models/{id}', 'ModelController@show');
 
+Route::get('scrape/create_pack', 'ScrapeController@create_pack');
 Route::get('scrape/{pack?}', 'ScrapeController@index');
 Route::post('scrape/store', 'ScrapeController@store');
-Route::get('scrape/create_pack', 'ScrapeController@create_pack');
+
