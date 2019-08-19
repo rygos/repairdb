@@ -52,7 +52,7 @@ class ScrapeController extends Controller
                 'package' => $package,
             ]);
 
-        dd($items);
+        //dd($items);
 
         return redirect()->action('ScrapeController@index');
     }
