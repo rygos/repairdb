@@ -54,6 +54,7 @@ class OvertimeController extends Controller
         $ot = Overtime::whereId($id)->first();
 
         \Mail::to('guido.maus@computacenter.com')
+            ->cc('Monika.Buelow@computacenter.com')
             ->send(new OvertimeMail($ot));
 
         $ot->submitted = 1;
