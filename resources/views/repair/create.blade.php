@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <td>Repair Start:</td>
-                            <td>{!! Form::date('started_at') !!}</td>
+                            <td>{!! Form::date('started_at', date('d.m.Y'), array('class'=>'form-control date-picker')) !!}</td>
                         </tr>
                         <tr>
                             <td>RMINST:</td>
