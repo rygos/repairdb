@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repair;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -17,7 +18,7 @@ class ReportController extends Controller
         $res = array();
 
         foreach ($reps as $rep) {
-            $t['startdate'] = $rep->started_at;
+            $t['startdate'] = Carbon::parse($rep->started_at)->toDateString();
             $t['rminst'] = $rep->rminst()->rminst;
             $t['zlb'] = $rep->rminst()->zlb;
             $t['g-nummer'] = $rep->g_no;
