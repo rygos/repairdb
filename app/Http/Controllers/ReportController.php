@@ -17,7 +17,11 @@ class ReportController extends Controller
         $res = array();
 
         foreach ($reps as $rep) {
+            $t['startdate'] = $rep->started_at;
             $t['rminst'] = $rep->rminst()->rminst;
+            $t['zlb'] = $rep->rminst()->zlb;
+            $t['g-nummer'] = $rep->g_no;
+            $t['seriennummer'] = $rep->unit()->serial;
             $t['kostenpflichtig'] = $this->get_string_between($rep->remarks, 'Kostenpflichtig:', PHP_EOL);
             $t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', PHP_EOL);
             $res[] = $t;
