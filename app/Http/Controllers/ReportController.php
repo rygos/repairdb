@@ -21,6 +21,8 @@ class ReportController extends Controller
             $res[] = $t;
         }
 
-        echo $res;
+        echo "<pre>";
+        print_r($res);
+        echo "</pre>";
     }
 }
