@@ -12,7 +12,7 @@ class ReportController extends Controller
     }
 
     public function garantie(){
-        $reps = Repair::whereManufacturerId(3)->get();
+        $reps = Repair::whereManufacturerId(3)->whereIn('closing_reason_id', ['2', '11'])->get();
 
         $res = array();
 
