@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.8.28 on 2019-07-15 06:28:58.
+ * Generated for Laravel 5.8.35 on 2019-11-18 10:59:22.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -1387,7 +1387,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Set the globally available instance of the container.
+         * Get the globally available instance of the container.
          *
          * @return static 
          * @static 
@@ -3751,110 +3751,6 @@ namespace Illuminate\Support\Facades {
         public static function hasMacro($name)
         {
                         return \Illuminate\Cookie\CookieJar::hasMacro($name);
-        }
-         
-    }
-
-    /**
-     * 
-     *
-     * @see \Illuminate\Encryption\Encrypter
-     */ 
-    class Crypt {
-        
-        /**
-         * Determine if the given key and cipher combination is valid.
-         *
-         * @param string $key
-         * @param string $cipher
-         * @return bool 
-         * @static 
-         */ 
-        public static function supported($key, $cipher)
-        {
-                        return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
-        }
-        
-        /**
-         * Create a new encryption key for the given cipher.
-         *
-         * @param string $cipher
-         * @return string 
-         * @static 
-         */ 
-        public static function generateKey($cipher)
-        {
-                        return \Illuminate\Encryption\Encrypter::generateKey($cipher);
-        }
-        
-        /**
-         * Encrypt the given value.
-         *
-         * @param mixed $value
-         * @param bool $serialize
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encrypt($value, $serialize = true)
-        {
-                        /** @var \Illuminate\Encryption\Encrypter $instance */
-                        return $instance->encrypt($value, $serialize);
-        }
-        
-        /**
-         * Encrypt a string without serialization.
-         *
-         * @param string $value
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\EncryptException
-         * @static 
-         */ 
-        public static function encryptString($value)
-        {
-                        /** @var \Illuminate\Encryption\Encrypter $instance */
-                        return $instance->encryptString($value);
-        }
-        
-        /**
-         * Decrypt the given value.
-         *
-         * @param string $payload
-         * @param bool $unserialize
-         * @return mixed 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decrypt($payload, $unserialize = true)
-        {
-                        /** @var \Illuminate\Encryption\Encrypter $instance */
-                        return $instance->decrypt($payload, $unserialize);
-        }
-        
-        /**
-         * Decrypt the given string without unserialization.
-         *
-         * @param string $payload
-         * @return string 
-         * @throws \Illuminate\Contracts\Encryption\DecryptException
-         * @static 
-         */ 
-        public static function decryptString($payload)
-        {
-                        /** @var \Illuminate\Encryption\Encrypter $instance */
-                        return $instance->decryptString($payload);
-        }
-        
-        /**
-         * Get the encryption key.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getKey()
-        {
-                        /** @var \Illuminate\Encryption\Encrypter $instance */
-                        return $instance->getKey();
         }
          
     }
@@ -9048,10 +8944,14 @@ namespace Illuminate\Support\Facades {
          * header value is a comma+space separated list of IP addresses, the left-most
          * being the original client, and each successive proxy that passed the request
          * adding the IP address where it received the request from.
+         * 
+         * If your reverse proxy uses a different header name than "X-Forwarded-For",
+         * ("Client-Ip" for instance), configure it via the $trustedHeaderSet
+         * argument of the Request::setTrustedProxies() method instead.
          *
          * @return string|null The client IP address
          * @see getClientIps()
-         * @see http://en.wikipedia.org/wiki/X-Forwarded-For
+         * @see https://wikipedia.org/wiki/X-Forwarded-For
          * @static 
          */ 
         public static function getClientIp()
@@ -9575,7 +9475,6 @@ namespace Illuminate\Support\Facades {
          * Checks whether or not the method is safe.
          *
          * @see https://tools.ietf.org/html/rfc7231#section-4.2.1
-         * @param bool $andCacheable Adds the additional condition that the method should be cacheable. True by default.
          * @return bool 
          * @static 
          */ 
@@ -9745,7 +9644,7 @@ namespace Illuminate\Support\Facades {
          * It works if your JavaScript library sets an X-Requested-With HTTP header.
          * It is known to work with common JavaScript frameworks:
          *
-         * @see http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
+         * @see https://wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
          * @return bool true if the request is an XMLHttpRequest, false otherwise
          * @static 
          */ 
@@ -16426,8 +16325,6 @@ namespace  {
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
 
-    class Crypt extends \Illuminate\Support\Facades\Crypt {}
-
     class DB extends \Illuminate\Support\Facades\DB {}
 
     class Eloquent extends \Illuminate\Database\Eloquent\Model {         
@@ -17869,16 +17766,16 @@ namespace  {
             /**
              * Add a "where null" clause to the query.
              *
-             * @param string $column
+             * @param string|array $columns
              * @param string $boolean
              * @param bool $not
              * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
-            public static function whereNull($column, $boolean = 'and', $not = false)
+            public static function whereNull($columns, $boolean = 'and', $not = false)
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                return $instance->whereNull($column, $boolean, $not);
+                                return $instance->whereNull($columns, $boolean, $not);
             }
          
             /**
@@ -18868,6 +18765,19 @@ namespace  {
             }
          
             /**
+             * Insert a new record into the database while ignoring errors.
+             *
+             * @param array $values
+             * @return int 
+             * @static 
+             */ 
+            public static function insertOrIgnore($values)
+            {
+                                /** @var \Illuminate\Database\Query\Builder $instance */
+                                return $instance->insertOrIgnore($values);
+            }
+         
+            /**
              * Insert a new record and get the value of the primary key.
              *
              * @param array $values
@@ -19066,13 +18976,13 @@ namespace  {
             /**
              * Dump the current SQL and bindings.
              *
-             * @return void 
+             * @return \Illuminate\Database\Query\Builder 
              * @static 
              */ 
             public static function dump()
             {
                                 /** @var \Illuminate\Database\Query\Builder $instance */
-                                $instance->dump();
+                                return $instance->dump();
             }
          
             /**

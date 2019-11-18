@@ -59,3 +59,5 @@ Route::get('scrape/export/{pack}', 'ScrapeController@export');
 Route::get('scrape/{pack?}', 'ScrapeController@index');
 Route::post('scrape/store', 'ScrapeController@store');
 
+Route::get('report/garantie', 'ReportController@garantie');
+
