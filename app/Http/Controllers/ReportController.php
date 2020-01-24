@@ -28,6 +28,8 @@ class ReportController extends Controller
             $t['serial'] = $rep->unit()->serial;
             $t['customer'] = $rep->customer()->customer;
             $trem = explode(PHP_EOL, $rep->remarks);
+            $t['kostenpflichtig'] = '';
+            $t['garantie'] = '';
             foreach ($trem as $item) {
                 if($this->startsWith_with_delete($item, 'Kostenpflichtig:') != ''){
                     $t['kostenpflichtig'] = $this->startsWith_with_delete($item, 'Kostenpflichtig:');
