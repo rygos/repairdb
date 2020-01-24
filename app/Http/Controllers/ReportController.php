@@ -23,9 +23,10 @@ class ReportController extends Controller
             $t['zlb'] = $rep->rminst()->zlb;
             $t['g-nummer'] = $rep->g_no;
             $t['seriennummer'] = $rep->unit()->serial;
-            $t['kostenpflichtig'] = $this->get_string_between($rep->remarks, 'Kostenpflichtig:', PHP_EOL);
-            $t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', PHP_EOL);
-            if($t['garantie'] == ''){$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', '');}
+            //Kundey
+            //$t['kostenpflichtig'] = $this->get_string_between($rep->remarks, 'Kostenpflichtig:', PHP_EOL);
+            //$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', PHP_EOL);
+            //if($t['garantie'] == ''){$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', '');}
             $res[] = $t;
         }
 
