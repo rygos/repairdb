@@ -42,7 +42,7 @@ class ReportController extends Controller
             $t['type'] = $rep->closing_reason()->reason;
 
             $res[] = $t;
-            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].PHP_EOL;
+            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].';'.$t['type'].PHP_EOL;
         }
 
 
