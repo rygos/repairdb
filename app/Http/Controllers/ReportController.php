@@ -14,11 +14,11 @@ class ReportController extends Controller
     }
 
     public function garantie(){
-        $reps = Repair::whereManufacturerId(3)->whereIn('closing_reason_id', ['2'])->get();
+        $reps = Repair::whereManufacturerId(3)->whereIn('closing_reason_id', ['2', '11'])->get();
 
         $res = array();
 
-        $ret = "date;rminst;zlb;gno;serial;customer;kostenpflichtig;garantie".PHP_EOL;
+        $ret = "date;rminst;zlb;gno;serial;customer;kostenpflichtig;garantie;ndfrep".PHP_EOL;
 
         foreach ($reps as $rep) {
             $t['date'] = Carbon::parse($rep->started_at)->toDateString();
@@ -39,6 +39,7 @@ class ReportController extends Controller
                     $t['garantie'] = trim($this->startsWith_with_delete($item, 'Hersteller-Garantie:'), "\t\n\r");
                 }
             }
+            $t['type'] = $rep->closing_reason()->reason;
 
             $res[] = $t;
             $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].PHP_EOL;
