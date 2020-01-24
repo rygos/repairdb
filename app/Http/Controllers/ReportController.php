@@ -35,13 +35,9 @@ class ReportController extends Controller
                 }
             }
 
-            $t['remarks'] = $trem;
-            //Kundey
-            //$t['kostenpflichtig'] = $this->get_string_between($rep->remarks, 'Kostenpflichtig:', PHP_EOL);
-            //$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', PHP_EOL);
-            //if($t['garantie'] == ''){$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', '');}
             $res[] = $t;
         }
+
 
         echo "<pre>";
         print_r($res);
