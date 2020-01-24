@@ -1,24 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Exports;
 
 use App\Models\Repair;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ReportController extends Controller
+class ReportExport implements FromArray
 {
-    public function index(){
-
-    }
-
-    public function garantie(){
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function collection()
+    {
         $reps = Repair::whereManufacturerId(3)->whereIn('closing_reason_id', ['2', '11'])->get();
 
         $res = array();
-
-        $ret = "date,rminst,zlb,gno,serial,customer,kostenpflichtig,garantie";
 
         foreach ($reps as $rep) {
             $t['date'] = Carbon::parse($rep->started_at)->toDateString();
@@ -39,25 +36,11 @@ class ReportController extends Controller
             }
 
             $res[] = $t;
-            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'];
         }
-
 
 
         echo "<pre>";
-        echo $ret;
+        print_r($res);
         echo "</pre>";
-    }
-
-    function startsWith_with_delete ($string, $startString)
-    {
-        $len = strlen($startString);
-        $tsub = (substr($string, 0, $len) === $startString);
-
-        if($tsub === true){
-            return str_replace($startString, '', $string);
-        }else{
-            return '';
-        }
     }
 }
