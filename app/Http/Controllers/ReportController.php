@@ -18,7 +18,7 @@ class ReportController extends Controller
 
         $res = array();
 
-        $ret = "date,rminst,zlb,gno,serial,customer,kostenpflichtig,garantie";
+        $ret = "date;rminst;zlb;gno;serial;customer;kostenpflichtig;garantie".PHP_EOL;
 
         foreach ($reps as $rep) {
             $t['date'] = Carbon::parse($rep->started_at)->toDateString();
@@ -32,16 +32,16 @@ class ReportController extends Controller
             $t['garantie'] = '';
             foreach ($trem as $item) {
                 if($this->startsWith_with_delete($item, 'Kostenpflichtig:') != ''){
-                    $t['kostenpflichtig'] = $this->startsWith_with_delete($item, 'Kostenpflichtig:');
+                    $t['kostenpflichtig'] = trim($this->startsWith_with_delete($item, 'Kostenpflichtig:'), "\t\n\r");
                 }
 
                 if($this->startsWith_with_delete($item, 'Hersteller-Garantie:') != ''){
-                    $t['garantie'] = $this->startsWith_with_delete($item, 'Hersteller-Garantie:');
+                    $t['garantie'] = trim($this->startsWith_with_delete($item, 'Hersteller-Garantie:'), "\t\n\r");
                 }
             }
 
             $res[] = $t;
-            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'];
+            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].PHP_EOL;
         }
 
 
