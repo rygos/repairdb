@@ -24,6 +24,18 @@ class ReportController extends Controller
             $t['gno'] = $rep->g_no;
             $t['serial'] = $rep->unit()->serial;
             $t['customer'] = $rep->customer()->customer;
+            $trem = explode(PHP_EOL, $rep->remarks);
+            foreach ($trem as $item) {
+                if($this->startsWith_with_delete($item, 'Kostenpflichtig:') != ''){
+                    $t['kostenpflichtig'] = $this->startsWith_with_delete($item, 'Kostenpflichtig:');
+                }
+
+                if($this->startsWith_with_delete($item, 'Hersteller-Garantie:') != ''){
+                    $t['garantie'] = $this->startsWith_with_delete($item, 'Hersteller-Garantie:');
+                }
+            }
+
+            $t['remarks'] = $trem;
             //Kundey
             //$t['kostenpflichtig'] = $this->get_string_between($rep->remarks, 'Kostenpflichtig:', PHP_EOL);
             //$t['garantie'] = $this->get_string_between($rep->remarks, 'Hersteller-Garantie:', PHP_EOL);
@@ -36,12 +48,15 @@ class ReportController extends Controller
         echo "</pre>";
     }
 
-    function get_string_between($string, $start, $end){
-        $string = ' ' . $string;
-        $ini = strpos($string, $start);
-        if ($ini == 0) return '';
-        $ini += strlen($start);
-        $len = strpos($string, $end, $ini) - $ini;
-        return substr($string, $ini, $len);
+    function startsWith_with_delete ($string, $startString)
+    {
+        $len = strlen($startString);
+        $tsub = (substr($string, 0, $len) === $startString);
+
+        if($tsub === true){
+            return str_replace($startString, '', $string);
+        }else{
+            return '';
+        }
     }
 }
