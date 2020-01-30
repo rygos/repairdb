@@ -28,6 +28,7 @@ Route::post('repair/create', 'RepairController@store');
 Route::post('repair/storeremark', 'RepairController@storeremark');
 Route::post('repair/changegorderno', 'RepairController@changegorderno');
 Route::post('repair/changestate', 'RepairController@changestate');
+Route::post('repair/update_so', 'RepairController@update_so');
 
 Route::get('spare', 'PartsController@index');
 Route::get('spare/create', 'PartsController@create');

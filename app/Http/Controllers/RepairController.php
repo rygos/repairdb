@@ -301,4 +301,8 @@ Hersteller-Garantie: &#13;';
         $name = $req->getClientOriginalName();
     }
 
+    public function update_so(Request $request){
+
+    }
+
 }
