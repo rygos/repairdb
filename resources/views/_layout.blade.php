@@ -24,6 +24,14 @@
     <!--[if IE]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
+    @if(Auth::id() == 2)
+    <style>
+        body, a:hover, textarea, input {
+            cursor: url(http://cur.cursors-4u.net/cursors/cur-2/cur223.cur), default !important;
+        }
+    </style>
+    @endif
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 </head>
 <body>
