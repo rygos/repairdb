@@ -24,7 +24,7 @@
                         <span id='title'>
                             <big>{{ 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb }}</big>
                         </span>
-                        <div id='nfo'></div>
+                        <div id='nfo' onclick="update_so()"><span>EDIT SO</span></div>
                         <script>
                             function update_so() {
                                 var newso = parseInt(prompt("Please enter the new SO"));
