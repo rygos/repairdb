@@ -304,7 +304,7 @@ Fremdverschulden: &#13;
     }
 
     public function update_so(Request $request){
-
+        dd($request);
     }
 
 }

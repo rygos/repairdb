@@ -33,7 +33,10 @@
                                     if (isNaN(newso)){
                                         alert("Please only enter numbers with 8 digits")
                                     }else{
-
+                                        var xhttp = new XMLHttpRequest();
+                                        xhttp.open("POST", "{{ action('RepairController@update_so') }}", false);
+                                        xhttp.send("soold={{$data->rminst()->rminst}};sonew="+newso);
+                                        location.reload();
                                     }
                                 }else{
                                     alert("Please only enter numbers with 8 digits")
