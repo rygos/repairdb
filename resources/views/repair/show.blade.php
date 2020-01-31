@@ -28,6 +28,7 @@
                         <script>
                             function update_so() {
                                 var newso = parseInt(prompt("Please enter the new SO"));
+                                alert(newso);
                                 if (newso > 1000000 && newso < 99999999){
                                     if (isNaN(newso)){
                                         alert("Please only enter numbers with 8 digits")
