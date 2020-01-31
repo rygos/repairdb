@@ -12,6 +12,7 @@ use App\Models\Model;
 use App\Models\ReapirLog;
 use App\Models\Repair;
 use App\Models\RepairType;
+use App\Models\Rminstzlb;
 use App\Models\Spare;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -304,7 +305,9 @@ Fremdverschulden: &#13;
     }
 
     public function update_so(Request $request){
-        dd($request);
+        $so = Rminstzlb::whereId($request->post('sooldid'))->first();
+        $so->rminst = $request->post('sonew');
+        $so->save();
     }
 
 }

@@ -28,14 +28,14 @@
                         <script>
                             function update_so() {
                                 var newso = parseInt(prompt("Please enter the new SO"));
-                                alert(newso);
                                 if (newso > 1000000 && newso < 99999999){
                                     if (isNaN(newso)){
                                         alert("Please only enter numbers with 8 digits")
                                     }else{
                                         var xhttp = new XMLHttpRequest();
                                         xhttp.open("POST", "{{ action('RepairController@update_so') }}", false);
-                                        xhttp.send("soold={{$data->rminst()->rminst}};sonew="+newso);
+                                        xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
+                                        xhttp.send("sooldid={{$data->rminst()->id}};sonew="+newso);
                                         location.reload();
                                     }
                                 }else{
