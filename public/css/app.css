@@ -417,8 +417,6 @@ td.date {
   /* Opera */
   image-rendering: -webkit-pixelated;
   /* Webkit (non-standard naming) */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -o-pixelated;
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
   /* IE (non-standard property) */
@@ -858,8 +856,6 @@ td.date {
   /* Opera */
   image-rendering: -webkit-pixelated;
   /* Webkit (non-standard naming) */
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: -o-pixelated;
   image-rendering: pixelated;
   -ms-interpolation-mode: nearest-neighbor;
   /* IE (non-standard property) */

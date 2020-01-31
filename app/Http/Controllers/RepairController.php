@@ -196,7 +196,9 @@ Diagnose: &#13;
 MRI: &#13;
 -------------
 Kostenpflichtig: EUR &#13;
-Hersteller-Garantie: &#13;';
+Hersteller-Garantie: &#13;
+Fremdverschulden: &#13;
+';
 
         $replog = ReapirLog::whereRepairId($data->id)->get();
 
