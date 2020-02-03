@@ -30,6 +30,7 @@ class ReportController extends Controller
             $trem = explode(PHP_EOL, $rep->remarks);
             $t['kostenpflichtig'] = '';
             $t['garantie'] = '';
+            $t['fremdverschulden'] = '';
             foreach ($trem as $item) {
                 if($this->startsWith_with_delete($item, 'Kostenpflichtig:') != ''){
                     $t['kostenpflichtig'] = trim($this->startsWith_with_delete($item, 'Kostenpflichtig:'), "\t\n\r");
