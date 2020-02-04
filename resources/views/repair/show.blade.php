@@ -37,7 +37,7 @@
                                         xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
                                         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                                         xhttp.send("sooldid={{$data->rminst()->id}}&sonew="+newso+"&repid={{$data->id}}");
-                                        //location.reload();
+                                        location.reload();
                                     }
                                 }else{
                                     alert("Please only enter numbers with 8 digits")

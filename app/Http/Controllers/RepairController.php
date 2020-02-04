@@ -316,6 +316,8 @@ Fremdverschulden: &#13;
         $log->user_id = \Auth::id();
         $log->closing_reason_id = Repair::whereId($request->post('repid'))->first()->closing_reason_id;
         $log->save();
+
+        //return redirect()->action('RepairController@show', $request->post('repid'));
     }
 
 }
