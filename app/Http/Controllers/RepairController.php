@@ -309,6 +309,13 @@ Fremdverschulden: &#13;
         $so = Rminstzlb::whereId($request->post('sooldid'))->first();
         $so->rminst = $request->post('sonew');
         $so->save();
+
+        $log = new ReapirLog;
+        $log->log = 'Change SO from '.$request->post('sooldid').' to '.$request->post('sonew');
+        $log->repair_id = $request->post('repid');
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = Repair::whereId($request->post('repid'))->first()->closing_reason_id;
+        $log->save();
     }
 
 }
