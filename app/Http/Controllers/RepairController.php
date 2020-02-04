@@ -307,11 +307,12 @@ Fremdverschulden: &#13;
     public function update_so(Request $request){
         //dd($request->post('sonew'));
         $so = Rminstzlb::whereId($request->post('sooldid'))->first();
+        $soold = $so->rminst;
         $so->rminst = $request->post('sonew');
         $so->save();
 
         $log = new ReapirLog;
-        $log->log = 'Change SO from '.$request->post('sooldid').' to '.$request->post('sonew');
+        $log->log = 'Change SO from '.$soold.' to '.$request->post('sonew');
         $log->repair_id = $request->post('repid');
         $log->user_id = \Auth::id();
         $log->closing_reason_id = Repair::whereId($request->post('repid'))->first()->closing_reason_id;
