@@ -305,7 +305,7 @@ Fremdverschulden: &#13;
     }
 
     public function update_so(Request $request){
-        dd($request->post('sonew'));
+        //dd($request->post('sonew'));
         $so = Rminstzlb::whereId($request->post('sooldid'))->first();
         $so->rminst = $request->post('sonew');
         $so->save();
