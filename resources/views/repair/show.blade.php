@@ -33,7 +33,7 @@
                                         alert("Please only enter numbers with 8 digits")
                                     }else{
                                         var xhttp = new XMLHttpRequest();
-                                        xhttp.open("POST", "{{ action('RepairController@update_so') }}", false);
+                                        xhttp.open("POST", "{{ action('RepairController@update_so') }}", true);
                                         xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
                                         xhttp.send("sooldid={{$data->rminst()->id}};sonew="+newso);
                                         //location.reload();
