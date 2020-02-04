@@ -36,8 +36,12 @@
                                         xhttp.open("POST", "{{ action('RepairController@update_so') }}", true);
                                         xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
                                         xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                        xhttp.onreadystatechange = function() {//Call a function when the state changes.
+                                            if(xhttp.readyState == 4 && xhttp.status == 200) {
+                                                location.reload();
+                                            }
+                                        }
                                         xhttp.send("sooldid={{$data->rminst()->id}}&sonew="+newso+"&repid={{$data->id}}");
-                                        location.reload();
                                     }
                                 }else{
                                     alert("Please only enter numbers with 8 digits")
