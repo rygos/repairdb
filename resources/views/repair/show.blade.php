@@ -35,7 +35,8 @@
                                         var xhttp = new XMLHttpRequest();
                                         xhttp.open("POST", "{{ action('RepairController@update_so') }}", true);
                                         xhttp.setRequestHeader("X-CSRF-TOKEN", "{{ csrf_token() }}");
-                                        xhttp.send("sooldid={{$data->rminst()->id}};sonew="+newso);
+                                        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                                        xhttp.send("sooldid={{$data->rminst()->id}}&sonew="+newso);
                                         //location.reload();
                                     }
                                 }else{
