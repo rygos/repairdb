@@ -46,6 +46,7 @@ class ReportController extends Controller
             }
             $t['type'] = $rep->closing_reason()->reason;
             $t['spares'] = $rep->spares()->count();
+            $t['kompl'] = 0;
             foreach ($rep->spares() as $spare){
                 if(substr($spare->serial_new, -4) == substr($rep->serial, -4)){
                     $t['kompl'] += 1;
