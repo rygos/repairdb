@@ -18,7 +18,7 @@ class ReportController extends Controller
 
         $res = array();
 
-        $ret = "date;rminst;zlb;gno;serial;customer;kostenpflichtig;garantie;fremdverschulden;ndfrep".PHP_EOL;
+        $ret = "date;rminst;zlb;gno;serial;customer;kostenpflichtig;garantie;fremdverschulden;ndfrep;spares;komplett".PHP_EOL;
 
         foreach ($reps as $rep) {
             $t['date'] = Carbon::parse($rep->started_at)->toDateString();
@@ -45,9 +45,15 @@ class ReportController extends Controller
                 }
             }
             $t['type'] = $rep->closing_reason()->reason;
+            $t['spares'] = $rep->spares()->count();
+            foreach ($rep->spares() as $spare){
+                if(substr($spare->serial_new) == substr($rep->serial)){
+                    $t['kompl'] += 1;
+                }
+            }
 
             $res[] = $t;
-            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].';'.$t['fremdverschulden'].';'.$t['type'].PHP_EOL;
+            $ret .= $t['date'].';'.$t['rminst'].';'.$t['zlb'].';'.$t['gno'].';'.$t['serial'].';'.$t['customer'].';'.$t['kostenpflichtig'].';'.$t['garantie'].';'.$t['fremdverschulden'].';'.$t['type'].';'.$t['spares'].';'.$t['kompl'].PHP_EOL;
         }
 
 
