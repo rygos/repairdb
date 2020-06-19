@@ -81,6 +81,7 @@ class RepairController extends Controller
             'customer' => $customer_res,
             'rep_type' => $rep_type_res,
             'call_type' => $call_type_res,
+            'model_type' => $model_type_res,
         ]);
     }
 
