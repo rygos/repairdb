@@ -10,28 +10,31 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Scrap
+ * Class CrossCharge
  * 
  * @property int $id
+ * @property int $service_order
  * @property string $serial
- * @property string $imei
- * @property string $package
- * @property int $scraped
- * @property \Carbon\Carbon $scrape_date
+ * @property string $cost_centre
+ * @property string $cost_element
+ * @property float $amount
+ * @property string $text
+ * @property int $charged
+ * @property \Carbon\Carbon $charged_date
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models\Base
  */
-class Scrap extends Eloquent
+class CrossCharge extends Eloquent
 {
-	protected $table = 'scrap';
-
 	protected $casts = [
-		'scraped' => 'int'
+		'service_order' => 'int',
+		'amount' => 'float',
+		'charged' => 'int'
 	];
 
 	protected $dates = [
-		'scrape_date'
+		'charged_date'
 	];
 }

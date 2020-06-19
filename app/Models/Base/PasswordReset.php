@@ -9,15 +9,6 @@ namespace App\Models\Base;
 
 use Reliese\Database\Eloquent\Model as Eloquent;
 
-/**
- * Class PasswordReset
- * 
- * @property string $email
- * @property string $token
- * @property \Carbon\Carbon $created_at
- *
- * @package App\Models\Base
- */
 class PasswordReset extends Eloquent
 {
 	public $incrementing = false;

@@ -9,6 +9,7 @@ use App\Models\EeeeModel;
 use App\Models\KvaLimit;
 use App\Models\Manufacturer;
 use App\Models\Model;
+use App\Models\ModelTypesXcharge;
 use App\Models\ReapirLog;
 use App\Models\Repair;
 use App\Models\RepairType;
@@ -64,6 +65,14 @@ class RepairController extends Controller
         $call_type_res = array();
         foreach($call_type as $i){
             $call_type_res[$i->id] = $i->type;
+        }
+
+        $model_type = ModelTypesXcharge::get();
+        $model_type_res = array();
+        foreach ($model_type as $i){
+            if(substr($i->name, 0,7) == "CENTRAL"){
+                $model_type_res[$i->id] = $i->short_name;
+            }
         }
 
         return view('repair.create', [
@@ -123,6 +132,7 @@ class RepairController extends Controller
         if($request->post('model_text') != ''){
             $manu = new Model;
             $manu->model = $request->post('model_text');
+            $manu->model_type_xcharge_id = $request->post('model_type');
             $manu->manufacturer_id = $manufacturer_id;
             $manu->save();
             $model_id = $manu->id;

@@ -10,33 +10,28 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Option
+ * Class ModelTypesXcharge
  * 
  * @property int $id
+ * @property string $short_name
  * @property string $name
- * @property int $poll_id
- * @property int $votes
+ * @property float $ppi
+ * @property string $cost_center
+ * @property string $cost_element
+ * @property int $per_part
+ * @property int $per_call
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * 
- * @property \App\Models\Poll $poll
  *
  * @package App\Models\Base
  */
-class Option extends Eloquent
+class ModelTypesXcharge extends Eloquent
 {
+	protected $table = 'model_types_xcharge';
+
 	protected $casts = [
-		'poll_id' => 'int',
-		'votes' => 'int'
+		'ppi' => 'float',
+		'per_part' => 'int',
+		'per_call' => 'int'
 	];
-
-	public function poll()
-	{
-		return $this->belongsTo(\App\Models\Poll::class);
-	}
-
-	public function votes()
-	{
-		return $this->hasMany(\App\Models\Vote::class);
-	}
 }

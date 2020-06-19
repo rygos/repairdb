@@ -46,6 +46,10 @@
                             <td>Model:</td>
                             <td>{!! Form::select('model', $model) !!} {!! Form::text('model_text') !!}</td>
                         </tr>
+                        <tr id="hide_model_type">
+                            <td>Model Type:</td>
+                            <td>{!! Form::select('model_type', $model_type) !!}</td>
+                        </tr>
                         <tr>
                             <td>Customer:</td>
                             <td>{!! Form::select('customer', $customer) !!} {!! Form::text('customer_text') !!}</td>
@@ -79,6 +83,7 @@
                     if(response == "FALSE"){
                         $('#hide_manu').show();
                         $('#hide_model').show();
+                        $('#hide_model_type').show();
                         $('#serial').css("background-color", "white");
                     }else {
                         $('#hide_manu').hide();

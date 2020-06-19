@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 10 May 2019 12:24:12 +0000.
+ * Date: Fri, 19 Jun 2020 07:58:41 +0000.
  */
 
 namespace App\Models\Base;
@@ -17,12 +17,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $model
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int $model_type_xcharge_id
  *
  * @package App\Models\Base
  */
 class Model extends Eloquent
 {
 	protected $casts = [
-		'manufacturer_id' => 'int'
+		'manufacturer_id' => 'int',
+		'model_type_xcharge_id' => 'int'
 	];
 }

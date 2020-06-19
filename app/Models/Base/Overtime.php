@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 10 May 2019 12:24:12 +0000.
+ * Date: Fri, 19 Jun 2020 07:58:41 +0000.
  */
 
 namespace App\Models\Base;
@@ -32,13 +32,12 @@ class Overtime extends Eloquent
 	protected $casts = [
 		'user_id' => 'int',
 		'overtime_minutes' => 'int',
-		'submitted' => 'int',
-        'started_at',
-        'ended_at'
+		'submitted' => 'int'
 	];
 
 	protected $dates = [
-        'overtime_at',
-
+		'overtime_at',
+		'started_at',
+		'ended_at'
 	];
 }
