@@ -625,6 +625,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon $charged_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property int $repair_id
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge query()
@@ -635,6 +636,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereCostElement($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereRepairId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereSerial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereServiceOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CrossCharge whereText($value)
@@ -1310,6 +1312,7 @@ namespace App\Models\Base{
  * @property \Carbon\Carbon $charged_date
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int $repair_id
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge newQuery()
@@ -1321,6 +1324,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereCostElement($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereRepairId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereSerial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereServiceOrder($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\CrossCharge whereText($value)

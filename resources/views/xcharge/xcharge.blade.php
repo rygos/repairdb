@@ -16,11 +16,12 @@
         <form method="get" action="{{ action('XChargeController@index') }}" >
             @csrf
             <tr>
-                <td colspan="2">Date from: <input type="date" id="start" name="search-start">
+                <td colspan="2">Date from: <input type="date" id="start" name="search_start">
                 </td>
-                <td colspan="2">Date to: <input type="date" id="end" name="search-end"></td>
+                <td colspan="2">Date to: <input type="date" id="end" name="search_end"></td>
                 <td colspan="2">Customer:
-                    <select>
+                    <select name="customer" id="customer">
+                        <option value="all">All Customers</option>
                         @foreach($customers as $item)
                             <option value="{{ $item->id }}">{{ $item->customer }}</option>
                         @endforeach

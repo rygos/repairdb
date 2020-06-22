@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CallType;
 use App\Models\ClosingReason;
+use App\Models\CrossCharge;
 use App\Models\Customer;
 use App\Models\EeeeModel;
 use App\Models\KvaLimit;
@@ -274,19 +275,32 @@ Fremdverschulden: &#13;
     }
 
     public function changestate(Request $request){
+        //Save Status change to repair
         $rep = Repair::whereId($request->post('repair_id'))->first();
         $rep->closing_reason_id = $request->post('reason_id');
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 
+        //Get reason for status change
         $reason = ClosingReason::whereId($rep->closing_reason_id)->first();
 
+        //create repair log.
         $log = new ReapirLog;
         $log->log = 'Change Repair state to: '.$reason->reason;
         $log->repair_id = $rep->id;
         $log->user_id = \Auth::id();
         $log->closing_reason_id = $rep->closing_reason_id;
         $log->save();
+
+        //build crosscharge positions
+        //check for existing rows
+        $xcharge_check = CrossCharge::whereRepairId($rep->id)->get()->count();
+        if($xcharge_check != 0){
+            //check for status and ndf
+            if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
+                dd($rep->model->model_type_xcharge_id);
+            }
+        }
 
         return redirect()->action('RepairController@show', $rep->id);
     }

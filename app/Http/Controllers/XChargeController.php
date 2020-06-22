@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 
 class XChargeController extends Controller
 {
-    public function index(){
+    public function index($search_start = '', $search_end = '', $customer = ''){
         $data = CrossCharge::get();
         $customer = Customer::get()->sortBy('customer');
+
+        if($search_start != ''){
+
+        }
 
         return view('xcharge.xcharge',[
             'data' => $data,
