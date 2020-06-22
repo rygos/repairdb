@@ -295,6 +295,7 @@ Fremdverschulden: &#13;
 
         //get service order
         $rminst = Rminstzlb::whereId($rep->rminstzlb_id)->first()->rminst;
+        $model_type_id = Model::whereId($rep->model_id)->first()->model_type_xcharge_id;
 
         //build crosscharge positions
         //check for existing rows
@@ -302,9 +303,7 @@ Fremdverschulden: &#13;
         if($xcharge_check == 0){
             //check for status and ndf
             if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
-                $mtype = ModelTypesXcharge::whereId($rep->model()->model_type_xcharge_i)->first();
-
-                dd(Model::whereId($rep->model_id)->first()->model_type_xcharge_id);
+                $mtype = ModelTypesXcharge::whereId($model_type_id)->first();
 
                 $this->add_cross($rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
 
