@@ -14,7 +14,7 @@ class AddAccessRepairsFieldToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('access_repairs');
+            $table->integer('access_repairs')->default(0);
         });
     }
 

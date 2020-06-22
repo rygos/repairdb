@@ -1,3 +1,6 @@
+@extends('_layout')
+@section('title', 'Create new Repair')
+@section('content')
 @if(Auth::user()->access_xcharge == 1)
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
@@ -25,3 +28,4 @@
 @else
     <center>Access Denied.</center>
 @endif
+@endsection

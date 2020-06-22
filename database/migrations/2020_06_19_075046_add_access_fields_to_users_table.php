@@ -14,12 +14,12 @@ class AddAccessFieldsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('access_overtime');
-            $table->integer('access_xcharge');
-            $table->integer('access_scrape');
-            $table->integer('access_parts');
-            $table->integer('access_reports');
-            $table->integer('access_stats');
+            $table->integer('access_overtime')->default(0);
+            $table->integer('access_xcharge')->default(0);
+            $table->integer('access_scrape')->default(0);
+            $table->integer('access_parts')->default(0);
+            $table->integer('access_reports')->default(0);
+            $table->integer('access_stats')->default(0);
         });
     }
 
