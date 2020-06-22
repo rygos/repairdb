@@ -1,3 +1,4 @@
+@if(Auth::user()->access_scrape == 1)
 <table id='pouetbox_packlist' class="boxtable pagedtable">
     <tr class="sortable">
         <th>PACKAGE</th>
@@ -96,3 +97,7 @@
         </td>
     </tr>
 </table>
+
+@else
+    <center>Access Denied.</center>
+@endif

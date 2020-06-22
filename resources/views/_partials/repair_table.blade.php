@@ -1,3 +1,5 @@
+@if(Auth::user()->access_repairs == 1)
+
 <table id='pouetbox_prodlist' class='boxtable pagedtable'>
     <tr class='sortable'>
         <th>NO</th>
@@ -114,3 +116,7 @@
         </td>
     </tr>
 </table>
+
+@else
+    <center>Access Denied.</center>
+@endif

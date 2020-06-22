@@ -1,3 +1,4 @@
+@if(Auth::user()->access_spare == 1)
 <table id="pouetbox_prodlist" class="boxtable pagedtable">
     <tr class="sortable">
         <th>ID</th>
@@ -26,3 +27,6 @@
         </tr>
     @endforeach
 </table>
+@else
+    <center>Access Denied.</center>
+@endif
