@@ -1,6 +1,7 @@
 @extends('_layout')
 @section('title', 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb)
 @section('content')
+    @if(Auth::user()->access_xcharge == 1)
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
             <tbody>
@@ -450,4 +451,7 @@
             document.getElementById("sold").style.backgroundColor = "yellow";
         });
     </script>
+    @else
+        <center>Access Denied.</center>
+    @endif
 @endsection

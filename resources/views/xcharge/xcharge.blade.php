@@ -1,5 +1,5 @@
 @extends('_layout')
-@section('title', 'Create new Repair')
+@section('title', 'XCharge Report')
 @section('content')
 @if(Auth::user()->access_xcharge == 1)
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
@@ -12,6 +12,23 @@
             <th>Text</th>
             <th>Charged</th>
         </tr>
+
+        <form method="get" action="{{ action('XChargeController@index') }}" >
+            @csrf
+            <tr>
+                <td colspan="2">Date from: <input type="date" id="start" name="search-start">
+                </td>
+                <td colspan="2">Date to: <input type="date" id="end" name="search-end"></td>
+                <td colspan="2">Customer:
+                    <select>
+                        @foreach($customers as $item)
+                            <option value="{{ $item->id }}">{{ $item->customer }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+        </form>>
 
         @foreach($data as $item)
             <tr>
