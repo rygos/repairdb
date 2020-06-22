@@ -5,7 +5,9 @@
     <li><a href="{{ action('PartsController@create') }}">Add Spare</a></li>
     <li><a href="{{ action('ScrapeController@index') }}">Scrape</a></li>
     <li><a href="{{ action('StatsController@index') }}">Stats</a></li>
+    @if(Auth::user()->access_overtime == 1)
     <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
+    @endif
     <li>
         {!! Form::open(['method' => 'POST', 'action' => 'SearchController@searchProcess', 'style' => 'display: inline']) !!}
         {!! Form::text('term') !!}

@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 19 Jun 2020 07:58:41 +0000.
+ * Date: Mon, 22 Jun 2020 11:33:29 +0000.
  */
 
 namespace App\Models\Base;
@@ -26,6 +26,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $access_parts
  * @property int $access_reports
  * @property int $access_stats
+ * @property int $access_repairs
  * 
  * @property \Illuminate\Database\Eloquent\Collection $votes
  *
@@ -39,7 +40,8 @@ class User extends Eloquent
 		'access_scrape' => 'int',
 		'access_parts' => 'int',
 		'access_reports' => 'int',
-		'access_stats' => 'int'
+		'access_stats' => 'int',
+		'access_repairs' => 'int'
 	];
 
 	protected $dates = [

@@ -305,10 +305,12 @@ namespace App\Models{
  * @property int $access_parts
  * @property int $access_reports
  * @property int $access_stats
+ * @property int $access_repairs
  * @property-read int|null $notifications_count
  * @property-read int|null $options_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessParts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessRepairs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessReports($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessScrape($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\User whereAccessStats($value)
@@ -979,6 +981,7 @@ namespace App\Models\Base{
  * @property int $access_parts
  * @property int $access_reports
  * @property int $access_stats
+ * @property int $access_repairs
  * @property \Illuminate\Database\Eloquent\Collection $votes
  * @package App\Models\Base
  * @property-read int|null $votes_count
@@ -987,6 +990,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessParts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessRepairs($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessReports($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessScrape($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\User whereAccessStats($value)
