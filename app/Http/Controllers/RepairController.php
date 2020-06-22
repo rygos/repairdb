@@ -295,7 +295,7 @@ Fremdverschulden: &#13;
         //build crosscharge positions
         //check for existing rows
         $xcharge_check = CrossCharge::whereRepairId($rep->id)->get()->count();
-
+        dd($xcharge_check);
         if($xcharge_check != 0){
             //check for status and ndf
             dd($rep->closing_reason_id);
