@@ -281,6 +281,7 @@ Fremdverschulden: &#13;
         $rep->closing_reason_id = $request->post('reason_id');
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
+        dd($rep);
 
         //Get reason for status change
         $reason = ClosingReason::whereId($rep->closing_reason_id)->first();
