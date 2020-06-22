@@ -281,7 +281,6 @@ Fremdverschulden: &#13;
         $rep->closing_reason_id = $request->post('reason_id');
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
-        dd($rep->unit()->serial);
 
         //Get reason for status change
         $reason = ClosingReason::whereId($rep->closing_reason_id)->first();
@@ -306,19 +305,19 @@ Fremdverschulden: &#13;
             if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
                 $mtype = ModelTypesXcharge::whereId($model_type_id)->first();
 
-                $this->add_cross($rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
+                $this->add_cross($rminst, $rep->unit()->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
 
                 if($rep->closing_reason_id == 2){
                     $logfee = ModelTypesXcharge::whereId(1)->first();
                     $reversefee = ModelTypesXcharge::whereId(2)->first();
                     foreach ($rep->spares() as $sp){
-                        $this->add_cross($rminst, $rep->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
-                        $this->add_cross($rminst, $rep->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->unit()->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->unit()->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
                     }
 
                     if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
                         $kvafee = ModelTypesXcharge::whereId(3)->first();
-                        $this->add_cross($rminst, $rep->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->unit()->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
                     }
                 }
             }
