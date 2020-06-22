@@ -304,7 +304,7 @@ Fremdverschulden: &#13;
             if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
                 $mtype = ModelTypesXcharge::whereId($rep->model()->model_type_xcharge_i)->first();
 
-                dd($rep->model()->model_type_xcharge_i);
+                dd(Model::whereId($rep->model_id)->first()->model_type_xcharge_id);
 
                 $this->add_cross($rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
 
