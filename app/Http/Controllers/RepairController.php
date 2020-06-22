@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Console\Commands\repair\add;
 use App\Models\CallType;
 use App\Models\ClosingReason;
 use App\Models\CrossCharge;
@@ -298,11 +299,42 @@ Fremdverschulden: &#13;
         if($xcharge_check == 0){
             //check for status and ndf
             if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
-                dd($rep->model()->model_type_xcharge_id);
+                $mtype = ModelTypesXcharge::whereId($rep->model()->model_type_xcharge_i)->first();
+
+                $this->add_cross($rep->rminst->rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
+
+                if($rep->closing_reason_id == 2){
+                    $logfee = ModelTypesXcharge::whereId(1)->first();
+                    $reversefee = ModelTypesXcharge::whereId(2)->first();
+                    foreach ($rep->spares() as $sp){
+                        $this->add_cross($rep->rminst->rminst, $rep->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
+                        $this->add_cross($rep->rminst->rminst, $rep->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
+                    }
+
+                    if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
+                        $kvafee = ModelTypesXcharge::whereId(3)->first();
+                        $this->add_cross($rep->rminst->rminst, $rep->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
+                    }
+                }
             }
         }
 
         return redirect()->action('RepairController@show', $rep->id);
+    }
+
+    //Add Crosscharge to Table
+    function add_cross($so, $sn, $cc, $ce, $am, $text, $rep_id){
+        $c = new CrossCharge;
+        $c->service_order = $so;
+        $c->serial = $sn;
+        $c->cost_centre = $cc;
+        $c->cost_element = $ce;
+        $c->amount = $am;
+        $c->text = $text;
+        $c->repair_id = $rep_id;
+        $c->charged = 0;
+        $c->charged_date = Carbon::now();
+        $c->save();
     }
 
     public function changegorderno(Request $request){
