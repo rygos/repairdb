@@ -39,7 +39,7 @@
                 <td>{{ $item->cost_element }}</td>
                 <td>{{ $item->amount }}</td>
                 <td>{{ $item->text }}</td>
-                <td>{{ $item->charged }} ({{ $item->charged_date }})</td>
+                <td>{{ $item->charged }} @if($item->charged == 1)({{ $item->charged_date }})@endif</td>
             </tr>
         @endforeach
     </table>
