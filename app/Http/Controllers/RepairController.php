@@ -293,6 +293,9 @@ Fremdverschulden: &#13;
         $log->closing_reason_id = $rep->closing_reason_id;
         $log->save();
 
+        //get service order
+        $rminst = Rminstzlb::whereId($rep->rminstzlb_id)->first()->rminst;
+
         //build crosscharge positions
         //check for existing rows
         $xcharge_check = CrossCharge::whereRepairId($rep->id)->get()->count();
@@ -301,19 +304,19 @@ Fremdverschulden: &#13;
             if($rep->closing_reason_id == 2 or $rep->closing_reason_id == 11){
                 $mtype = ModelTypesXcharge::whereId($rep->model()->model_type_xcharge_i)->first();
 
-                $this->add_cross($rep->rminst->rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
+                $this->add_cross($rminst, $rep->serial, $mtype->cost_center, $mtype->cost_element, $mtype->ppi, $mtype->name, $rep->id);
 
                 if($rep->closing_reason_id == 2){
                     $logfee = ModelTypesXcharge::whereId(1)->first();
                     $reversefee = ModelTypesXcharge::whereId(2)->first();
                     foreach ($rep->spares() as $sp){
-                        $this->add_cross($rep->rminst->rminst, $rep->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
-                        $this->add_cross($rep->rminst->rminst, $rep->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
                     }
 
                     if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
                         $kvafee = ModelTypesXcharge::whereId(3)->first();
-                        $this->add_cross($rep->rminst->rminst, $rep->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
+                        $this->add_cross($rminst, $rep->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
                     }
                 }
             }
