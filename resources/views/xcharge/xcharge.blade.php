@@ -26,7 +26,7 @@
                         @endforeach
                     </select>
                 </td>
-                <td></td>
+                <td><button type="submit" value="Select">Select</button></td>
             </tr>
         </form>>
 
