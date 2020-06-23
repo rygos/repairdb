@@ -327,7 +327,7 @@
                                     <td>{{ Form::text('costs', $data->costs) }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Hersteller-Garntie:</td>
+                                    <td>Hersteller-Garantie:</td>
                                     <td>{{ Form::checkbox('warranty', $data->warranty) }}</td>
                                 </tr>
                                 <tr>
