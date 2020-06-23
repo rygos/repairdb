@@ -19,13 +19,13 @@
                 <td colspan="2">Date from: <input type="date" id="start" name="search_start" value="{{ $search_start->format('Y-m-d') }}">
                 </td>
                 <td colspan="2">Date to: <input type="date" id="end" name="search_end" value="{{ $search_end->format('Y-m-d') }}"></td>
-                <td colspan="2">Customer:
+                <td colspan="2">{{-- Customer:
                     <select name="customer" id="customer">
                         <option value="all">All Customers</option>
                         @foreach($customers as $item)
                             <option value="{{ $item->id }}">{{ $item->customer }}</option>
                         @endforeach
-                    </select>
+                    </select>--}}
                 </td>
                 <td><button type="submit" value="Select">Select</button></td>
             </tr>
