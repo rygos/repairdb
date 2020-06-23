@@ -303,21 +303,46 @@
                 </table>
             </div>
         </div>
-        <div class="pouettbl" id="pouet_repair_remarks" style="width: 100%">
+        <div class="pouettbl" id="pouet_repair_remarks" style="width: 100%; text-align: center;">
             <h2>Remarks</h2>
-            <div class="content" style=" text-align: center;">
-                {!! Form::open(['action' => 'RepairController@storeremark']) !!}
-                {!! Form::hidden('repair_id', $data->id) !!}
-                @if($data->remarks == '')
-                    {!! Form::textarea('remark', $remark_template, ['cols' => '100', 'id' => 'remark']) !!}
-                @else
-                    {!! Form::textarea('remark', $data->remarks, ['cols' => '100', 'id' => 'remark']) !!}
-                @endif
-                <br>
-                <button onclick="add_action()">Add Action</button>
-                {!! Form::submit('Submit') !!}
-                {!! Form::close() !!}
-            </div>
+            {!! Form::open(['action' => 'RepairController@storeremark']) !!}
+            {!! Form::hidden('repair_id', $data->id) !!}
+            <table>
+                <tr>
+                    <td>
+                        <div class="content" style=" text-align: center;">
+
+                            @if($data->remarks == '')
+                                {!! Form::textarea('remark', $remark_template, ['cols' => '100', 'id' => 'remark']) !!}
+                            @else
+                                {!! Form::textarea('remark', $data->remarks, ['cols' => '100', 'id' => 'remark']) !!}
+                            @endif
+                        </div>
+                    </td>
+                    <td>
+                        <div class="content">
+                            <table>
+                                <tr>
+                                    <td>Kostenpflichtig:</td>
+                                    <td>{{ Form::text('costs', $data->costs) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Hersteller-Garntie:</td>
+                                    <td>{{ Form::checkbox('warranty', $data->warranty) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Fremdverschulden:</td>
+                                    <td>{{ Form::checkbox('thirdpartydamage', $data->thirdpartydamage) }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button onclick="add_action()">Add Action</button>
+            {!! Form::submit('Submit') !!}
+            {!! Form::close() !!}
         </div>
 
         <div class="pouettbl" id="pouet_chage_status" style="width: 100%;">

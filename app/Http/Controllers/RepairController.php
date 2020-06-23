@@ -263,6 +263,9 @@ Fremdverschulden: &#13;
     public function storeremark(Request $request){
         $rep = Repair::whereId($request->post('repair_id'))->first();
         $rep->remarks = $request->post('remark');
+        $rep->costs = $request->post('costs');
+        $rep->warranty = $request->post('warranty');
+        $rep->thirdpartydamage = $request->post('thirdpartydamage');
         $rep->save();
 
         $log = new ReapirLog;

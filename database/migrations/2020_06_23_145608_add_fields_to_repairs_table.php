@@ -14,9 +14,9 @@ class AddFieldsToRepairsTable extends Migration
     public function up()
     {
         Schema::table('repairs', function (Blueprint $table) {
-            $table->decimal('costs');
-            $table->integer('warranty');
-            $table->integer('thirdpartydamage');
+            $table->decimal('costs')->nullable();
+            $table->integer('warranty')->nullable();
+            $table->integer('thirdpartydamage')->nullable();
         });
     }
 
