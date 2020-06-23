@@ -307,7 +307,7 @@
             <h2>Remarks</h2>
             {!! Form::open(['action' => 'RepairController@storeremark']) !!}
             {!! Form::hidden('repair_id', $data->id) !!}
-            <table>
+            <table class="boxtable" style="width: 100%">
                 <tr>
                     <td>
                         <div class="content" style=" text-align: center;">
