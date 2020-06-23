@@ -16,7 +16,7 @@ class XChargeController extends Controller
         if($request->get('search_start') == ''){
             $search_start = new Carbon('first day of this month');
         }else{
-            $search_start = $request->get('search_start');
+            $search_start = Carbon::parse($request->get('search_start'));
         }
 
         if($request->get('search_end') == ''){
