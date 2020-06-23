@@ -9,20 +9,20 @@ use Illuminate\Http\Request;
 
 class XChargeController extends Controller
 {
-    public function index($search_start = '', $search_end = '', $customer = ''){
+    public function index(Request $request, $search_start = '', $search_end = '', $customer = ''){
         //$data = CrossCharge::get();
         $customer = Customer::get()->sortBy('customer');
 
-        if($search_start == ''){
+        if($request->get('search_start') == ''){
             $search_start = new Carbon('first day of this month');
         }else{
-            $search_start = Carbon::parse($search_start);
+            $search_start = $request->get('search_start');
         }
 
-        if($search_end == ''){
+        if($request->get('search_end') == ''){
             $search_end = Carbon::now();
         }else{
-            $search_end = Carbon::parse($search_end);
+            $search_end = Carbon::parse($request->get('search_end'));
         }
 
         $data = CrossCharge::get()->whereBetween('created_at', [$search_start, $search_end]);
