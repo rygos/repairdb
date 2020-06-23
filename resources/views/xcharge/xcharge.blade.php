@@ -37,7 +37,7 @@
                 <td>{{ $item->serial }}</td>
                 <td>{{ $item->cost_centre }}</td>
                 <td>{{ $item->cost_element }}</td>
-                <td>{{ number_format($item->amount ,2) }}€</td>
+                <td align="right">{{ number_format($item->amount ,2) }}€</td>
                 <td>{{ $item->text }}</td>
                 <td>{{ $item->charged }} @if($item->charged == 1)({{ $item->charged_date }})@endif</td>
             </tr>
