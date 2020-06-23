@@ -25,7 +25,7 @@ class XChargeController extends Controller
             $search_end = Carbon::parse($request->get('search_end'));
         }
 
-        $data = CrossCharge::get()->whereBetween('created_at', [$search_start, $search_end]);
+        $data = CrossCharge::get()->whereBetween('created_at', [$search_start->addDays(-1), $search_end->addDay()]);
 
         return view('xcharge.xcharge',[
             'data' => $data,
