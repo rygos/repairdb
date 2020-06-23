@@ -30,8 +30,8 @@ class XChargeController extends Controller
         return view('xcharge.xcharge',[
             'data' => $data,
             'customers' => $customer,
-            'search_start' => $search_start,
-            'search_end' => $search_end,
+            'search_start' => $search_start->addDay(),
+            'search_end' => $search_end->addDays(-1),
         ]);
     }
 }
