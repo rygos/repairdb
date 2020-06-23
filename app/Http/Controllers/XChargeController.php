@@ -15,9 +15,14 @@ class XChargeController extends Controller
 
         if($search_start == ''){
             $search_start = new Carbon('first day of this month');
+        }else{
+            $search_start = Carbon::parse($search_start);
         }
+
         if($search_end == ''){
             $search_end = Carbon::now();
+        }else{
+            $search_end = Carbon::parse($search_end);
         }
 
         $data = CrossCharge::get()->whereBetween('created_at', [$search_start, $search_end]);
@@ -25,6 +30,8 @@ class XChargeController extends Controller
         return view('xcharge.xcharge',[
             'data' => $data,
             'customers' => $customer,
+            'search_start' => $search_start,
+            'search_end' => $search_end,
         ]);
     }
 }

@@ -16,9 +16,9 @@
         <form method="get" action="{{ action('XChargeController@index') }}" >
             @csrf
             <tr>
-                <td colspan="2">Date from: <input type="date" id="start" name="search_start" value="">
+                <td colspan="2">Date from: <input type="date" id="start" name="search_start" value="{{ $search_start->format('Y-m-d') }}">
                 </td>
-                <td colspan="2">Date to: <input type="date" id="end" name="search_end" value=""></td>
+                <td colspan="2">Date to: <input type="date" id="end" name="search_end" value="{{ $search_end->format('Y-m-d') }}"></td>
                 <td colspan="2">Customer:
                     <select name="customer" id="customer">
                         <option value="all">All Customers</option>
