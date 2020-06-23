@@ -1,7 +1,7 @@
 @extends('_layout')
 @section('title', 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb)
 @section('content')
-    @if(Auth::user()->access_repair == 1)
+    @if(Auth::user()->access_repairs == 1)
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
             <tbody>

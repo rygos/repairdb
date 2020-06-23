@@ -622,7 +622,7 @@ namespace App\Models{
  * @property float $amount
  * @property string $text
  * @property int $charged
- * @property \Illuminate\Support\Carbon $charged_date
+ * @property \Illuminate\Support\Carbon|null $charged_date
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property int $repair_id
@@ -1435,12 +1435,16 @@ namespace App\Models\Base{
  * @property string $g_no
  * @property int $order_no
  * @property int $user_id
+ * @property float $costs
+ * @property int $warranty
+ * @property int $thirdpartydamage
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereClosingReasonId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCosts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereCustomerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereGNo($value)
@@ -1452,9 +1456,11 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereRepairTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereRminstzlbId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereStartedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereThirdpartydamage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUnitId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Base\Repair whereWarranty($value)
  */
 	class Repair extends \Eloquent {}
 }
@@ -1550,6 +1556,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair query()
+ * @property float $costs
+ * @property int $warranty
+ * @property int $thirdpartydamage
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereCosts($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereThirdpartydamage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Repair whereWarranty($value)
  */
 	class Repair extends \Eloquent {}
 }

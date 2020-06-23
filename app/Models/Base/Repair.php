@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Mon, 22 Jun 2020 16:45:53 +0000.
+ * Date: Tue, 23 Jun 2020 15:36:57 +0000.
  */
 
 namespace App\Models\Base;
@@ -28,6 +28,9 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $g_no
  * @property int $order_no
  * @property int $user_id
+ * @property float $costs
+ * @property int $warranty
+ * @property int $thirdpartydamage
  *
  * @package App\Models\Base
  */
@@ -42,7 +45,10 @@ class Repair extends Eloquent
 		'closing_reason_id' => 'int',
 		'unit_id' => 'int',
 		'order_no' => 'int',
-		'user_id' => 'int'
+		'user_id' => 'int',
+		'costs' => 'float',
+		'warranty' => 'int',
+		'thirdpartydamage' => 'int'
 	];
 
 	protected $dates = [
