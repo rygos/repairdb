@@ -33,7 +33,7 @@
 
         @foreach($data as $item)
             <tr>
-                <td><a href="{{ action('RepairController@show', [$item->rep_id]) }}">{{ $item->service_order }}</a></td>
+                <td><a href="{{ action('RepairController@show', ['id' => $item->repair_id]) }}">{{ $item->service_order }}</a></td>
                 <td>{{ $item->serial }}</td>
                 <td>{{ $item->cost_centre }}</td>
                 <td>{{ $item->cost_element }}</td>
