@@ -338,11 +338,12 @@
                         </div>
                     </td>
                 </tr>
+                <tr colspan="2">
+                    <button onclick="add_action()">Add Action</button>
+                    {!! Form::submit('Submit') !!}
+                    {!! Form::close() !!}
+                </tr>
             </table>
-            <br>
-            <button onclick="add_action()">Add Action</button>
-            {!! Form::submit('Submit') !!}
-            {!! Form::close() !!}
         </div>
 
         <div class="pouettbl" id="pouet_chage_status" style="width: 100%;">
