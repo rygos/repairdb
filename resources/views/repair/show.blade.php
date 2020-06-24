@@ -338,10 +338,12 @@
                         </div>
                     </td>
                 </tr>
-                <tr colspan="2">
-                    <button onclick="add_action()">Add Action</button>
-                    {!! Form::submit('Submit') !!}
-                    {!! Form::close() !!}
+                <tr>
+                    <td colspan="2">
+                        <button onclick="add_action()">Add Action</button>
+                        {!! Form::submit('Submit') !!}
+                        {!! Form::close() !!}
+                    </td>
                 </tr>
             </table>
         </div>
