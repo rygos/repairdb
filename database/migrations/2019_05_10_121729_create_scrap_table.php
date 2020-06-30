@@ -22,7 +22,7 @@ class CreateScrapTable extends Migration
             $table->dateTime('scrape_date')->nullable();
             $table->timestamps();
 
-            $table->index('package');
+            //$table->index('package');
         });
     }
 

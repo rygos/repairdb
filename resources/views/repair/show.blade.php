@@ -339,7 +339,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="2" style="text-align: center">
                         <button onclick="add_action()">Add Action</button>
                         {!! Form::submit('Submit') !!}
                         {!! Form::close() !!}

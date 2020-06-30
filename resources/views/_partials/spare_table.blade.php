@@ -1,4 +1,4 @@
-@if(Auth::user()->access_spare == 1)
+@if(Auth::user()->access_parts == 1)
 <table id="pouetbox_prodlist" class="boxtable pagedtable">
     <tr class="sortable">
         <th>ID</th>
