@@ -27,6 +27,8 @@ class HomeController extends Controller
     {
         $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
 
+        dd($data);
+
         return view('home.index', [
             'data' => $data
         ]);
