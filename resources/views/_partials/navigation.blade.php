@@ -25,6 +25,10 @@
         <li><a href="{{ action('XChargeController@index') }}">XCharge</a></li>
     @endif
 
+    @if(Auth::user()->access_reports == 1)
+        <li><a href="{{ action('FakturaController@index') }}">Faktura</a></li>
+    @endif
+
     @if(Auth::user()->access_overtime == 1)
     <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
     @endif

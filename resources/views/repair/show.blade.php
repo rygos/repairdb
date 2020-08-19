@@ -328,11 +328,26 @@
                                 </tr>
                                 <tr>
                                     <td>Hersteller-Garantie:</td>
-                                    <td>{{ Form::checkbox('warranty', $data->warranty) }}</td>
+                                    <td>{{ Form::checkbox('warranty', ($data->warranty == 1), ($data->warranty == 1)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Fremdverschulden:</td>
-                                    <td>{{ Form::checkbox('thirdpartydamage', $data->thirdpartydamage) }}</td>
+                                    <td>{{ Form::checkbox('thirdpartydamage', ($data->thirdpartydamage == 1), ($data->thirdpartydamage == 1)) }}</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table>
+                                <tr>
+                                    <td>KVA-Attachment:</td>
+                                    <td>WIP</td>
+                                </tr>
+                                <tr>
+                                    <td>KVA-Fee:</td>
+                                    <td>{{ Form::checkbox('kva_costs', ($data->kva_fee == 1), ($data->kva_fee == 1)) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>KVA-Total Costs:</td>
+                                    <td>{{ Form::text('kva_costs', $data->kva_costs) }}</td>
                                 </tr>
                             </table>
                         </div>

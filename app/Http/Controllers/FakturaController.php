@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repair;
 use Illuminate\Http\Request;
 
 class FakturaController extends Controller
 {
     public function index(){
-        return "lol";
+        $data = Repair::orderByDesc('id')->get()->take(10);
+
+        return view('faktura.index', [
+            'data' => $data,
+        ]);
     }
 }

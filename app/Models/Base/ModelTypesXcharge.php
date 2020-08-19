@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 23 Jun 2020 15:36:57 +0000.
+ * Date: Wed, 19 Aug 2020 07:55:25 +0000.
  */
 
 namespace App\Models\Base;
@@ -28,8 +28,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class ModelTypesXcharge extends Eloquent
 {
 	protected $table = 'model_types_xcharge';
+	public $incrementing = false;
 
 	protected $casts = [
+		'id' => 'int',
 		'ppi' => 'float',
 		'per_part' => 'int',
 		'per_call' => 'int'

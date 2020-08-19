@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Tue, 23 Jun 2020 15:36:57 +0000.
+ * Date: Wed, 19 Aug 2020 07:55:25 +0000.
  */
 
 namespace App\Models\Base;
@@ -27,8 +27,6 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $access_reports
  * @property int $access_stats
  * @property int $access_repairs
- * 
- * @property \Illuminate\Database\Eloquent\Collection $votes
  *
  * @package App\Models\Base
  */
@@ -47,9 +45,4 @@ class User extends Eloquent
 	protected $dates = [
 		'email_verified_at'
 	];
-
-	public function votes()
-	{
-		return $this->hasMany(\App\Models\Vote::class);
-	}
 }

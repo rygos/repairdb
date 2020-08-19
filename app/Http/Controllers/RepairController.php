@@ -208,10 +208,6 @@ class RepairController extends Controller
 Gemeldet: &#13;
 Diagnose: &#13;
 MRI: &#13;
--------------
-Kostenpflichtig: EUR &#13;
-Hersteller-Garantie: &#13;
-Fremdverschulden: &#13;
 ';
 
         $replog = ReapirLog::whereRepairId($data->id)->get();
@@ -261,15 +257,34 @@ Fremdverschulden: &#13;
     }
 
     public function storeremark(Request $request){
+        $warranty = 0;
+        $thirdpartydamage = 0;
+        $kva_fee = 0;
+        if($request->has('warranty')){
+            $warranty = 1;
+        }
+
+        if($request->has('thirdpartydamage')){
+            $thirdpartydamage = 1;
+        }
+
+        if($request->has('kva_costs')){
+            $kva_fee = 1;
+        }
+
         $rep = Repair::whereId($request->post('repair_id'))->first();
         $rep->remarks = $request->post('remark');
         $rep->costs = str_replace(",", ".", $request->post('costs'));
-        $rep->warranty = $request->post('warranty');
-        $rep->thirdpartydamage = $request->post('thirdpartydamage');
+        $rep->warranty = $warranty;
+        $rep->thirdpartydamage = $thirdpartydamage;
+        $rep->kva_fee = $kva_fee;
+        $rep->kva_costs = str_replace(",", ".", $request->post('kva_costs'));
         $rep->save();
 
         $log = new ReapirLog;
-        $log->log = 'Remarks updated to: <br>'.$rep->remarks;
+        $log->log = 'Remarks updated to: <br>'.$rep->remarks.'<br>
+Warranty = '.$warranty. '<br>
+Thirdparty damage = '.$thirdpartydamage;
         $log->repair_id = $rep->id;
         $log->user_id = \Auth::id();
         $log->closing_reason_id = $rep->closing_reason_id;
