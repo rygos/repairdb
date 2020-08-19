@@ -64,3 +64,5 @@ Route::get('xcharge/{search_start?}/{search_end?}/{customer?}', 'XChargeControll
 
 Route::get('report/garantie', 'ReportController@garantie');
 
+Route::get('faktura', 'FakturaController@index');
+
