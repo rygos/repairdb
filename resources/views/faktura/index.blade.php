@@ -13,6 +13,9 @@
                 <th>KVA Doc.</th>
                 <th>KVA Fee</th>
                 <th>KVA Total</th>
+                <th>H.Garantie</th>
+                <th>Kd.verschulden</th>
+                <th>Ersa Kosten</th>
                 <th>XCharge Total</th>
             </tr>
 
@@ -25,8 +28,11 @@
                     <td>{{ $item->user()->name }}</td>
                     <td>{{ $item->remarks }}</td>
                     <td>WIP</td>
-                    <td>{{ ($item->kva_fee == 1) }}</td>
+                    <td>{{ ($item->kva_fee == 1) ? "Ja" : "Nein" }}</td>
                     <td>{{ $item->kva_costs }}</td>
+                    <td>{{ ($item->warranty) ? "Ja" : "Nein" }}</td>
+                    <td>{{ ($item->thirdpartydamage) ? "Ja" : "Nein" }}</td>
+                    <td>{{ $item->costs }}</td>
                     @php
                         $total = 0;
                         $x = \App\Models\CrossCharge::whereRepairId($item->id)->get();
