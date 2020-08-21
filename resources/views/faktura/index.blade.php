@@ -17,6 +17,7 @@
                 <th>Kd.verschulden</th>
                 <th>Ersa Kosten</th>
                 <th>XCharge Total</th>
+                <th>Status</th>
             </tr>
 
             @foreach($data as $item)
@@ -42,6 +43,48 @@
                         $total += $item->costs;
                     @endphp
                     <td>{{ $total }}</td>
+                    @if(!$item->closing_reason_id)
+                        <td style="background-color: green; color: white;">NEW</td>
+                    @else
+                        @php $reason = \App\Models\ClosingReason::whereId($item->closing_reason_id)->first()->reason; @endphp
+                        @switch ($reason)
+                            @case('DOA')
+                            <td style="background-color: red; color: white;">DOA</td>
+                            @break
+                            @case('WIB')
+                            <td style="background-color: yellow; color: black;">WIB</td>
+                            @break
+                            @case('ORDERED')
+                            <td style="background-color: orange; color: green">ORDERED</td>
+                            @break
+                            @case('SUCCESS')
+                            <td style="background-color: green;">SUCCESS</td>
+                            @break
+                            @case('NDF')
+                            <td style="background-color: green;">NDF</td>
+                            @break
+                            @case('WAIT FOR INFO')
+                            <td style="background-color: blue;">WAIT FOR INFO</td>
+                            @break
+                            @case('KVA')
+                            <td style="background-color: purple;">KVA</td>
+                            @break
+                            @case('MAIL-IN')
+                            <td style="background-color: hotpink; color: white;">MAIL-IN</td>
+                            @break
+                            @case('REPAIR HH')
+                            <td style="background-color: white; color: black;">REPAIR HH</td>
+                            @break
+                            @case('KVA - ABGELEHNT')
+                            <td style="background-color: purple;color:red;">KVA - ABGELEHNT</td>
+                            @break
+                            @case('KVA - GENEHMIGT')
+                            <td style="background-color: purple;color:green">KVA - GENEHMIGT</td>
+                            @break
+                            @default
+                            <td>{{ $reason }}</td>
+                        @endswitch
+                    @endif
                 </tr>
             @endforeach
         </table>
