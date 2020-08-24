@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Base\CrossCharge;
 use App\Models\Repair;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,6 +12,28 @@ class ReportController extends Controller
 {
     public function index(){
 
+    }
+
+    public function xcharge(){
+        $x = CrossCharge::get();
+
+        $res = array();
+        $ret = "kostenstelle;serviceorder;k-art;betrag;text".PHP_EOL;
+
+        foreach ($x as $i){
+            $t['kostenstelle'] = $i->cost_centre;
+            $t['serviceorder'] = $i->service_order;
+            $t['k-art'] = $i->cost_element;
+            $t['betrag'] = $i->amount;
+            $t['text'] = $i->text;
+
+            $res[] = $t;
+            $ret .= $t['kostenstelle'].';'.$t['serviceorder'].';'.$t['k-art'].';'.$t['betrag'].';'.$t['text'].PHP_EOL;
+        }
+
+        echo "<pre>";
+        echo $ret;
+        echo "</pre>";
     }
 
     public function garantie(){

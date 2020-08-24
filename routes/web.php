@@ -63,6 +63,7 @@ Route::post('scrape/store', 'ScrapeController@store');
 Route::get('xcharge/{search_start?}/{search_end?}/{customer?}', 'XChargeController@index');
 
 Route::get('report/garantie', 'ReportController@garantie');
+Route::get('report/xcharge', 'ReportController@xcharge');
 
 Route::get('faktura', 'FakturaController@index');
 
