@@ -343,7 +343,7 @@
                                 </tr>
                                 <tr>
                                     <td>KVA-Fee:</td>
-                                    <td>{{ Form::checkbox('kva_costs', ($data->kva_fee == 1), ($data->kva_fee == 1)) }}</td>
+                                    <td>{{ Form::checkbox('kva_fee', ($data->kva_fee == 1), ($data->kva_fee == 1)) }}</td>
                                 </tr>
                                 <tr>
                                     <td>KVA-Total Costs:</td>

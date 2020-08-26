@@ -268,7 +268,7 @@ MRI: &#13;
             $thirdpartydamage = 1;
         }
 
-        if($request->has('kva_costs')){
+        if($request->has('kva_fee')){
             $kva_fee = 1;
         }
 
