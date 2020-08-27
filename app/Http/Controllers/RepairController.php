@@ -328,10 +328,17 @@ Thirdparty damage = '.$thirdpartydamage;
                 if($rep->closing_reason_id == 2){
                     $logfee = ModelTypesXcharge::whereId(1)->first();
                     $reversefee = ModelTypesXcharge::whereId(2)->first();
+                    $has_spares = 0;
                     foreach ($rep->spares() as $sp){
                         $this->add_cross($rminst, $rep->unit()->serial, $logfee->cost_center, $logfee->cost_element, $logfee->ppi, $logfee->name, $rep->id);
                         $this->add_cross($rminst, $rep->unit()->serial, $reversefee->cost_center, $reversefee->cost_element, $reversefee->ppi, $reversefee->name, $rep->id);
+                        $has_spares = 1;
                     }
+
+                    if($has_spares == 1){
+                        $this->add_cross($rminst, $rep->unit()->serial, 'DECPP00010', '610201', $rep->costs, 'Spare part costs', $rep->id);
+                    }
+
 
                     if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
                         $kvafee = ModelTypesXcharge::whereId(3)->first();
