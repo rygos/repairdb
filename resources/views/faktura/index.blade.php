@@ -5,6 +5,7 @@
         <table id="pouetbox_prodlist" class="boxtable pagedtable">
             <tr class="sortable">
                 <th>ServiceOrder</th>
+                <th>G-No.</th>
                 <th>Customer</th>
                 <th>Serial Number</th>
                 <th>Model</th>
@@ -23,6 +24,7 @@
             @foreach($data as $item)
                 <tr>
                     <td><a href="{{ action('RepairController@show', ['id' => $item->id]) }}">{{ $item->rminst()->rminst }}</a></td>
+                    <td>{{ $item->g_no }}</td>
                     <td>{{ $item->customer()->customer }}</td>
                     <td>{{ $item->unit()->serial }}</td>
                     <td>{{ $item->model()->model }}</td>
