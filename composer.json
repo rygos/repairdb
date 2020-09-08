@@ -15,7 +15,8 @@
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "^5.4.0",
         "nunomaduro/laravel-console-menu": "^2.0",
-        "reliese/laravel": "^0.0.13"
+        "reliese/laravel": "^0.0.13",
+      "ext-intl": "*"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

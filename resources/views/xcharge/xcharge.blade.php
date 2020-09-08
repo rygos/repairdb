@@ -42,6 +42,12 @@
                 <td>{{ $item->charged }} @if($item->charged == 1)({{ $item->charged_date }})@endif</td>
             </tr>
         @endforeach
+
+        <tr>
+            <td colspan="4"></td>
+            <td><a href="{{ action('XChargeController@export', ['export_type' => 'handling']) }}">Handling-Fee Export</a></td>
+            <td><a href="{{ action('XChargeController@export', ['export_type' => 'central']) }}">Central Repair Export</a></td>
+        </tr>
     </table>
 @else
     <center>Access Denied.</center>
