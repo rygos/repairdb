@@ -42,7 +42,6 @@
                         foreach($x as $xi){
                             $total += $xi->amount;
                         }
-                        $total += $item->costs;
                     @endphp
                     <td>{{ $total }}</td>
                     @if(!$item->closing_reason_id)

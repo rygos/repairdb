@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class FakturaController extends Controller
 {
     public function index(){
-        $data = Repair::orderByDesc('id')->get()->take(10);
+        $data = Repair::orderByDesc('id')->get()->take(50);
 
         return view('faktura.index', [
             'data' => $data,

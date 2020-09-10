@@ -344,10 +344,10 @@ Thirdparty damage = '.$thirdpartydamage;
                     }
 
                     //add fee for kva
-                    if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
-                        $kvafee = ModelTypesXcharge::whereId(3)->first();
-                        $this->add_cross($rminst, $rep->unit()->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
-                    }
+//                    if(ReapirLog::whereRepairId($rep->id)->where('closing_reason_id', '=', 13)->count() != 0){
+//                        $kvafee = ModelTypesXcharge::whereId(3)->first();
+//                        $this->add_cross($rminst, $rep->unit()->serial, $kvafee->cost_center, $kvafee->cost_element, $kvafee->ppi, $kvafee->name, $rep->id);
+//                    }
                 }
             }
         }
