@@ -316,7 +316,9 @@ Thirdparty damage = '.$thirdpartydamage;
         $model_type_id = Model::whereId($rep->model_id)->first()->model_type_xcharge_id;
 
         //build crosscharge positions
-        //check for existing rows
+        //delete existing Charges (prevent missing or double rows)
+        CrossCharge::whereRepairId($rep->id)->delete();
+        //check for existing rows (normally not needed because of delete above)
         $xcharge_check = CrossCharge::whereRepairId($rep->id)->get()->count();
         if($xcharge_check == 0){
             //check for status and ndf

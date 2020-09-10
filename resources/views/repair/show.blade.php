@@ -387,7 +387,11 @@
                             @else
                                 @if(substr($i->reason, 0, 5) != 'KVA -')
                                     <td>
-                                        {!! Form::open(['action' => 'RepairController@changestate']) !!}
+                                        @if($i->reason == "SUCCESS" or $i->reason == "NDF")
+                                            {{ Form::open(['action' => 'RepairController@changestate', 'onsubmit' => "return confirm('Ist der Auftrag wirklich abgeschlossen?');"]) }}
+                                        @else
+                                            {!! Form::open(['action' => 'RepairController@changestate']) !!}
+                                        @endif
                                         {!! Form::hidden('repair_id', $data->id) !!}
                                         {!! Form::hidden('reason_id', $i->id) !!}
                                         {!! Form::submit($i->reason, ['style' => 'margin-left: 15px; margin-right: 15px']) !!}
