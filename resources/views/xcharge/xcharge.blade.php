@@ -4,6 +4,7 @@
 @if(Auth::user()->access_xcharge == 1)
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
+            <th>Rep. End Date</th>
             <th>SeriveOrder</th>
             <th>Serial</th>
             <th>Cost Centre</th>
@@ -19,7 +20,7 @@
                 <td colspan="2">Date from: <input type="date" id="start" name="search_start" value="{{ $search_start->format('Y-m-d') }}">
                 </td>
                 <td colspan="2">Date to: <input type="date" id="end" name="search_end" value="{{ $search_end->format('Y-m-d') }}"></td>
-                <td colspan="2">{{-- Customer:
+                <td colspan="3">{{-- Customer:
                     <select name="customer" id="customer">
                         <option value="all">All Customers</option>
                         @foreach($customers as $item)
@@ -33,6 +34,7 @@
 
         @foreach($data as $item)
             <tr>
+                <td>{{ $item->created_at }}</td>
                 <td><a href="{{ action('RepairController@show', ['id' => $item->repair_id]) }}">{{ $item->service_order }}</a></td>
                 <td>{{ $item->serial }}</td>
                 <td>{{ $item->cost_centre }}</td>
@@ -44,7 +46,7 @@
         @endforeach
 
         <tr>
-            <td colspan="4"></td>
+            <td colspan="6"></td>
             <td><a href="{{ action('XChargeController@export', ['export_type' => 'handling']) }}">Handling-Fee Export</a></td>
             <td><a href="{{ action('XChargeController@export', ['export_type' => 'central']) }}">Central Repair Export</a></td>
         </tr>
