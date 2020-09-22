@@ -137,17 +137,13 @@ class PartsController extends Controller
     }
 
     public function addToRepair(Request $request, $repair_id){
-        $sap = $request->get('spare');
-        $spare = Spare::whereSapNo($sap)->first();
+        $spareno = $request->get('spare');
+
+        $spare = Spare::whereManufacturerPartNo($spareno)->first();
         if($spare){
             $spare_id = $spare->id;
         }else{
-            $spare = Spare::whereManufacturerPartNo($sap)->first();
-            if($spare){
-                $spare_id = $spare->id;
-            }else{
-                return \Redirect::action('RepairController@show', $repair_id);
-            }
+            return \Redirect::action('RepairController@show', $repair_id);
         }
 
         $sr = new SparesToRepair;
