@@ -25,7 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
+        //$data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
+        $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2, 11, 15])->orderBy('id')->get();
 
         //dd($data);
 
@@ -35,7 +36,7 @@ class HomeController extends Controller
     }
 
     public function index_all(){
-        $data = Repair::whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
+        $data = Repair::whereNotIn('closing_reason_id', [2, 11, 15])->orWhereNull('closing_reason_id')->orderBy('id')->get();
 
         return view('home.index', [
             'data' => $data
@@ -50,7 +51,7 @@ class HomeController extends Controller
             $res_rminst_ids[] = $i->id;
         }
 
-        $data = Repair::whereIn('rminstzlb_id', $res_rminst_ids)->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
+        $data = Repair::whereIn('rminstzlb_id', $res_rminst_ids)->whereNotIn('closing_reason_id', [2,11,15])->orderBy('id')->get();
 
         return view('home.index', [
             'data' => $data
