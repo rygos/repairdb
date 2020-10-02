@@ -196,7 +196,7 @@ class RepairController extends Controller
             ->orderBy('sap_desc')->get();
         $spares_res = array();
         foreach($spares as $i){
-            $spares_res[$i->sap_no] = $i->sap_no.' - '. $i->sap_desc.' ('.$i->manufacturer_part_no.')';
+            $spares_res[$i->manufacturer_part_no] = $i->manufacturer_part_no.' - '. $i->manufacturer_part_desc;
         }
 
         $kva = KvaLimit::where('customer_id', '=', $data->customer_id)

@@ -21,6 +21,25 @@
                 <th>Status</th>
             </tr>
 
+            <form method="get" action="{{ action('FakturaController@index') }}" >
+                @csrf
+                <tr>
+                    <td colspan="3">Date from: <input type="date" id="start" name="search_start" value="{{ $search_start->format('Y-m-d') }}">
+                    </td>
+                    <td colspan="3">Date to: <input type="date" id="end" name="search_end" value="{{ $search_end->format('Y-m-d') }}"></td>
+                    <td colspan="1">Customer:
+                    <select name="customer" id="customer">
+                        <option value="all">All Customers</option>
+                        @foreach($customers as $item)
+                            <option value="{{ $item->id }}">{{ $item->customer }}</option>
+                        @endforeach
+                    </select>
+                    </td>
+                    <td><button type="submit" value="Select">Select</button></td>
+                    <td colspan="7"></td>
+                </tr>
+            </form>
+
             @foreach($data as $item)
                 <tr>
                     <td><a href="{{ action('RepairController@show', ['id' => $item->id]) }}">{{ $item->rminst()->rminst }}</a></td>

@@ -20,11 +20,11 @@ class XChargeController extends Controller
 
         if($export_type == "handling"){
             $data = CrossCharge::whereCharged(0)->where('text', 'not like', "CENTRAL%")->get();
-            $filename = 'export_handling.csv';
+            $filename = date("Y-m-d").'_export_handling.csv';
             $content .= 'Kostenstelle;Serviceorder;Kostenart;Betrag;Text'.PHP_EOL;
         }elseif($export_type == "central"){
             $data = CrossCharge::whereCharged(0)->where('text', 'LIKE', "CENTRAL%")->get();
-            $filename = 'export_central.csv';
+            $filename = date("Y-m-d").'_export_central.csv';
             $content .= 'Kostenstelle;Serviceorder;Leistungsart;Betrag;Text'.PHP_EOL;
         }
 
@@ -42,13 +42,14 @@ class XChargeController extends Controller
             $betrag = number_format($i->amount,2, ",", ".");
             $text = $i->text;
 
-            //$i->charged = 1;
-            //$i->charged_date = Carbon::now();
+            //charged
+            $i->charged = 1;
+            $i->charged_date = Carbon::now();
             if($i->amount != 0){
                 $content .= $kostenstelle.';'.$serviceorder.';'.$kostenart.';'.$betrag.';'.$text.PHP_EOL;
             }
 
-            //$i->save();
+            $i->save();
         }
 
 
@@ -60,6 +61,22 @@ class XChargeController extends Controller
         return \Response::make($content, 200, $headers);
 
         //return $content;
+    }
+
+    public function charged_undone($id){
+        if(\Auth::check()){
+            if(\Auth::user()->access_xcharge){
+                $xc = CrossCharge::whereId($id)->first();
+                $xc->charged = 0;
+                $xc->save();
+
+                return action('XChargeController@index');
+            }else{
+                return action('HomeController@index');
+            }
+        }else{
+            return action('HomeController@index');
+        }
     }
 
     public function index(Request $request, $search_start = '', $search_end = ''){

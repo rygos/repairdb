@@ -62,10 +62,13 @@ Route::post('scrape/store', 'ScrapeController@store');
 
 Route::get('xcharge/export/{export_type}', 'XChargeController@export');
 Route::get('xcharge/reactivate/{id}', 'XChargeController@reactivate');
+Route::get('xcharge/charged_undone{id}', 'XChargeController@charged_undone');
 Route::get('xcharge/{search_start?}/{search_end?}/{customer?}', 'XChargeController@index');
 
 Route::get('report/garantie', 'ReportController@garantie');
 Route::get('report/xcharge', 'ReportController@xcharge');
 
-Route::get('faktura', 'FakturaController@index');
+
+//Route::get('faktura', 'FakturaController@index');
+Route::get('faktura/{search_start?}/{search_end?}/{customer?}', 'FakturaController@index');
 

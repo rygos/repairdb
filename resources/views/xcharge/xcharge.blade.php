@@ -41,7 +41,7 @@
                 <td>{{ $item->cost_element }}</td>
                 <td align="right">{{ number_format($item->amount ,2) }}€</td>
                 <td>{{ $item->text }}</td>
-                <td>{{ $item->charged }} @if($item->charged == 1)({{ $item->charged_date }})@endif</td>
+                <td>@if($item->charged == 1){{__('Yes')}} ({{ $item->charged_date->format('Y-m-d') }}) <a href="{{ action('XChargeController@charged_undone', [$item->id]) }}">{{__('undone')}}</a>@else {{__('No')}} @endif</td>
             </tr>
         @endforeach
 
@@ -52,6 +52,6 @@
         </tr>
     </table>
 @else
-    <center>Access Denied.</center>
+    <center>{{ __('Access Denied.') }}</center>
 @endif
 @endsection
