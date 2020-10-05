@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class User
- * 
+ *
  * @property int $id
  * @property string $name
  * @property string $email
@@ -27,6 +27,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $access_reports
  * @property int $access_stats
  * @property int $access_repairs
+ * @property int $access_admin
+ * @property string $location
  *
  * @package App\Models\Base
  */
@@ -39,7 +41,8 @@ class User extends Eloquent
 		'access_parts' => 'int',
 		'access_reports' => 'int',
 		'access_stats' => 'int',
-		'access_repairs' => 'int'
+		'access_repairs' => 'int',
+        'access_admin' => 'int',
 	];
 
 	protected $dates = [

@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Repair
- * 
+ *
  * @property int $id
  * @property \Carbon\Carbon $started_at
  * @property int $rminstzlb_id
@@ -33,6 +33,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $thirdpartydamage
  * @property int $kva_fee
  * @property float $kva_costs
+ * @property string $location
  *
  * @package App\Models\Base
  */

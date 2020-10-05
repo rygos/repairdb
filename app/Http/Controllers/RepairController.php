@@ -168,6 +168,7 @@ class RepairController extends Controller
 
         $r->unit_id = insert_unit($request->post('serial'), $r->manufacturer_id, $r->model_id, $r->customer_id);
         $r->user_id = \Auth::id();
+        $r->location = \Auth::user()->location;
         $r->save();
 
         $log = new ReapirLog;
