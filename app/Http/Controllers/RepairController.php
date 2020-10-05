@@ -208,6 +208,7 @@ class RepairController extends Controller
 ------------&#13;
 Gemeldet: &#13;
 Diagnose: &#13;
+Zustand/Wasserschaden: &#13;
 MRI: &#13;
 ';
 
