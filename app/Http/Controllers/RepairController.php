@@ -262,6 +262,7 @@ MRI: &#13;
         $warranty = 0;
         $thirdpartydamage = 0;
         $kva_fee = 0;
+        $cc_warranty = 0;
         if($request->has('warranty')){
             $warranty = 1;
         }
@@ -274,6 +275,10 @@ MRI: &#13;
             $kva_fee = 1;
         }
 
+        if($request->has('cc_warranty')){
+            $cc_warranty = 1;
+        }
+
         $rep = Repair::whereId($request->post('repair_id'))->first();
         $rep->remarks = $request->post('remark');
         $rep->costs = str_replace(",", ".", $request->post('costs'));
@@ -281,6 +286,7 @@ MRI: &#13;
         $rep->thirdpartydamage = $thirdpartydamage;
         $rep->kva_fee = $kva_fee;
         $rep->kva_costs = str_replace(",", ".", $request->post('kva_costs'));
+        $rep->cc_warranty = $cc_warranty;
         $rep->save();
 
         $log = new ReapirLog;

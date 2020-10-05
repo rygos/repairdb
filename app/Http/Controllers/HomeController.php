@@ -36,7 +36,7 @@ class HomeController extends Controller
     }
 
     public function index_all(){
-        $data = Repair::whereNotIn('closing_reason_id', [2, 11, 15])->orWhereNull('closing_reason_id')->orderBy('id')->get();
+        $data = Repair::where('location', '=', \Auth::user()->location)->whereNotIn('closing_reason_id', [2, 11, 15])->orWhereNull('closing_reason_id')->orderBy('id')->get();
 
         return view('home.index', [
             'data' => $data
@@ -44,7 +44,7 @@ class HomeController extends Controller
     }
 
     public function index_active_hh(){
-        $res_rminst = Rminstzlb::where('calltype_id', '=', 6)->get();
+        $res_rminst = Rminstzlb::where('location', '=', 'DEHH')->get();
         $res_rminst_ids = array();
 
         foreach($res_rminst as $i){

@@ -34,6 +34,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property int $kva_fee
  * @property float $kva_costs
  * @property string $location
+ * @property int $cc_warranty
  *
  * @package App\Models\Base
  */
@@ -53,7 +54,8 @@ class Repair extends Eloquent
 		'warranty' => 'int',
 		'thirdpartydamage' => 'int',
 		'kva_fee' => 'int',
-		'kva_costs' => 'float'
+		'kva_costs' => 'float',
+        'cc_warranty' => 'int',
 	];
 
 	protected $dates = [
