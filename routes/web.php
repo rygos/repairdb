@@ -29,6 +29,9 @@ Route::post('repair/storeremark', 'RepairController@storeremark');
 Route::post('repair/changegorderno', 'RepairController@changegorderno');
 Route::post('repair/changestate', 'RepairController@changestate');
 Route::post('repair/update_so', 'RepairController@update_so');
+Route::post('repair/upload-kva', 'RepairController@upload_kva');
+Route::get('repair/kva_download/{file_id}', 'RepairController@download_kva');
+Route::get('repair/kva_delete/{file_id}', 'RepairController@delete_kva');
 
 Route::get('spare', 'PartsController@index');
 Route::get('spare/create', 'PartsController@create');
@@ -72,3 +75,9 @@ Route::get('report/xcharge', 'ReportController@xcharge');
 //Route::get('faktura', 'FakturaController@index');
 Route::get('faktura/{search_start?}/{search_end?}/{customer?}', 'FakturaController@index');
 
+
+
+//Maintenance Routes
+Route::get('maint/link', function () {
+   Artisan::call('storage:link');
+});

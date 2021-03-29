@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Base\User;
 use App\Models\CallType;
 use App\Models\ClosingReason;
 use App\Models\Customer;
@@ -173,58 +174,7 @@ class run extends Command
     }
 
     private function rep_view_open($with_edit_menu = false){
-        //Closing Reason ID 2 = REPAIRED
-        $data = Repair::whereNotIn('closing_reason_id', [2])->orWhereNull('closing_reason_id')->orderBy('started_at')->get();
-
-        $header = [
-            'ID',
-            'ZLB DATE',
-            'START DATE',
-            'CALL-TYPE',
-            'RMINST',
-            'ZLB',
-            'CUSTOMER',
-            'SERIAL',
-            'MANUFACTURER',
-            'MODEL',
-            'REP-TYPE',
-            'STATUS',
-            'REMARKS'
-        ];
-
-        $ret = array();
-        foreach ($data as $item){
-            $t['id'] = $item->id;
-            $t['zlb date'] = Carbon::parse($item->rminst()->zlb_created_at)->toDateString();
-            $t['start date'] = Carbon::parse($item->started_at)->toDateString();
-            $t['call-type'] = $item->rminst()->calltype()->type;
-            $t['rminst'] = $item->rminst()->rminst;
-            $t['zlb'] = $item->rminst()->zlb;
-            $t['customer'] = $item->customer()->customer;
-            $t['serial'] = $item->unit()->serial;
-            $t['manufacturer'] = $item->manufacturer()->manufacturer;
-            $t['model'] = $item->model()->model;
-            $t['rep-type'] = $item->reptype()->type;
-            if(!$item->closing_reason_id){
-                $t['status'] = '<info>NEW</info>';
-            }else{
-                $reason = ClosingReason::whereId($item->closing_reason_id)->first()->reason;
-                switch ($reason){
-                    case 'DOA':
-                        $reason = '<error>'.$reason.'</error>';
-                        break;
-                    case 'WIB':
-                        $reason = '<bg=yellow;fg=black>'.$reason.'</>';
-                        break;
-
-                }
-                $t['status'] = $reason;
-            }
-            $t['remarks'] = $item->remarks;
-            $ret[] = $t;
-        }
-
-        $this->table($header, $ret);
+        dd(User::whereId(1)->get());
 
         if($with_edit_menu == true){
             $this->edit_menu();

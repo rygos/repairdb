@@ -331,6 +331,10 @@
                                     <td>{{ Form::checkbox('warranty', ($data->warranty == 1), ($data->warranty == 1)) }}</td>
                                 </tr>
                                 <tr>
+                                    <td>CC-Garantie:</td>
+                                    <td>{{ Form::checkbox('cc_warranty', ($data->cc_warranty == 1), ($data->cc_warranty == 1)) }}</td>
+                                </tr>
+                                <tr>
                                     <td>Fremdverschulden:</td>
                                     <td>{{ Form::checkbox('thirdpartydamage', ($data->thirdpartydamage == 1), ($data->thirdpartydamage == 1)) }}</td>
                                 </tr>
@@ -339,7 +343,13 @@
                             <table>
                                 <tr>
                                     <td>KVA-Attachment:</td>
-                                    <td>WIP</td>
+                                    <td>
+                                        @foreach($kvafiles as $i)
+                                            {{ $i->name }}<br>
+                                        @endforeach
+                                        <br>
+                                            {{ Form::file('file') }}
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>KVA-Fee:</td>

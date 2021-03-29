@@ -20,6 +20,7 @@
         <th>STATUS</th>
         <th>REMARKS</th>
         <th>TECHNICIAN</th>
+        <th>LOC</th>
     </tr>
     @php $counter = 1; @endphp
     @foreach($data as $item)
@@ -101,11 +102,12 @@
 
         <td {!! $style !!}>{{ substr($item->remarks, 0, 50) }}</td>
         <td {!! $style !!}>{{ $item->user()->name }}</td>
+        <td {!! $style !!}>{{ $item->location }}</td>
     </tr>
     @php $counter += 1; @endphp
     @endforeach
     <tr>
-        <td class='nav' colspan=18>
+        <td class='nav' colspan=19>
             <a href="{{ action('HomeController@index_all') }}">
                 Show all open repairs
             </a>

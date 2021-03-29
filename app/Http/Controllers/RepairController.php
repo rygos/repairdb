@@ -8,6 +8,7 @@ use App\Models\ClosingReason;
 use App\Models\CrossCharge;
 use App\Models\Customer;
 use App\Models\EeeeModel;
+use App\Models\KvaFiles;
 use App\Models\KvaLimit;
 use App\Models\Manufacturer;
 use App\Models\Model;
@@ -19,6 +20,7 @@ use App\Models\Rminstzlb;
 use App\Models\Spare;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class RepairController extends Controller
 {
@@ -204,6 +206,8 @@ class RepairController extends Controller
             ->where('model_id', '=', $data->model_id)
             ->first();
 
+        $kvafiles = KvaFiles::where('repair_id', '=', $id)->get();
+
         $remark_template = Carbon::now()->format('d.m.').' - Aktion: &#13;
 ------------&#13;
 Gemeldet: &#13;
@@ -221,6 +225,7 @@ MRI: &#13;
             'kva' => $kva,
             'remark_template' => $remark_template,
             'replog' => $replog,
+            'kvafiles' => $kvafiles,
         ]);
     }
 
@@ -288,6 +293,24 @@ MRI: &#13;
         $rep->kva_costs = str_replace(",", ".", $request->post('kva_costs'));
         $rep->cc_warranty = $cc_warranty;
         $rep->save();
+
+        if($rep->id==2931){
+            dd($request);
+        }
+
+        if($request->file('file')){
+            $filename = time().'_'.$request->file('file')->getClientOriginalName();
+            $filepath = $request->file('file')->storeAs('uploads', $filename, 'public');
+
+            $fileModel = new KvaFiles;
+            $fileModel->name = $filename;
+            $fileModel->file_path = $filepath;
+            $fileModel->repair_id = $request->get('repair_id');
+            $fileModel->save();
+
+            dd($fileModel);
+        }
+
 
         $log = new ReapirLog;
         $log->log = 'Remarks updated to: <br>'.$rep->remarks.'<br>
@@ -419,6 +442,38 @@ Thirdparty damage = '.$thirdpartydamage;
         $log->save();
 
         //return redirect()->action('RepairController@show', $request->post('repid'));
+    }
+
+    public function upload_kva(Request $request){
+        $request->validate([
+            'file' => 'required|mimes:pdf,doc,docx',
+            'repair_id' => 'required'
+        ]);
+        $fileModel = new KvaFiles;
+
+        if($request->file()){
+            $filename = time().'_'.$request->file()->getClientOriginalName();
+            $filepath = $request->file('file')->storeAs('uploads', $filename, 'public');
+
+            $fileModel->name = $filename;
+            $fileModel->file_path = $filepath;
+            $fileModel->repair_id = $request->get('repair_id');
+            $fileModel->save();
+
+            return back()
+                ->with('success', 'File has been uploaded.')
+                ->with('file', $filename);
+        }
+    }
+
+    public function download_kva($file_id){
+
+    }
+
+    public function delete_kva($file_id){
+        KvaFiles::with('id', '=', $file_id)->delete();
+
+        return back();
     }
 
 }

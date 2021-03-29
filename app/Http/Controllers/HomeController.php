@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Base\User;
 use App\Models\Repair;
 use App\Models\Rminstzlb;
 use Illuminate\Http\Request;
