@@ -2,14 +2,14 @@
     <li><a href="{{ action('HomeController@index') }}">Home</a></li>
 
     @if(Auth::user()->access_repairs == 1)
-    <li><a href="{{ action('RepairController@create') }}">Add Repair</a></li>
+    <li><a style="background-color: darkred" href="{{ action('RepairController@create') }}">Add Repair</a></li>
     @endif
 
     @if(Auth::user()->access_parts == 1)
-        <li><a href="{{ action('PartsController@create') }}">Add Parts</a></li>
-        <li><a href="{{ action('PartsController@index') }}">Spare Matrix</a></li>
-        <li><a href="{{ action('PartsController@show_we') }}">Spare WE</a></li>
-        <li><a href="{{ action('PartsController@show_wa') }}">Spare WA</a></li>
+        <li><a style="background-color: darkgreen" href="{{ action('PartsController@create') }}">Add Parts</a></li>
+        <li><a style="background-color: darkgreen" href="{{ action('PartsController@index') }}">Spare Matrix</a></li>
+        <li><a style="background-color: darkgreen" href="{{ action('PartsController@show_we') }}">Spare WE</a></li>
+        <li><a style="background-color: darkgreen" href="{{ action('PartsController@show_wa') }}">Spare WA</a></li>
     @endif
 
     @if(Auth::user()->access_scrape == 1)
@@ -21,11 +21,11 @@
     @endif
 
     @if(Auth::user()->access_xcharge == 1)
-        <li><a href="{{ action('XChargeController@index') }}">XCharge</a></li>
+        <li><a style="background-color: saddlebrown" href="{{ action('XChargeController@index') }}">XCharge</a></li>
     @endif
 
     @if(Auth::user()->access_reports == 1)
-        <li><a href="{{ action('FakturaController@index') }}">Faktura</a></li>
+        <li><a style="background-color: darkblue" href="{{ action('FakturaController@index') }}">Faktura</a></li>
     @endif
 
     @if(Auth::user()->access_overtime == 1)
