@@ -166,8 +166,7 @@
                 <table class="boxtable" style="width: 100%">
                     <thead>
                         <tr>
-                            <td>SAP</td>
-                            <td>SAP Desc</td>
+                            <td>Status</td>
                             <td>Part No</td>
                             <td>Part Desc</td>
                             <td>Stock Price</td>
@@ -200,13 +199,43 @@
                             }else{
                                 $scrap_done = '';
                             }
+
+                            $stat_color = '';
+                            $stat_text = '';
+                            switch($item->status){
+                                case 0:
+                                    $stat_color = 'none';
+                                    $stat_text = 'NEW';
+                                    break;
+                                case 1:
+                                    $stat_color = 'orange';
+                                    $stat_text = 'ORDERED';
+                                    break;
+                                case 2:
+                                    $stat_color = 'orange';
+                                    $stat_text = 'DELIVERY';
+                                    break;
+                                case 3:
+                                    $stat_color = 'green';
+                                    $stat_text = 'DELIVERED';
+                                    break;
+                                case 4:
+                                    $stat_color = 'yellow';
+                                    $stat_text = 'USED';
+                                    break;
+                                case 5:
+                                    $stat_color = 'red';
+                                    $stat_text = 'PROCESSED';
+                                    break;
+
+                            }
+
                         @endphp
                         {!! Form::open(['action' => 'PartsController@updateSpareSn']) !!}
                         {!! Form::hidden('sparerepair_id', $item->id) !!}
                         {!! Form::hidden('repair_id', $data->id) !!}
                         <tr>
-                            <td {!! $scrap_done !!}>{{ $item->spare->sap_no }}</td>
-                            <td {!! $scrap_done !!}>{{ $item->spare->sap_desc }}</td>
+                            <td style="background-color: {!! $stat_color !!}">{{ $stat_text }}</td>
                             <td {!! $scrap_done !!}>{{ $item->spare->manufacturer_part_no }}</td>
                             <td {!! $scrap_done !!}>{{ $item->spare->manufacturer_part_desc }}</td>
                             <td {!! $scrap_done !!}>{{ $item->spare->price_stock }}</td>
@@ -220,12 +249,12 @@
                             <td {!! $scrap_done !!}>
                                 @if($scrap)
                                     @if($scrap_pack == '')
-                                        {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
+                                        {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA', '4' => 'Ungenutzt'], $item->type_id) !!}
                                     @else
                                         <a href="{{ action('ScrapeController@index', $scrap_pack) }}">{{ $scrap_pack }}</a>
                                     @endif
                                 @else
-                                    {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA'], $item->type_id) !!}
+                                    {!! Form::select('type_id', ['0' => 'N/A', '1' => 'Austausch', '2' => 'Verbrauch', '3' => 'DOA', '4' => 'Ungenutzt'], $item->type_id) !!}
                                 @endif
                             </td>
                             <td {!! $scrap_done !!}>

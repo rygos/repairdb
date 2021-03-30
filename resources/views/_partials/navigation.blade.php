@@ -1,16 +1,15 @@
 <ul>
     <li><a href="{{ action('HomeController@index') }}">Home</a></li>
 
-    @if(Auth::user()->access_stats == 1)
-    <li><a href="{{ action('PartsController@index') }}">Spares</a></li>
-    @endif
-
     @if(Auth::user()->access_repairs == 1)
     <li><a href="{{ action('RepairController@create') }}">Add Repair</a></li>
     @endif
 
     @if(Auth::user()->access_parts == 1)
-    <li><a href="{{ action('PartsController@create') }}">Add Spare</a></li>
+        <li><a href="{{ action('PartsController@create') }}">Add Parts</a></li>
+        <li><a href="{{ action('PartsController@index') }}">Spare Matrix</a></li>
+        <li><a href="{{ action('PartsController@show_we') }}">Spare WE</a></li>
+        <li><a href="{{ action('PartsController@show_wa') }}">Spare WA</a></li>
     @endif
 
     @if(Auth::user()->access_scrape == 1)

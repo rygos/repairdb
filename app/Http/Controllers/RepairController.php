@@ -331,6 +331,18 @@ Thirdparty damage = '.$thirdpartydamage;
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 
+        //Set Sparepart Status
+        // If Ordered
+        if($request->post('reason_id') == 4){
+            foreach ($rep->spares() as $spare){
+                //if spare status "new" set to "ordered"
+                if($spare->status == 0){
+                    $spare->status = 1;
+                    $spare->save();
+                }
+            }
+        }
+
         //Get reason for status change
         $reason = ClosingReason::whereId($rep->closing_reason_id)->first();
 

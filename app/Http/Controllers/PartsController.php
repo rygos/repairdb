@@ -102,6 +102,22 @@ class PartsController extends Controller
         ]);
     }
 
+    public function show_we(){
+
+    }
+
+    public function store_we(Request $request){
+
+    }
+
+    public function show_wa(){
+
+    }
+
+    public function store_wa(){
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -149,6 +165,7 @@ class PartsController extends Controller
         $sr = new SparesToRepair;
         $sr->repair_id = $repair_id;
         $sr->spare_id = $spare_id;
+        $sr->status = 0;
         $sr->save();
 
         $rep = Repair::whereId($repair_id)->first();
