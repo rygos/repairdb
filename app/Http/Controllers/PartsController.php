@@ -13,6 +13,7 @@ use App\Models\SparesToRepair;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\Array_;
+use Symfony\Component\Console\Input\Input;
 
 class PartsController extends Controller
 {
@@ -142,11 +143,11 @@ class PartsController extends Controller
 
     }
 
-    public function show_wa($zlb = 0){
+    public function show_wa(Request $request){
         $data = array();
 
-        if($zlb != 0){
-            $zlb_id = Rminstzlb::whereZlb($zlb)->first()->id;
+        if($request->get('zlb')){
+            $zlb_id = Rminstzlb::whereZlb($request->get('zlb'))->first()->id;
             $repair = Repair::whereRminstzlbId($zlb_id)->first()->id;
             $data = SparesToRepair::whereRepairId($repair)->get();
         }
