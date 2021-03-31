@@ -55,7 +55,7 @@
                 @php $so = \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first(); @endphp
                 <td>{{ $so->zlb }}</td>
                 <td>{{ $so->rminst }}</td>
-                <td>{{ action('PartsController@show_wa') }}</td>
+                <td><a href="{{ action('PartsController@show_wa') }}">WA Buchen</a></td>
             </tr>
         @endforeach
     </table>
