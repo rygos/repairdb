@@ -145,22 +145,25 @@ class PartsController extends Controller
 
     public function show_wa(Request $request){
         $data = array();
+        $zlb = 0;
 
         if($request->get('zlb')){
+            $zlb = $request->get('zlb');
             $zlb_id = Rminstzlb::whereZlb($request->get('zlb'))->first()->id;
             $repair = Repair::whereRminstzlbId($zlb_id)->first()->id;
             $data = SparesToRepair::whereRepairId($repair)->get();
         }
 
         return view('spares.show_wa', [
-            'data' => $data
+            'data' => $data,
+            'zlb' => $zlb
         ]);
     }
 
     public function store_wa(Request $request){
 
 
-        return redirect()->action('PartsController@show_wa', ['zlb' => $request->post('zlb_id')]);
+        return redirect()->action('PartsController@show_wa', ['zlb' => $request->post('zlb')]);
     }
 
     /**

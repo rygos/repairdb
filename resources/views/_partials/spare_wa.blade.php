@@ -41,7 +41,7 @@
             <td>Buchen?</td>
         </tr>
         {!! Form::open(['action' => 'PartsController@store_wa']) !!}
-        {!! Form::hidden('zlb_id', $data->first()->repair->rminstzlb_id) !!}
+        {!! Form::hidden('zlb', $zlb) !!}
         @foreach($data as $item)
             @php
                 $stat_color = '';
