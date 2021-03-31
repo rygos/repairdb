@@ -5,6 +5,7 @@
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
             <th>ID</th>
+            <td>Status</td>
             <td>KBB</td>
             <td>KGB</td>
             <td>Part No</td>
@@ -43,6 +44,7 @@
             @endphp
             <tr>
                 <td>{{ $item->id }}</td>
+                <td style="background-color: {!! $stat_color !!}">{{ $stat_text }}</td>
                 <td>{{ $item->serial_old }}</td>
                 <td>{{ $item->serial_new }}</td>
                 <td>{{ $item->spare->manufacturer_part_no }}</td>
