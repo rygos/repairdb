@@ -132,6 +132,7 @@ class PartsController extends Controller
             $part_id = $request->post('spare_id');
             $part = SparesToRepair::whereId($part_id)->first();
             $part->serial_new = $request->post('serial_no');
+            $part->status = 3;
             $part->save();
 
             return redirect()->action('PartsController@show_we');
