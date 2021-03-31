@@ -161,6 +161,11 @@ class PartsController extends Controller
     }
 
     public function store_wa(Request $request){
+        $zlb_id = Rminstzlb::whereZlb($request->post('zlb'))->first()->id;
+        $repair = Repair::whereRminstzlbId($zlb_id)->first()->id;
+        $spares = SparesToRepair::whereRepairId($repair)->get();
+
+        dd($request);
 
 
         return redirect()->action('PartsController@show_wa', ['zlb' => $request->post('zlb')]);
