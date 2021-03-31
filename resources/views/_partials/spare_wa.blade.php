@@ -12,6 +12,7 @@
             <td>Part Desc</td>
             <td>ZLB</td>
             <td>ServiceOrder</td>
+            <td>Action</td>
         </tr>
         @foreach($data as $item)
             @php
@@ -54,6 +55,7 @@
                 @php $so = \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first(); @endphp
                 <td>{{ $so->zlb }}</td>
                 <td>{{ $so->rminst }}</td>
+
             </tr>
         @endforeach
     </table>
