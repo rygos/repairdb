@@ -1,6 +1,6 @@
 @if(Auth::user()->access_parts == 1)
     @php
-        //$data = \App\Models\SparesToRepair::where('status', '!=', 5)->get();
+        $data = \App\Models\SparesToRepair::where('status', '!=', 5)->get();
     @endphp
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
@@ -16,7 +16,7 @@
                     {!! Form::open(['action' => 'PartsController@show_wa', 'method' => 'get']) !!}
                     <table id="stattable">
                         <tr>
-                            <td>ZLB</td>
+                            <td>ZLB Suche</td>
                             <td>{!! Form::text('zlb') !!}</td>
                         </tr>
                     </table>
@@ -36,8 +36,12 @@
             <td>Part Desc</td>
             <td>ZLB</td>
             <td>ServiceOrder</td>
-            <td>Action</td>
+            <td>Tracking</td>
+            <td>Remarks</td>
+            <td>Buchen?</td>
         </tr>
+        {!! Form::open(['action' => 'PartsController@store_wa']) !!}
+        {!! Form::hidden('zlb_id', $data->first()->$item->repair->rminstzlb_id) !!}
         @foreach($data as $item)
             @php
                 $stat_color = '';
@@ -79,9 +83,12 @@
                 @php $so = \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first(); @endphp
                 <td>{{ $so->zlb }}</td>
                 <td>{{ $so->rminst }}</td>
-                <td><a href="{{ action('PartsController@show_wa') }}">WA Buchen</a></td>
+                <td></td>
             </tr>
+
         @endforeach
+        <tr>{{ Form::submit('Speichern')  }}</tr>
+        {{ Form::close() }}
     </table>
 @else
     <center>Access Denied.</center>

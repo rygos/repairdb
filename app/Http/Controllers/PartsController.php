@@ -157,13 +157,10 @@ class PartsController extends Controller
         ]);
     }
 
-    public function store_wa($id = 0){
-        if($id != 0){
-            $part = SparesToRepair::whereId($id)->first();
-            $part->status = 5;
-        }
+    public function store_wa(Request $request){
 
-        return redirect()->action('PartsController@show_wa');
+
+        return redirect()->action('PartsController@show_wa', ['zlb' => $request->post('zlb_id')]);
     }
 
     /**

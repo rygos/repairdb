@@ -39,6 +39,7 @@ Route::post('spare/store', 'PartsController@store');
 Route::post('spare/update_sn', 'PartsController@updateSpareSn');
 //Route::get('spare/wa', 'PartsController@show_wa');
 Route::get('spare/wa', 'PartsController@show_wa');
+Route::post('spare/wa', 'PartsController@store_wa');
 Route::get('spare/we', 'PartsController@show_we');
 Route::post('spare/we', 'PartsController@store_we');
 Route::post('spare/addrepair/{repair_id}', 'PartsController@addToRepair');
