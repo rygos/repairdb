@@ -10,6 +10,8 @@
             <td>KGB</td>
             <td>Part No</td>
             <td>Part Desc</td>
+            <td>ZLB</td>
+            <td>ServiceOrder</td>
         </tr>
         @foreach($data as $item)
             @php
@@ -49,7 +51,8 @@
                 <td>{{ $item->serial_new }}</td>
                 <td>{{ $item->spare->manufacturer_part_no }}</td>
                 <td>{{ $item->spare->manufacturer_part_desc }}</td>
-                <td>{{ $item->repair->rminst->zlb }}</td>
+                <td>{{ \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first()->zlb }}</td>
+                <td>{{ \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first()->rminst }}</td>
             </tr>
         @endforeach
     </table>
