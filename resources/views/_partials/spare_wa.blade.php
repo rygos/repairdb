@@ -83,11 +83,16 @@
                 @php $so = \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first(); @endphp
                 <td>{{ $so->zlb }}</td>
                 <td>{{ $so->rminst }}</td>
-                <td></td>
+                <td>{!! Form::text('tracking_'.$item->id) !!}</td>
+                <td>{!! Form::text('remarks_'.$item->id) !!}</td>
+                <td>{!! Form::checkbox('store_'.$item->id) !!}</td>
             </tr>
 
         @endforeach
-        <tr>{{ Form::submit('Speichern')  }}</tr>
+        <tr>
+            <td colspan="10"></td>
+            <td>{{ Form::submit('Speichern')  }}</td>
+        </tr>
         {{ Form::close() }}
     </table>
 @else
