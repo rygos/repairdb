@@ -83,8 +83,8 @@
                 @php $so = \App\Models\Rminstzlb::whereId($item->repair->rminstzlb_id)->first(); @endphp
                 <td>{{ $so->zlb }}</td>
                 <td>{{ $so->rminst }}</td>
-                <td>{!! Form::text('tracking_'.$item->id) !!}</td>
-                <td>{!! Form::text('remarks_'.$item->id) !!}</td>
+                <td>{!! Form::text('tracking_'.$item->id, $item->tracking) !!}</td>
+                <td>{!! Form::text('remarks_'.$item->id, $item->remarks) !!}</td>
                 <td>{!! Form::checkbox('store_'.$item->id) !!}</td>
             </tr>
 
