@@ -227,7 +227,6 @@
                                     $stat_color = 'red';
                                     $stat_text = 'PROCESSED';
                                     break;
-
                             }
 
                         @endphp

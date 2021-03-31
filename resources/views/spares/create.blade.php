@@ -15,14 +15,6 @@
                     {!! Form::open(['action' => 'PartsController@store']) !!}
                     <table id="stattable">
                         <tr>
-                            <td>SAP No:</td>
-                            <td>{!! Form::text('sap_no') !!}</td>
-                        </tr>
-                        <tr>
-                            <td>SAP Desc:</td>
-                            <td>{!! Form::text('sap_desc') !!}</td>
-                        </tr>
-                        <tr>
                             <td>Manufacturer:</td>
                             <td>{!! Form::select('manufacturer', $manu) !!}</td>
                         </tr>

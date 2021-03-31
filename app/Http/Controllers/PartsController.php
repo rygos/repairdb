@@ -70,8 +70,8 @@ class PartsController extends Controller
     public function store(Request $request)
     {
         $s = new Spare;
-        $s->sap_no = $request->get('sap_no');
-        $s->sap_desc = $request->get('sap_desc');
+        $s->sap_no = 47114711;
+        $s->sap_desc = 'x';
         $s->manufacturer_id = $request->get('manufacturer');
         $s->model_id = $request->get('model');
         $s->customer_id = $request->get('customer');
@@ -142,10 +142,14 @@ class PartsController extends Controller
     }
 
     public function show_wa(){
+        $data = SparesToRepair::whereIn([1,2,3,4])->get();
 
+        return view('spares.show_wa', [
+            'data' => $data
+        ]);
     }
 
-    public function store_wa(){
+    public function store_wa(Request $request){
 
     }
 
