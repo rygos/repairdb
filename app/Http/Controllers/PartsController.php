@@ -142,7 +142,7 @@ class PartsController extends Controller
     }
 
     public function show_wa(){
-        $data = SparesToRepair::whereIn([1,2,3,4])->get();
+        $data = SparesToRepair::whereIn('status',[1,2,3,4])->get();
 
         return view('spares.show_wa', [
             'data' => $data
