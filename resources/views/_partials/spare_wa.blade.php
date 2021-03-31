@@ -1,6 +1,6 @@
 @if(Auth::user()->access_parts == 1)
     @php
-        //$data = \App\Models\SparesToRepair::where('status', '!=', 5)->get();
+        $data = \App\Models\SparesToRepair::where('status', '!=', 5)->get();
     @endphp
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
@@ -49,6 +49,7 @@
                 <td>{{ $item->serial_new }}</td>
                 <td>{{ $item->spare->manufacturer_part_no }}</td>
                 <td>{{ $item->spare->manufacturer_part_desc }}</td>
+                <td>{{ $item->repair->rminst->zlb }}</td>
             </tr>
         @endforeach
     </table>
