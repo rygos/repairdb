@@ -25,22 +25,25 @@
                             {!! Form::hidden('spare_id', $spare_id) !!}
                             @php
                                 $part = \App\Models\SparesToRepair::whereId($spare_id)->first();
+                                $repair = \App\Models\Repair::whereId($part->repair_id)->first();
+                                $rminst = \App\Models\Rminstzlb::whereId($repair->rminstzlb_id)->first();
+                                $spare = \App\Models\Spare::whereId($part->spare_id)->first();
                             @endphp
                             <tr>
                                 <td><h2>ServiceOrder:</h2></td>
-                                <td><h2>{{ $part->repair->rminst->rminst }}</h2></td>
+                                <td><h2>{{ $rminst->rminst }}</h2></td>
                             </tr>
                             <tr>
                                 <td><h2>ZLB:</h2></td>
-                                <td><h2>{{ $part->repair->rminst->zlb }}</h2></td>
+                                <td><h2>{{ $rminst->zlb }}</h2></td>
                             </tr>
                             <tr>
                                 <td>Part No:</td>
-                                <td>{!! $part->spare->manufacturer_part_no !!}</td>
+                                <td>{!! $spare->manufacturer_part_no !!}</td>
                             </tr>
                             <tr>
                                 <td>Part Desc:</td>
-                                <td>{!! $part->spare->manufacturer_part_desc !!}</td>
+                                <td>{!! $spare->manufacturer_part_desc !!}</td>
                             </tr>
                             <tr></tr>
                             <tr>
