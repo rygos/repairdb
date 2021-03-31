@@ -103,10 +103,40 @@ class PartsController extends Controller
     }
 
     public function show_we(){
-
+        return view('spares.show_we', [
+            'step' => 1,
+            'spare_id' => 0,
+        ]);
     }
 
     public function store_we(Request $request){
+        $step = $request->post('step');
+        if($step == 1){
+            //Get part_id
+            $part_no = $request->post('part_no');
+
+            $part_id = Spare::whereManufacturerPartNo($part_no)->first()->id;
+            $part = SparesToRepair::whereSpareId($part_id)->whereIn('status', [1, 2])->first();
+
+            if($part){ //Wenn Teil angefordert
+                return view('spares.show_we', [
+                    'step' => 2,
+                    'spare_id' => $part->id
+                ]);
+            }else{ //Wenn nicht angefordert
+                return redirect()->action('PartsController@show_we');
+            }
+
+        }elseif($step == 2){
+            //Save KGB Serial
+            $part_id = $request->post('spare_id');
+            $part = SparesToRepair::whereId($part_id)->first();
+            $part->serial_new = $request->post('serial_no');
+            $part->save();
+
+            return redirect()->action('PartsController@show_we');
+        }
+
 
     }
 

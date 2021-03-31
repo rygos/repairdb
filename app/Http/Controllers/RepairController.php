@@ -332,14 +332,19 @@ Thirdparty damage = '.$thirdpartydamage;
         $rep->save();
 
         //Set Sparepart Status
-        // If Ordered
-        if($request->post('reason_id') == 4){
+        if($request->post('reason_id') == 4){ //Ordered
             foreach ($rep->spares() as $spare){
                 //if spare status "new" set to "ordered"
                 if($spare->status == 0){
                     $spare->status = 1;
                     $spare->save();
                 }
+            }
+        }elseif($request->post('reason_id') == 2){ //Abgeschlossen
+            foreach ($rep->spares() as $spare){
+                //if spare status "new" set to "ordered"
+                    $spare->status = 4;
+                    $spare->save();
             }
         }
 
