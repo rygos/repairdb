@@ -7,6 +7,7 @@ use App\Models\Manufacturer;
 use App\Models\Model;
 use App\Models\ReapirLog;
 use App\Models\Repair;
+use App\Models\Rminstzlb;
 use App\Models\Spare;
 use App\Models\SparesToRepair;
 use Carbon\Carbon;
@@ -141,8 +142,14 @@ class PartsController extends Controller
 
     }
 
-    public function show_wa(){
-        $data = SparesToRepair::whereIn('status',[1,2,3,4])->get();
+    public function show_wa($zlb = 0){
+        $data = array();
+
+        if($zlb != 0){
+            $zlb_id = Rminstzlb::whereZlb($zlb)->first()->id;
+            $repair = Repair::whereRminstzlbId($zlb_id)->first()->id;
+            $data = SparesToRepair::whereRepairId($repair)->get();
+        }
 
         return view('spares.show_wa', [
             'data' => $data

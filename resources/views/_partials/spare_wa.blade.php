@@ -2,6 +2,30 @@
     @php
         //$data = \App\Models\SparesToRepair::where('status', '!=', 5)->get();
     @endphp
+    <div id="prodpagecontainer">
+        <table id="pouetbox_prodmain">
+            <tbody>
+            <tr id="prodheader">
+                <th colspan='1'>
+                    <span id='title'><big>WA Sparepart</big></span>
+                    <div id='nfo'></div>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    {!! Form::open(['action' => 'PartsController@show_wa', 'method' => 'get']) !!}
+                    <table id="stattable">
+                        <tr>
+                            <td>ZLB</td>
+                            <td>{!! Form::text('zlb') !!}</td>
+                        </tr>
+                    </table>
+                    {!! Form::close() !!}
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
             <th>ID</th>
