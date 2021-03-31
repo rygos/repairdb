@@ -165,8 +165,14 @@ class PartsController extends Controller
         $repair = Repair::whereRminstzlbId($zlb_id)->first()->id;
         $spares = SparesToRepair::whereRepairId($repair)->get();
 
-        dd($request);
-
+        foreach($spares as $sp){
+            if($request->post('store_'.$sp->id) == 1){
+                $sp->status = 5;
+            }
+            $sp->remarks = $request->post('remarks_'.$sp->id);
+            $sp->tracking = $request->post('tracking_'.$sp->id);
+            $sp->save();
+        }
 
         return redirect()->action('PartsController@show_wa', ['zlb' => $request->post('zlb')]);
     }
