@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Console\Commands\repair\add;
 use App\Models\CallType;
 use App\Models\ClosingReason;
 use App\Models\CrossCharge;
@@ -32,6 +31,7 @@ class RepairController extends Controller
     public function index()
     {
         //
+        return null;
     }
 
     /**
