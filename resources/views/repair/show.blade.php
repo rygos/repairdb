@@ -333,7 +333,7 @@
         </div>
         <div class="pouettbl" id="pouet_repair_remarks" style="width: 100%; text-align: center;">
             <h2>Remarks</h2>
-            {!! Form::open(['action' => 'RepairController@storeremark']) !!}
+            {!! Form::open(['action' => 'RepairController@storeremark', 'enctype' => 'multipart/form-data']) !!}
             {!! Form::hidden('repair_id', $data->id) !!}
             <table class="boxtable" style="width: 100%">
                 <tr>
