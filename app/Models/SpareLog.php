@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Model;
 class SpareLog extends Model
 {
     use HasFactory;
+    protected $table = 'spare_log';
     protected $fillable = [
         'spare_to_repairs_id',
         'user_id',
