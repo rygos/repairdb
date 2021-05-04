@@ -9,6 +9,7 @@ use App\Models\ReapirLog;
 use App\Models\Repair;
 use App\Models\Rminstzlb;
 use App\Models\Spare;
+use App\Models\SpareLog;
 use App\Models\SparesToRepair;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -235,6 +236,13 @@ class PartsController extends Controller
         $log->user_id = \Auth::id();
         $log->closing_reason_id = $rep->closing_reason_id;
         $log->save();
+
+        $slog = new SpareLog;
+        $slog->status = 0;
+        $slog->description = '';
+        $slog->user_id = \Auth::id();
+        $slog->spare_to_repairs_id = $sr->id;
+        $slog->save();
 
         return \Redirect::action('RepairController@show', $repair_id);
     }

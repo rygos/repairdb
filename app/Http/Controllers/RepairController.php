@@ -17,6 +17,7 @@ use App\Models\Repair;
 use App\Models\RepairType;
 use App\Models\Rminstzlb;
 use App\Models\Spare;
+use App\Models\SpareLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -338,6 +339,13 @@ Thirdparty damage = '.$thirdpartydamage;
                 if($spare->status == 0){
                     $spare->status = 1;
                     $spare->save();
+
+                    $slog = new SpareLog;
+                    $slog->status = 1;
+                    $slog->description = '';
+                    $slog->user_id = \Auth::id();
+                    $slog->spare_to_repairs_id = $spare->id;
+                    $slog->save();
                 }
             }
         }elseif($request->post('reason_id') == 2){ //Abgeschlossen
@@ -345,6 +353,13 @@ Thirdparty damage = '.$thirdpartydamage;
                 //if spare status "new" set to "ordered"
                     $spare->status = 4;
                     $spare->save();
+
+                    $slog = new SpareLog;
+                    $slog->status = 4;
+                    $slog->description = '';
+                    $slog->user_id = \Auth::id();
+                    $slog->spare_to_repairs_id = $spare->id;
+                    $slog->save();
             }
         }
 
