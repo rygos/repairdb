@@ -296,7 +296,7 @@ MRI: &#13;
         $rep->save();
 
         if($rep->id==2931){
-            dd($request);
+            dd($request->file);
         }
 
         if($request->file('file')){
