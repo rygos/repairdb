@@ -300,6 +300,8 @@ MRI: &#13;
         }
 
         if($request->file('file')){
+            dd($request);
+
             $filename = time().'_'.$request->file('file')->getClientOriginalName();
             $filepath = $request->file('file')->storeAs('uploads', $filename, 'public');
 
