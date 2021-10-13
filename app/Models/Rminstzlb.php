@@ -35,7 +35,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Rminstzlb extends Eloquent
 {
 	protected $table = 'rminstzlb';
-    protected $dateFormat = 'd-m-Y H:i:s';
+    protected $dateFormat = 'd-m-Y H:i:s.v';
 
 	protected $casts = [
 		'rminst' => 'int',
