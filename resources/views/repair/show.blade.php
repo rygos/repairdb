@@ -373,7 +373,7 @@
                                     <td>KVA-Attachment:</td>
                                     <td>
                                         @foreach($kvafiles as $i)
-                                            {{ $i->name }}<br>
+                                            <a href="{{ action('kva_download') }}">{{ $i->name }}</a><br>
                                         @endforeach
                                         <br>
                                             {{ Form::file('file') }}
