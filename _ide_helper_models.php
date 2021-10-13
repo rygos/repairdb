@@ -526,10 +526,13 @@ namespace App\Models\Base{
  * @property int $thirdpartydamage
  * @property int $kva_fee
  * @property float $kva_costs
+ * @property string $location
+ * @property int $cc_warranty
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|Repair newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Repair newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Repair query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Repair whereCcWarranty($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereClosedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereClosingReasonId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereCosts($value)
@@ -539,6 +542,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereKvaCosts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereKvaFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Repair whereLocation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereManufacturerId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereModelId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereOrderNo($value)
@@ -704,21 +708,27 @@ namespace App\Models\Base{
  * @property int $id
  * @property int $repair_id
  * @property int $spare_id
+ * @property int $status
  * @property string $serial_old
  * @property string $serial_new
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property int $type_id
  * @package App\Models\Base
+ * @property string|null $remarks
+ * @property string|null $tracking
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair query()
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereRemarks($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereRepairId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereSerialNew($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereSerialOld($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereSpareId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereTracking($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereTypeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereUpdatedAt($value)
  */
@@ -770,10 +780,13 @@ namespace App\Models\Base{
  * @property int $access_reports
  * @property int $access_stats
  * @property int $access_repairs
+ * @property int $access_admin
+ * @property string $location
  * @package App\Models\Base
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessAdmin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessParts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessRepairs($value)
@@ -785,6 +798,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLocation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
@@ -1030,6 +1044,29 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Gsxspare whereWithsn($value)
  */
 	class Gsxspare extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\KvaFiles
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $file_path
+ * @property int|null $repair_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles query()
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereFilePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereRepairId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|KvaFiles whereUpdatedAt($value)
+ */
+	class KvaFiles extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -1304,11 +1341,15 @@ namespace App\Models{
  * @property float|null $costs
  * @property int|null $warranty
  * @property int|null $thirdpartydamage
- * @property int $kva_fee
- * @property float $kva_costs
+ * @property int|null $kva_fee
+ * @property float|null $kva_costs
+ * @property string|null $location
+ * @property int|null $cc_warranty
+ * @method static \Illuminate\Database\Eloquent\Builder|Repair whereCcWarranty($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereCosts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereKvaCosts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereKvaFee($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Repair whereLocation($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereThirdpartydamage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Repair whereWarranty($value)
  */
@@ -1460,6 +1501,32 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Spare
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $description
+ * @property int $status
+ * @property int $spare_to_repairs_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereSpareToRepairsId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare whereUpdatedAt($value)
+ * @mixin \Eloquent
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Spare query()
+ */
+	class SpareLog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\SparesToRepair
  *
  * @property int $id
@@ -1484,6 +1551,12 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\SparesToRepair query()
+ * @property int|null $status
+ * @property string|null $remarks
+ * @property string|null $tracking
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereRemarks($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|SparesToRepair whereTracking($value)
  */
 	class SparesToRepair extends \Eloquent {}
 }
@@ -1547,8 +1620,11 @@ namespace App\Models{
  * @property int $access_reports
  * @property int $access_stats
  * @property int $access_repairs
+ * @property int $access_admin
+ * @property string $location
  * @property-read int|null $notifications_count
  * @property-read int|null $options_count
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessAdmin($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessParts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessRepairs($value)
@@ -1556,6 +1632,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessScrape($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessStats($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessXcharge($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereLocation($value)
  */
 	class User extends \Eloquent {}
 }

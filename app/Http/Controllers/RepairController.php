@@ -295,10 +295,6 @@ MRI: &#13;
         $rep->cc_warranty = $cc_warranty;
         $rep->save();
 
-        if($rep->id==2931){
-            dd($request->file('file'));
-        }
-
         if($request->file('file')){
             //dd($request);
 
@@ -501,13 +497,24 @@ Thirdparty damage = '.$thirdpartydamage;
     }
 
     public function download_kva($file_id){
+        $file = KvaFiles::whereId($file_id)->first();
 
+        $filepath = storage_path('app/public/'. $file->file_path);
+
+        return response()->download($filepath, $file->name);
     }
 
     public function delete_kva($file_id){
-        KvaFiles::with('id', '=', $file_id)->delete();
+        $file = KvaFiles::whereId($file_id)->first();
 
-        return back();
+        $rep_id = $file->repair_id;
+
+        if(\File::exists(storage_path('app/path/'. $file->file_path))){
+            \File::delete(storage_path('app/path/'. $file->file_path));
+            $file->delete();
+        }
+
+        return redirect()->action('RepairController@show', [$rep_id]);
     }
 
 }
