@@ -509,8 +509,8 @@ Thirdparty damage = '.$thirdpartydamage;
 
         $rep_id = $file->repair_id;
 
-        if(\File::exists(storage_path('app/path/'. $file->file_path))){
-            \File::delete(storage_path('app/path/'. $file->file_path));
+        if(\File::exists(storage_path('app/public/'. $file->file_path))){
+            \File::delete(storage_path('app/public/'. $file->file_path));
             $file->delete();
         }
 
