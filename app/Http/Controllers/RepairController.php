@@ -298,8 +298,8 @@ MRI: &#13;
         if($request->file('file')){
             //dd($request);
 
-            $filename = time().'_'.$request->file('file')->getClientOriginalName();
-            $filepath = $request->file('file')->storeAs('uploads', $filename, 'public');
+            $filename = $request->file('file')->getClientOriginalName();
+            $filepath = $request->file('file')->storeAs('uploads', time().'_'.$filename, 'public');
 
             $fileModel = new KvaFiles;
             $fileModel->name = $filename;
@@ -307,7 +307,7 @@ MRI: &#13;
             $fileModel->repair_id = $request->get('repair_id');
             $fileModel->save();
 
-            dd($fileModel);
+            //dd($fileModel);
         }
 
 
