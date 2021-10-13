@@ -26,6 +26,7 @@ namespace App\Models;
  */
 class Unit extends \App\Models\Base\Unit
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'serial',
 		'manufacturer_id',

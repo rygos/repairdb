@@ -26,6 +26,7 @@ namespace App\Models;
  */
 class RepairFile extends \App\Models\Base\RepairFile
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'repair_id',
 		'file_name',

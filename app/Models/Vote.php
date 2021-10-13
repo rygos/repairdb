@@ -24,6 +24,7 @@ namespace App\Models;
  */
 class Vote extends \App\Models\Base\Vote
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'user_id',
 		'option_id'

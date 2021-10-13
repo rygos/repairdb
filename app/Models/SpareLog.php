@@ -32,6 +32,7 @@ class SpareLog extends Model
 {
     use HasFactory;
     protected $table = 'spares_log';
+    protected $dateFormat = 'd-m-Y H:i:s';
     protected $fillable = [
         'spare_to_repairs_id',
         'user_id',

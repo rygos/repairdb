@@ -4,6 +4,7 @@ namespace App\Models;
 
 class Scrap extends \App\Models\Base\Scrap
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'serial',
 		'imei',

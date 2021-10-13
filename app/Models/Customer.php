@@ -20,6 +20,7 @@ namespace App\Models;
  */
 class Customer extends \App\Models\Base\Customer
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'customer'
 	];

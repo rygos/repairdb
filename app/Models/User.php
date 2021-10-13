@@ -35,6 +35,8 @@ class User extends Authenticatable
 {
     use Voter;
     use Notifiable;
+
+    protected $dateFormat = 'd-m-Y H:i:s';
     /**
      * The attributes that are mass assignable.
      *

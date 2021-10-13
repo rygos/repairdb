@@ -18,6 +18,7 @@ namespace App\Models;
  */
 class PasswordReset extends \App\Models\Base\PasswordReset
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $hidden = [
 		'token'
 	];

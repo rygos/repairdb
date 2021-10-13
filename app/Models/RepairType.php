@@ -20,6 +20,7 @@ namespace App\Models;
  */
 class RepairType extends \App\Models\Base\RepairType
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'type'
 	];

@@ -22,6 +22,7 @@ namespace App\Models;
  */
 class AppleEee extends \App\Models\Base\AppleEee
 {
+    protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'spare_id',
 		'eee'
