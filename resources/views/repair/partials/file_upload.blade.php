@@ -44,11 +44,13 @@
                         @foreach($repairfiles as $i)
                             <tr>
                                 <td>
-                                    {{ $i->file_name }}<br>
+                                    <a href="{{ action('RepairFileController@download', [$i->id]) }}">{{ $i->file_name }}</a>
                                 </td>
                                 <td>{{ $i->type }}</td>
-                                <td>{{ $i->size }}</td>
-                                <td>Action</td>
+                                <td>{{ \App\Helpers\MiscHelper::bytesToHuman($i->size) }}</td>
+                                <td>
+                                    <a href="{{ action('RepairFileController@delete', [$i->id]) }}">[delete file]</a>
+                                </td>
                             </tr>
                         @endforeach
                     </table>

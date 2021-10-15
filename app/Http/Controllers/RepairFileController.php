@@ -31,10 +31,23 @@ class RepairFileController extends Controller
     }
 
     public function download($id){
+        $file = RepairFile::whereId($id)->first();
 
+        $filepath = storage_path('app/public/'. $file->storage_path);
+
+        return response()->download($filepath, $file->file_name);
     }
 
     public function delete($id){
+        $file = RepairFile::whereId($id)->first();
 
+        $rep_id = $file->repair_id;
+
+        if(\File::exists(storage_path('app/public/'. $file->storage_path))){
+            \File::delete(storage_path('app/public/'. $file->storage_path));
+            $file->delete();
+        }
+
+        return redirect()->action('RepairController@show', [$rep_id]);
     }
 }
