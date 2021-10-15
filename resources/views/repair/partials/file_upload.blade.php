@@ -9,7 +9,7 @@
                         {{ Form::hidden('repair_id', $data->id) }}
                         <tr>
                             <td>Upload File</td>
-                            <td>{{ Form::input('file', 'repfile') }}</td>
+                            <td>{{ Form::input('file', 'file') }}</td>
                         </tr>
                         <tr>
                             <td>Filetype</td>

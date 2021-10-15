@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 class RepairFileController extends Controller
 {
     public function store(Request $request){
-        if($request->file('repfile')){
+        if($request->file('file')){
             //dd($request);
 
-            $filename = $request->file('repfile')->getClientOriginalName();
-            $filesize = $request->file('repfile')->getSize();
-            $fileext = $request->file('repfile')->getExtension();
-            $filepath = $request->file('repfile')->storeAs('repairfiles', time().'_'.$filename, 'public');
+            $filename = $request->file('file')->getClientOriginalName();
+            $filesize = $request->file('file')->getSize();
+            $fileext = $request->file('file')->getExtension();
+            $filepath = $request->file('file')->storeAs('repairfiles', time().'_'.$filename, 'public');
 
 
             $f = new RepairFile();
@@ -26,7 +26,6 @@ class RepairFileController extends Controller
             $f->type = $request->get('filetype');
             $f->save();
 
-            //dd($fileModel);
         }
 
         return redirect()->action('RepairController@show', [$request->get('repair_id')]);
