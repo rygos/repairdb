@@ -44,7 +44,14 @@
                         @foreach($repairfiles as $i)
                             <tr>
                                 <td>
-                                    <a href="{{ action('RepairFileController@download', [$i->id]) }}">{{ $i->file_name }}</a>
+                                    @if($i->type == 'Foto')
+                                        <a href="{{ action('RepairFileController@download', [$i->id]) }}">
+                                            <img src="{{ asset('storage/'.$i->storage_path) }}">
+                                            {{ $i->file_name }}
+                                        </a>
+                                    @else
+                                        <a href="{{ action('RepairFileController@download', [$i->id]) }}">{{ $i->file_name }}</a>
+                                    @endif
                                 </td>
                                 <td>{{ $i->type }}</td>
                                 <td>{{ \App\Helpers\MiscHelper::bytesToHuman($i->size) }}</td>
