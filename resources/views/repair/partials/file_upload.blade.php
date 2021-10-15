@@ -9,20 +9,20 @@
                         {{ Form::hidden('repair_id', $data->id) }}
                         <tr>
                             <td>Upload File</td>
-                            <td>{{ Form::input('file', 'file') }}</td>
+                            <td>{{ Form::file('file') }}</td>
                         </tr>
                         <tr>
                             <td>Filetype</td>
                             <td>
                                 {{ Form::select('filetype', [
-    'Rechnung',
-    'Lieferschein',
-    'Foto',
-    'Screenshot GSX',
-    'Screenshot SAP',
-    'Email',
-    'Firmware-Files',
-    'Sonstiges'
+    'Rechnung' => 'Rechnung',
+    'Lieferschein' => 'Lieferschein',
+    'Foto' => 'Foto',
+    'Screenshot GSX' => 'Screenshot GSX',
+    'Screenshot SAP' => 'Screenshot SAP',
+    'Email' => 'Email',
+    'Firmware-Files' => 'Firmware-Files',
+    'Sonstiges' => 'Sonstiges'
 ]) }}
                             </td>
                         </tr>
