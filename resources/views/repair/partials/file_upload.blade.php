@@ -3,7 +3,7 @@
     <div class="content" style="text-align: center">
         <table class="boxtable" style="width: 100%">
             <tr>
-                <td>
+                <td style="width: 25%">
                     <table>
                         {{ Form::open(['action' => 'RepairFileController@store']) }}
                         {{ Form::hidden('repair_id', $data->id) }}
@@ -33,7 +33,7 @@
                         {{ Form::close() }}
                     </table>
                 </td>
-                <td>
+                <td style="width: 75%">
                     <table class="boxtable" style="width: 100%">
                         <tr>
                             <td>File</td>
