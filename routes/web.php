@@ -80,6 +80,10 @@ Route::get('report/xcharge', 'ReportController@xcharge');
 //Route::get('faktura', 'FakturaController@index');
 Route::get('faktura/{search_start?}/{search_end?}/{customer?}', 'FakturaController@index');
 
+//RepairFiles Routes
+Route::post('repairfile/upload', 'RepairFileController@store');
+Route::get('repairfile/download/{id}', 'RepairFileController@download');
+Route::get('repairfile/delete/{id}', 'RepairFileController@delete');
 
 
 //Maintenance Routes
