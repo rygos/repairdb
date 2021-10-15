@@ -41,7 +41,7 @@
                             <td>Size</td>
                             <td>Action</td>
                         </tr>
-                        @foreach($repairfile as $i)
+                        @foreach($repairfiles as $i)
                             <tr>
                                 <td>
                                     {{ $i->file_name }}<br>
