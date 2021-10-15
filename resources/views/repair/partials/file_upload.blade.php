@@ -44,7 +44,7 @@
                         @foreach($repairfiles as $i)
                             <tr>
                                 <td>
-                                    @if($i->type == 'Foto')
+                                    @if(in_array($i->type, ['Foto', 'Screenshot GSX', 'Screenshot SAP']))
                                         <a href="{{ action('RepairFileController@download', [$i->id]) }}">
                                             <img width="128px" alt="{{ $i->file_name }}" src="{{ asset('storage/'.$i->storage_path) }}"><br>
                                             {{ $i->file_name }}
