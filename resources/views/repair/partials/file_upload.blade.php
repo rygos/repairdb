@@ -5,7 +5,7 @@
             <tr>
                 <td style="width: 25%">
                     <table>
-                        {{ Form::open(['action' => 'RepairFileController@store']) }}
+                        {{ Form::open(['action' => 'RepairFileController@store', 'enctype' => 'multipart/form-data']) }}
                         {{ Form::hidden('repair_id', $data->id) }}
                         <tr>
                             <td>Upload File</td>
