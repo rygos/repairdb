@@ -373,7 +373,7 @@
                                     <td>KVA-Attachment:</td>
                                     <td>
                                         @foreach($kvafiles as $i)
-                                            <a href="{{ action('RepairController@download_kva', [$i->id]) }}">{{ $i->name }}</a> - <a href="{{ action('RepairController@delete_kva', [$i->id]) }}">[del]</a><br>
+                                            <a href="{{ action('RepairController@download_kva', [$i->id]) }}">{{ $i->name }}</a> - <a href="{{ action('RepairController@delete_kva', [$i->id]) }}" onclick="return confirm('Sicher das die Datei gelöscht werden soll?')">[del]</a><br>
                                         @endforeach
                                         <br>
                                             {{ Form::file('file') }}

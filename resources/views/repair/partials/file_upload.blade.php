@@ -56,7 +56,7 @@
                                 <td>{{ $i->type }}</td>
                                 <td>{{ \App\Helpers\MiscHelper::bytesToHuman($i->size) }}</td>
                                 <td>
-                                    <a href="{{ action('RepairFileController@delete', [$i->id]) }}">[delete file]</a>
+                                    <a href="{{ action('RepairFileController@delete', [$i->id]) }}" onclick="return confirm('Sicher das die Datei gelöscht werden soll?')">[delete file]</a>
                                 </td>
                             </tr>
                         @endforeach
