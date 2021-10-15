@@ -10,7 +10,7 @@ class RepairFileController extends Controller
     public function store(Request $request){
 
         if($request->file('file')){
-            //dd($request);
+            dd($request);
 
             $filename = $request->file('file')->getClientOriginalName();
             $filesize = $request->file('file')->getSize();
