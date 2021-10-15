@@ -46,7 +46,7 @@
                                 <td>
                                     @if($i->type == 'Foto')
                                         <a href="{{ action('RepairFileController@download', [$i->id]) }}">
-                                            <img src="{{ asset('storage/'.$i->storage_path) }}">
+                                            <img width="128px" alt="{{ $i->file_name }}" src="{{ asset('storage/'.$i->storage_path) }}"><br>
                                             {{ $i->file_name }}
                                         </a>
                                     @else
