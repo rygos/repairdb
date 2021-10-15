@@ -14,6 +14,7 @@ use App\Models\Model;
 use App\Models\ModelTypesXcharge;
 use App\Models\ReapirLog;
 use App\Models\Repair;
+use App\Models\RepairFile;
 use App\Models\RepairType;
 use App\Models\Rminstzlb;
 use App\Models\Spare;
@@ -219,6 +220,8 @@ MRI: &#13;
 
         $replog = ReapirLog::whereRepairId($data->id)->get();
 
+        $repairfiles = RepairFile::whereRepairId($data->id)->get();
+
         return view('repair.show',[
             'data' => $data,
             'reasons' => $reasons,
@@ -227,6 +230,7 @@ MRI: &#13;
             'remark_template' => $remark_template,
             'replog' => $replog,
             'kvafiles' => $kvafiles,
+            'repairfiles' => $repairfiles,
         ]);
     }
 

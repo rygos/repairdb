@@ -97,4 +97,8 @@ class Repair extends \App\Models\Base\Repair
     public function closing_reason(){
 	    return $this->hasOne('App\Models\ClosingReason', 'id', 'closing_reason_id')->first();
     }
+
+    public function files(){
+        return $this->hasMany('App\Models\RepairFile', 'repair_id', 'id')->get();
+    }
 }

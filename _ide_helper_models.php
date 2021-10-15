@@ -571,6 +571,8 @@ namespace App\Models\Base{
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @package App\Models\Base
+ * @property int $size
+ * @property string $type
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile query()
@@ -579,7 +581,9 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereFileName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereRepairId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereSize($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereStoragePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereUpdatedAt($value)
  */
 	class RepairFile extends \Eloquent {}
@@ -1378,6 +1382,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairFile whereStoragePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\RepairFile whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property int $size
+ * @property string $type
+ * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereSize($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|RepairFile whereType($value)
  */
 	class RepairFile extends \Eloquent {}
 }
