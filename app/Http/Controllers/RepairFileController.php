@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 class RepairFileController extends Controller
 {
     public function store(Request $request){
+
+        dd($request);
+
         if($request->file('file')){
             //dd($request);
 
