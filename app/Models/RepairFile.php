@@ -31,6 +31,8 @@ class RepairFile extends \App\Models\Base\RepairFile
 		'repair_id',
 		'file_name',
 		'file_ext',
-		'storage_path'
+		'storage_path',
+        'size',
+        'type'
 	];
 }

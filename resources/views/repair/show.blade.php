@@ -443,6 +443,8 @@
             </div>
         </div>
 
+        @include('repair.partials.file_upload')
+
         <div class="pouettbl" id="pouet_replog" style="width: 100%;">
             <h2>Repair log</h2>
             <div class="content">
