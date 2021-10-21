@@ -29,7 +29,11 @@
     @endif
 
     @if(Auth::user()->access_overtime == 1)
-    <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
+        <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
+    @endif
+
+    @if(Auth::user()->access_admin == 1)
+        <li><a href="{{ action('AdminController@index') }}">Adminpanel</a></li>
     @endif
 
     <li>

@@ -85,6 +85,8 @@ Route::post('repairfile/upload', 'RepairFileController@store');
 Route::get('repairfile/download/{id}', 'RepairFileController@download');
 Route::get('repairfile/delete/{id}', 'RepairFileController@delete');
 
+Route::get('admin', 'AdminController@index');
+
 
 //Maintenance Routes
 Route::get('maint/link', function () {
