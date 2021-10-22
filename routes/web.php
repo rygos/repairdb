@@ -86,8 +86,8 @@ Route::get('repairfile/download/{id}', 'RepairFileController@download');
 Route::get('repairfile/delete/{id}', 'RepairFileController@delete');
 
 Route::get('admin', 'AdminController@index');
-Route::get('admin/users', 'AdminController@show_users');
 Route::get('admin/user/{$user_id}', 'AdminController@show_user');
+Route::get('admin/users', 'AdminController@show_users');
 Route::post('admin/store_user', 'AdminController@store_user');
 
 
