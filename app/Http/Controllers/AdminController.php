@@ -23,8 +23,8 @@ class AdminController extends Controller
         ]);
     }
 
-    public function show_user($user_id){
-        $user = User::whereId($user_id)->first();
+    public function show_user($id){
+        $user = User::whereId($id)->first();
 
         return view('admin.show_user', [
             'user' => $user,
