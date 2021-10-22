@@ -19,7 +19,7 @@
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->created_at }}</td>
-                            <td>{{ action('AdminController@show_user', [$u->id]) }}</td>
+                            <td><a href="{{ action('AdminController@show_user', [$u->id]) }}">Edit</a></td>
                         </tr>
                         @endforeach
                     </table>

@@ -18,17 +18,17 @@ class AdminController extends Controller
     public function show_users(){
         $users = User::get();
 
-        foreach ($users as $u){
-
-        }
-
         return view('admin.show_users', [
             'users' => $users,
         ]);
     }
 
     public function show_user($user_id){
+        $user = User::whereId($user_id)->first();
 
+        return view('admin.show_user', [
+            'user' => $user,
+        ]);
     }
 
     public function store_user(Request $request){
