@@ -10,8 +10,12 @@
                 <div class="content">
                     <table class="boxtable">
                         <tr>
-                            <td>Name</td>
+                            <td>Name:</td>
                             <td>{{ Form::text('name', $user->name) }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>{{ Form::text('email', $user->email) }}</td>
                         </tr>
                         <tr><td></td><td>{{ Form::submit() }}</td></tr>
                     </table>
