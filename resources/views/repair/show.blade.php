@@ -539,6 +539,6 @@
         });
     </script>
     @else
-        <center>Access Denied.</center>
+        <div style="text-align: center;">Access Denied.</div>
     @endif
 @endsection
