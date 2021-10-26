@@ -38,13 +38,13 @@ class AdminController extends Controller
         ]);
 
         $u = User::whereId($request->post('id'))->first();
-        $u->access_admin = $request->post('access_admin');
-        $u->access_overtime = $request->post('access_overtime');
-        $u->access_parts = $request->post('access_parts');
-        $u->access_repairs = $request->post('access_repairs');
-        $u->access_reports = $request->post('access_reports');
-        $u->access_scrape = $request->post('access_scrape');
-        $u->access_xcharge = $request->post('accessxcharge');
+        $u->access_admin = $request->post('access_admin',0);
+        $u->access_overtime = $request->post('access_overtime',0);
+        $u->access_parts = $request->post('access_parts',0);
+        $u->access_repairs = $request->post('access_repairs',0);
+        $u->access_reports = $request->post('access_reports',0);
+        $u->access_scrape = $request->post('access_scrape',0);
+        $u->access_xcharge = $request->post('accessxcharge',0);
         $u->save();
 
         return redirect()->action('AdminController@show_user', [$request->post('id')]);
