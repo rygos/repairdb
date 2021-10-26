@@ -24,7 +24,7 @@ class OvertimeMail extends Mailable
             $this->username = \Auth::getUser()->name;
         }
 
-        $this->email = 'donotreply@rmarchiv.tk';
+        $this->email = 'donotreply@rmarchiv.de';
 
     }
 
