@@ -44,7 +44,7 @@ class AdminController extends Controller
         $u->access_repairs = $request->post('access_repairs',0);
         $u->access_reports = $request->post('access_reports',0);
         $u->access_scrape = $request->post('access_scrape',0);
-        $u->access_xcharge = $request->post('accessxcharge',0);
+        $u->access_xcharge = $request->post('access_xcharge',0);
         $u->save();
 
         return redirect()->action('AdminController@show_user', [$request->post('id')]);
