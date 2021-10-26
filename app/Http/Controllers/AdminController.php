@@ -32,6 +32,14 @@ class AdminController extends Controller
     }
 
     public function store_user(Request $request){
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+
+        dd($request);
+
+        $u = User::whereId($request->post('id'))->first();
 
     }
 }

@@ -9,6 +9,7 @@
                 <h2>Edit User</h2>
                 <div class="content">
                     <table class="boxtable">
+                        {{ Form::hidden('id', $user->id) }}
                         <tr>
                             <td>Name:</td>
                             <td>{{ Form::text('name', $user->name) }}</td>
