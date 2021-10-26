@@ -46,7 +46,7 @@ class AdminController extends Controller
         $u->access_scrape = $request->post('access_scrape',0);
         $u->access_xcharge = $request->post('access_xcharge',0);
 
-        dd($u);
+        dd($request);
 
         $u->save();
 
