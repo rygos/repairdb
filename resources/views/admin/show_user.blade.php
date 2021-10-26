@@ -49,7 +49,15 @@
                             <td>Admin:</td>
                             <td>{{ Form::checkbox('access_admin', $user->access_admin, $user->access_admin) }}</td>
                         </tr>
-                        <tr><td></td><td>{{ Form::submit() }}</td></tr>
+                        <tr>
+                            <td colspan="2">Location</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                {{ Form::select('location', ['DEBM' => 'DEBM', 'DEHH' => 'DEHH'], $user->location) }}
+                            </td>
+                        </tr>
+                        <tr><td><a href="{{ action('AdminController@show_users') }}">Back</a></td><td>{{ Form::submit() }}</td></tr>
                     </table>
                 </div>
             </div>

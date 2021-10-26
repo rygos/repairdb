@@ -45,6 +45,7 @@ class AdminController extends Controller
         $u->access_reports = $request->has('access_reports');
         $u->access_scrape = $request->has('access_scrape');
         $u->access_xcharge = $request->has('access_xcharge');
+        $u->location = $request->get('location');
 
         $u->save();
 
