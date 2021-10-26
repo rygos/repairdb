@@ -38,6 +38,8 @@ class AdminController extends Controller
         ]);
 
         $u = User::whereId($request->post('id'))->first();
+        $u->name = $request->get('name');
+        $u->email = $request->get('email');
         $u->access_admin = $request->has('access_admin');
         $u->access_overtime = $request->has('access_overtime');
         $u->access_parts = $request->has('access_parts');
