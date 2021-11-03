@@ -533,6 +533,7 @@ Thirdparty damage = '.$thirdpartydamage;
         $rep_id = $request->get('repair_id');
         $rep = Repair::whereId($rep_id)->first();
         $rep->user_id = $request->get('tech_id');
+        $rep->save();
 
         return redirect()->action('RepairController@show', [$rep_id]);
     }
