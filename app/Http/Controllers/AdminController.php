@@ -32,8 +32,6 @@ class AdminController extends Controller
     }
 
     public function store_user(Request $request){
-        //Save
-
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required'
