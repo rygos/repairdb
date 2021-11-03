@@ -532,8 +532,17 @@ Thirdparty damage = '.$thirdpartydamage;
     public function change_technician(Request $request){
         $rep_id = $request->get('repair_id');
         $rep = Repair::whereId($rep_id)->first();
+        //alter Techniker
+        $tech_old = $rep->user()->name;
         $rep->user_id = $request->get('tech_id');
         $rep->save();
+
+        $log = new ReapirLog;
+        $log->log = 'Change Technician from '.$tech_old.' to '.$rep->user()->name;
+        $log->repair_id = $request->post('repair_id');
+        $log->user_id = \Auth::id();
+        $log->closing_reason_id = Repair::whereId($request->post('repair_id'))->first()->closing_reason_id;
+        $log->save();
 
         return redirect()->action('RepairController@show', [$rep_id]);
     }
