@@ -337,10 +337,11 @@ Thirdparty damage = '.$thirdpartydamage;
     public function changestate(Request $request){
         //Save Status change to repair
         $rep = Repair::whereId($request->post('repair_id'))->first();
-        $rep->closing_reason_id = $request->post('reason_id');
-        if(!$rep->started_at){
+
+        if(!$rep->closing_reason_id){
             $rep->started_at = Carbon::now()->toDateString();
         }
+        $rep->closing_reason_id = $request->post('reason_id');
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 

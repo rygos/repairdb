@@ -67,8 +67,11 @@
                                 <td>{{ \Carbon\Carbon::parse($data->rminst()->zlb_created_at)->toDateString() }}</td>
                             </tr>
                             <tr>
-                                <td>Repair started at:</td>
-                                <td>{{ Carbon\Carbon::parse($data->started_at)->toDateString() }}</td>
+                                @if(!$data->closing_reason_id)
+                                @else
+                                    <td>Repair started at:</td>
+                                    <td>{{ Carbon\Carbon::parse($data->started_at)->toDateString() }}</td>
+                                @endif
                             </tr>
                             <tr>
                                 <td>Status:</td>
