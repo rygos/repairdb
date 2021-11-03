@@ -45,7 +45,9 @@
         <td  {!! $style !!}>{{ $counter }}</td>
         <td {!! $style !!}><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->id }}</a></td>
         <td {!! $style !!}>{{ \Carbon\Carbon::parse($item->rminst()->zlb_created_at)->toDateString() }}</td>
-        <td {!! $style !!}>@if(!$item->closing_reason_id) @else{{ \Carbon\Carbon::parse($item->started_at)->toDateString()@endif }}</td>
+        <td {!! $style !!}>
+            @if(!$item->closing_reason_id) @else {{ \Carbon\Carbon::parse($item->started_at)->toDateString() }} @endif
+        </td>
         <td {!! $style !!}>{{ $item->rminst()->calltype()->type }}</td>
         <td {!! $style !!}>{{ $item->rminst()->rminst }}</td>
         <td {!! $style !!}><a href="{{ action('RepairController@show', $item->id) }}">{{ $item->rminst()->zlb }}</a></td>
