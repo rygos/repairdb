@@ -16,7 +16,7 @@ class AdminController extends Controller
     }
 
     public function show_users(){
-        $users = User::get();
+        $users = User::orderBy('name')->get();
 
         return view('admin.show_users', [
             'users' => $users,
@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
 
     public function show_user($id){
-        $user = User::whereId($id)->orderBy('name')->first();
+        $user = User::whereId($id)->first();
 
         return view('admin.show_user', [
             'user' => $user,
