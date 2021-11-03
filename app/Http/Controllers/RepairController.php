@@ -102,7 +102,6 @@ class RepairController extends Controller
     {
         $request->validate([
             'zlb_created_at' => 'date|required',
-            'started_at' => 'date|required',
             'rminst' => 'numeric|required',
             'zlb' => 'numeric|required',
             'serial' => 'required',
@@ -116,7 +115,7 @@ class RepairController extends Controller
 
 
         $r = new Repair;
-        $r->started_at = Carbon::parse($request->post('started_at'))->toDateString();
+        //$r->started_at = Carbon::parse($request->post('started_at'))->toDateString();
         $r->rminstzlb_id = insert_zlbrminst(Carbon::parse($request->post('zlb_created_at'))->toDateString(), $request->post('zlb'), $request->post('rminst'), $request->post('call_type'));
         if($request->post('customer_text') != ''){
             $cust = new Customer;
@@ -339,6 +338,9 @@ Thirdparty damage = '.$thirdpartydamage;
         //Save Status change to repair
         $rep = Repair::whereId($request->post('repair_id'))->first();
         $rep->closing_reason_id = $request->post('reason_id');
+        if(!$rep->started_at){
+            $rep->started_at = Carbon::now()->toDateString();
+        }
         $rep->closed_at = Carbon::now()->toDateString();
         $rep->save();
 
