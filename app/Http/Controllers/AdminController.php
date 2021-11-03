@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
 
     public function show_user($id){
-        $user = User::whereId($id)->first();
+        $user = User::whereId($id)->orderBy('name')->first();
 
         return view('admin.show_user', [
             'user' => $user,
