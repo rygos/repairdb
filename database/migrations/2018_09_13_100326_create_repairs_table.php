@@ -15,7 +15,7 @@ class CreateRepairsTable extends Migration
     {
         Schema::create('repairs', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('started_at');
+            $table->date('started_at')->nullable();
             $table->integer('rminstzlb_id');
             $table->integer('customer_id');
             $table->text('serial');

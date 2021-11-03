@@ -787,6 +787,7 @@ namespace App\Models\Base{
  * @property int $access_admin
  * @property string $location
  * @package App\Models\Base
+ * @property int|null $technician
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
@@ -806,6 +807,7 @@ namespace App\Models\Base{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTechnician($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
@@ -1630,6 +1632,7 @@ namespace App\Models{
  * @property int $access_repairs
  * @property int $access_admin
  * @property string $location
+ * @property int|null $technician
  * @property-read int|null $notifications_count
  * @property-read int|null $options_count
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessAdmin($value)
@@ -1641,6 +1644,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessStats($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessXcharge($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLocation($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereTechnician($value)
  */
 	class User extends \Eloquent {}
 }

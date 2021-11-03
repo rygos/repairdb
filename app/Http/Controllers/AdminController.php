@@ -32,6 +32,8 @@ class AdminController extends Controller
     }
 
     public function store_user(Request $request){
+        //Save
+
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required'
@@ -47,6 +49,7 @@ class AdminController extends Controller
         $u->access_reports = $request->has('access_reports');
         $u->access_scrape = $request->has('access_scrape');
         $u->access_xcharge = $request->has('access_xcharge');
+        $u->technician = $request->has('technician');
         $u->location = $request->get('location');
 
         $u->save();

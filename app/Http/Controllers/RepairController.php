@@ -19,6 +19,7 @@ use App\Models\RepairType;
 use App\Models\Rminstzlb;
 use App\Models\Spare;
 use App\Models\SpareLog;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -222,6 +223,12 @@ MRI: &#13;
 
         $repairfiles = RepairFile::whereRepairId($data->id)->get();
 
+        $techs = User::whereTechnician(1)->get();
+        $technicians = [];
+        foreach($techs as $i){
+            $technicians[$i->id] = $i->name.' ['.$i->location.']';
+        }
+
         return view('repair.show',[
             'data' => $data,
             'reasons' => $reasons,
@@ -231,6 +238,7 @@ MRI: &#13;
             'replog' => $replog,
             'kvafiles' => $kvafiles,
             'repairfiles' => $repairfiles,
+            'technicians' => $technicians
         ]);
     }
 
@@ -517,6 +525,14 @@ Thirdparty damage = '.$thirdpartydamage;
             \File::delete(storage_path('app/public/'. $file->file_path));
             $file->delete();
         }
+
+        return redirect()->action('RepairController@show', [$rep_id]);
+    }
+
+    public function change_technician(Request $request){
+        $rep_id = $request->get('repair_id');
+        $rep = Repair::whereId($rep_id)->first();
+        $rep->user_id = $request->get('tech_id');
 
         return redirect()->action('RepairController@show', [$rep_id]);
     }

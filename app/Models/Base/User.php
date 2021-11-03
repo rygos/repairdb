@@ -43,6 +43,7 @@ class User extends Eloquent
 		'access_stats' => 'int',
 		'access_repairs' => 'int',
         'access_admin' => 'int',
+        'technician' => 'int',
 	];
 
 	protected $dates = [

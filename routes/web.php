@@ -29,6 +29,7 @@ Route::post('repair/storeremark', 'RepairController@storeremark');
 Route::post('repair/changegorderno', 'RepairController@changegorderno');
 Route::post('repair/changestate', 'RepairController@changestate');
 Route::post('repair/update_so', 'RepairController@update_so');
+Route::post('repair/update_technician', 'RepairController@change_technician');
 Route::post('repair/upload-kva', 'RepairController@upload_kva');
 Route::get('repair/kva_download/{file_id}', 'RepairController@download_kva')->name('kva_download');
 Route::get('repair/kva_delete/{file_id}', 'RepairController@delete_kva');

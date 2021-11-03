@@ -50,6 +50,10 @@
                             <td>{{ Form::checkbox('access_admin', $user->access_admin, $user->access_admin) }}</td>
                         </tr>
                         <tr>
+                            <td>Technician:</td>
+                            <td>{{ Form::checkbox('technician', $user->technician, $user->technician) }}</td>
+                        </tr>
+                        <tr>
                             <td colspan="2">Location</td>
                         </tr>
                         <tr>

@@ -117,7 +117,10 @@
                             </tr>
                             <tr>
                                 <td>Technician:</td>
-                                <td>{{ $data->user()->name }}</td>
+                                {{ Form::open(['method' => 'POST', 'action' => 'RepairController@change_technician']) }}
+                                {{ Form::hidden('repair_id', $data->id) }}
+                                <td>{!! Form::select('tech_id', $technician, $data->user_id) !!} {!! Form::submit() !!}</td>
+                                {{ Form::close() }}
                             </tr>
                         </table>
                     </td>
