@@ -538,6 +538,7 @@ Thirdparty damage = '.$thirdpartydamage;
         //alter Techniker
         $tech_old = $rep->user()->name;
         $rep->user_id = $request->get('tech_id');
+        $rep->location = User::whereId($rep->user_id)->first()->location;
         $rep->save();
 
         $log = new ReapirLog;
