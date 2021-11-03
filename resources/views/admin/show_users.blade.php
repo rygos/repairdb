@@ -12,6 +12,7 @@
                             <td>Name</td>
                             <td>EMail</td>
                             <td>Registered at</td>
+                            <td>Technician</td>
                             <td>Action</td>
                         </tr>
                         @foreach($users as $u)
@@ -19,6 +20,13 @@
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->created_at }}</td>
+                            <td>
+                                @if($u->technician == 1)
+                                    YES
+                                @else
+                                    NO
+                                @endif
+                            </td>
                             <td><a href="{{ action('AdminController@show_user', [$u->id]) }}">Edit</a></td>
                         </tr>
                         @endforeach
