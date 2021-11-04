@@ -3,8 +3,8 @@
 @section('content')
     @if(isset($new))
         @include('_partials.repair_table', $data)
+        @include('_partials.new_table', $new)
     @else
         @include('_partials.repair_table', $data)
-        @include('_partials.new_table', $new)
     @endif
 @endsection
