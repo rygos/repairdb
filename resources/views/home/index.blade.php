@@ -1,7 +1,7 @@
 @extends('_layout')
 @section('title', 'Home')
 @section('content')
-    @if($new == 0)
+    @if(isset($new))
         @include('_partials.repair_table', $data)
     @else
         @include('_partials.repair_table', $data)
