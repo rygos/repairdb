@@ -29,7 +29,7 @@ class HomeController extends Controller
         //$data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2,11])->orWhereNull('closing_reason_id')->orderBy('id')->get();
         $data = Repair::where('user_id', '=', \Auth::id())->whereNotIn('closing_reason_id', [2, 11, 15])->orderBy('id')->get();
 
-        $new = Repair::whereNull('closing_reason_id')->where('location', '=', \Auth::user()->location);
+        $new = Repair::whereNull('closing_reason_id')->where('location', '=', \Auth::user()->location)->get();
         //dd($data);
 
         return view('home.index', [
