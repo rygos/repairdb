@@ -42,7 +42,8 @@ class HomeController extends Controller
         $data = Repair::where('location', '=', \Auth::user()->location)->whereNotIn('closing_reason_id', [2, 11, 15])->orWhereNull('closing_reason_id')->orderBy('id')->get();
 
         return view('home.index', [
-            'data' => $data
+            'data' => $data,
+            'new' => 0
         ]);
     }
 
@@ -57,7 +58,8 @@ class HomeController extends Controller
         $data = Repair::whereIn('rminstzlb_id', $res_rminst_ids)->whereNotIn('closing_reason_id', [2,11,15])->orderBy('id')->get();
 
         return view('home.index', [
-            'data' => $data
+            'data' => $data,
+            'new' => 0
         ]);
     }
 }
