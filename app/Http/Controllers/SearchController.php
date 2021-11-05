@@ -49,6 +49,7 @@ class SearchController extends Controller
 
         return view('home.index', [
             'data' => $result,
+            'new' => 0,
             'term' => $term,
         ]);
     }
