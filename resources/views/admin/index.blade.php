@@ -20,6 +20,24 @@
                             <td><a href="{{ action('AdminController@show_users') }}">Edit Users</a></td>
                         </tr>
                     </table>
+                    <br>
+                    <table class="boxtable">
+                        <tr>
+                            <td colspan="2">DOA Speed Article Import</td>
+                        </tr>
+                        <tr>
+                            <td>Article count:</td>
+                            <td>{{ $articlecount - 1 }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Import:</td>
+                            <td>{{ @$articlelastimport }}</td>
+                        </tr>
+                        <tr>
+                            <td>Options:</td>
+                            <td><a href="{{ action('AdminController@show_users') }}">Edit Users</a></td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

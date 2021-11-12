@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DoaSpeedItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -9,9 +10,19 @@ class AdminController extends Controller
 {
     public function index(){
         $usercount = User::all()->count();
+        $articlecount = DoaSpeedItem::all()->count();
+        $articlelastimport_temp = DoaSpeedItem::whereSapNo(4711)->first();
+        if($articlelastimport_temp){
+            $articlelastimport = $articlelastimport_temp->sap_desc;
+        }else{
+            $articlelastimport = 'never';
+        }
+
 
         return view('admin.index', [
             'usercount' => $usercount,
+            'articlecount' => $articlecount,
+            'articlelastimport' => $articlelastimport,
         ]);
     }
 

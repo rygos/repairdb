@@ -788,10 +788,12 @@ namespace App\Models\Base{
  * @property string $location
  * @package App\Models\Base
  * @property int|null $technician
+ * @property int $access_doa
  * @method static \Illuminate\Database\Eloquent\Builder|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessDoa($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessParts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessRepairs($value)
@@ -853,6 +855,28 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\CallType query()
  */
 	class CallType extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Changelog
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog query()
+ */
+	class Changelog extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\ChangelogVersion
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion query()
+ */
+	class ChangelogVersion extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -928,6 +952,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer query()
  */
 	class Customer extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DoaSpeedItem
+ *
+ * @property int $id
+ * @property int $sap_no
+ * @property int $sap_desc
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem whereSapDesc($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem whereSapNo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DoaSpeedItem whereUpdatedAt($value)
+ */
+	class DoaSpeedItem extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -1633,9 +1678,11 @@ namespace App\Models{
  * @property int $access_admin
  * @property string $location
  * @property int|null $technician
+ * @property int $access_doa
  * @property-read int|null $notifications_count
  * @property-read int|null $options_count
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessAdmin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessDoa($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessOvertime($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessParts($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereAccessRepairs($value)

@@ -28,6 +28,10 @@
         <li><a style="background-color: darkblue" href="{{ action('FakturaController@index') }}">Faktura</a></li>
     @endif
 
+    @if(Auth::user()->access_doa == 1)
+        <li><a href="/">DOA</a></li>
+    @endif
+
     @if(Auth::user()->access_overtime == 1)
         <li><a href="{{ action('OvertimeController@index') }}">Überstunden</a></li>
     @endif

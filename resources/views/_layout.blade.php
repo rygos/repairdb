@@ -49,7 +49,7 @@
 </nav>
 <footer>
     <ul>
-        <li>{{ config('app.name').' - '.config('app.version') }}</li>
+        <li>{{ config('app.name') }} - <a href="{{ action('ChangelogController@index') }}">{{ config('app.version') }}</a></li>
     </ul>
 </footer>
 </body>

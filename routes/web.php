@@ -91,6 +91,11 @@ Route::get('admin/user/{id}', 'AdminController@show_user');
 Route::get('admin/users', 'AdminController@show_users');
 Route::post('admin/store_user', 'AdminController@store_user');
 
+Route::get('changelog', 'ChangelogController@index');
+Route::post('changelog/add_changelog', 'ChangelogController@add_changelog');
+Route::post('changelog/add_version', 'ChangelogController@add_version');
+Route::post('changelog/publish', 'ChangelogController@publish_version');
+
 
 //Maintenance Routes
 Route::get('maint/link', function () {
