@@ -20,7 +20,7 @@ namespace App\Models;
  */
 class ClosingReason extends \App\Models\Base\ClosingReason
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'reason'
 	];

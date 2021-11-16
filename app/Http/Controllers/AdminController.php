@@ -60,6 +60,7 @@ class AdminController extends Controller
         $u->access_xcharge = $request->has('access_xcharge');
         $u->technician = $request->has('technician');
         $u->location = $request->get('location');
+        $u->access_doa = $request->has('access_doa');
 
         $u->save();
 

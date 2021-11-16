@@ -1,4 +1,4 @@
-@if(Auth::user()->access_admin == 1)
+@if(Auth::check() and Auth::user()->access_admin == 1)
 
     <br><br>
     <h2>Unassigned Repairs</h2>

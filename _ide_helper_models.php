@@ -861,9 +861,21 @@ namespace App\Models{
 /**
  * App\Models\Changelog
  *
+ * @property int $id
+ * @property int $version_id
+ * @property string $type
+ * @property string $description
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Changelog newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Changelog newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Changelog query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Changelog whereVersionId($value)
  */
 	class Changelog extends \Eloquent {}
 }
@@ -872,9 +884,23 @@ namespace App\Models{
 /**
  * App\Models\ChangelogVersion
  *
+ * @property int $id
+ * @property string $version
+ * @property string|null $description
+ * @property int $published
+ * @property string $published_at
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion query()
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion wherePublished($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion wherePublishedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|ChangelogVersion whereVersion($value)
  */
 	class ChangelogVersion extends \Eloquent {}
 }
@@ -952,6 +978,33 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Customer query()
  */
 	class Customer extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\DOA
+ *
+ * @property int $id
+ * @property string $serial
+ * @property int $sap_no
+ * @property int $service_order
+ * @property string $doa_description
+ * @property int $user_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA query()
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereDoaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereSapNo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereSerial($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereServiceOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|DOA whereUserId($value)
+ */
+	class DOA extends \Eloquent {}
 }
 
 namespace App\Models{

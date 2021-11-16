@@ -5,12 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DoaSpeedItem extends Model
+class DOA extends Model
 {
     use HasFactory;
+    protected $table = 'doa';
     //protected $dateFormat = 'd-m-Y H:i:s';
     protected $fillable = [
         'sap_no',
-        'sap_desc'
+        'serial',
+        'doa_description',
+        'service_order',
+        'user_id'
     ];
 }

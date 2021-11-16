@@ -22,7 +22,7 @@ namespace App\Models;
  */
 class Model extends \App\Models\Base\Model
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'manufacturer_id',
 		'model'

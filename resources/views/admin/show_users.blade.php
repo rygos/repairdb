@@ -2,7 +2,7 @@
 @section('title', 'Show Users')
 @section('content')
 
-    @if(Auth::user()->access_admin)
+    @if(Auth::check() and Auth::user()->access_admin)
         <div id="prodpagecontainer">
             <div class="pouettbl" id="pouetbox_repair">
                 <h2>All Users</h2>

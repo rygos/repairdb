@@ -29,7 +29,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 class Manufacturer extends Eloquent
 {
 	protected $table = 'manufacturer';
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'manufacturer'
 	];

@@ -1,7 +1,7 @@
 @extends('_layout')
 @section('title', 'Faktura')
 @section('content')
-    @if(Auth::user()->access_reports == 1)
+    @if(Auth::check() and Auth::user()->access_reports == 1)
         <table id="pouetbox_prodlist" class="boxtable pagedtable">
             <tr class="sortable">
                 <th>ServiceOrder</th>

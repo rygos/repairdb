@@ -1,5 +1,5 @@
 @extends('_layout')
-@section('title', 'Adminpanel')
+@section('title', 'Changelog')
 @section('content')
 
     <div id="prodpagecontainer">

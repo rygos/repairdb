@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Changelog extends Model
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'Y-m-d H:i:s';
     protected $table = 'changelog';
     protected $fillable = [
         'version_id',

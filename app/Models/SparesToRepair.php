@@ -30,7 +30,7 @@ namespace App\Models;
  */
 class SparesToRepair extends \App\Models\Base\SparesToRepair
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'repair_id',
 		'spare_id',

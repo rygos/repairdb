@@ -10,7 +10,23 @@ use Illuminate\Http\Request;
 
 class ScrapeController extends Controller
 {
-    public function index($pack = null){
+    public function index(){
+        $packview = 0;
+        $data = Scrap::whereScraped(0)->orderByDesc('id')->get();
+
+
+        $packs = Scrap::whereScraped(1)->groupBy('package')->get(['package']);
+
+        //dd($packs);
+
+        return view('scrape.index', [
+            'data' => $data,
+            'packs' => $packs,
+            'packview' => $packview,
+        ]);
+    }
+
+    public function index_pack($pack = null){
         $packview = 0;
         if(is_null($pack)){
             $data = Scrap::whereScraped(0)->orderByDesc('id')->get();
@@ -62,7 +78,7 @@ class ScrapeController extends Controller
         return redirect()->action('ScrapeController@index');
     }
 
-    public function export($pack){
+    public function export($pack = 0){
         if($pack == 0){
             //Load List of Units without Package
             $data = Scrap::whereScraped(0)->orderByDesc('id')->get();

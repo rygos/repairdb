@@ -20,7 +20,7 @@ namespace App\Models;
  */
 class CallType extends \App\Models\Base\CallType
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'type'
 	];

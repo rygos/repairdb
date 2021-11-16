@@ -1,6 +1,7 @@
 @extends('_layout')
 @section('title', 'Sparepart WE')
 @section('content')
+    @if(Auth::check() and Auth::user()->access_parts)
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
             <tbody>
@@ -63,4 +64,5 @@
             </tbody>
         </table>
     </div>
+    @endif
 @endsection

@@ -2,7 +2,7 @@
 @section('title', 'Adminpanel')
 @section('content')
 
-    @if(Auth::user()->access_admin)
+    @if(Auth::check() and Auth::user()->access_admin)
         <div id="prodpagecontainer">
             <div class="pouettbl" id="pouetbox_repair">
                 <h2>Administration</h2>
@@ -35,7 +35,12 @@
                         </tr>
                         <tr>
                             <td>Options:</td>
-                            <td><a href="{{ action('AdminController@show_users') }}">Edit Users</a></td>
+                            <td>
+                                {{ Form::open(['action' => 'DOAController@fileimport', 'enctype' => 'multipart/form-data']) }}
+                                {{ Form::file('file') }}
+                                {{ Form::submit() }}
+                                {{ Form::close() }}
+                            </td>
                         </tr>
                     </table>
                 </div>

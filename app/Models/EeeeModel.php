@@ -22,7 +22,7 @@ namespace App\Models;
  */
 class EeeeModel extends \App\Models\Base\EeeeModel
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'eeee',
 		'model_id'

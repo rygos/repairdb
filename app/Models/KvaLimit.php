@@ -26,7 +26,7 @@ namespace App\Models;
  */
 class KvaLimit extends \App\Models\Base\KvaLimit
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'customer_id',
 		'model_id',

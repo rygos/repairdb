@@ -49,7 +49,9 @@
 </nav>
 <footer>
     <ul>
-        <li>{{ config('app.name') }} - <a href="{{ action('ChangelogController@index') }}">{{ config('app.version') }}</a></li>
+        <li>{{ config('app.name') }} - <a href="{{ action('ChangelogController@index') }}">
+                {{ \App\Models\ChangelogVersion::latest()->where('published', '=', 1)->first()->version }}
+            </a></li>
     </ul>
 </footer>
 </body>

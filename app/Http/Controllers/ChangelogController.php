@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Changelog;
 use App\Models\ChangelogVersion;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\Tags\Version;
 
@@ -33,7 +34,7 @@ class ChangelogController extends Controller
         $v->version = $request->get('version');
         $v->description = $request->get('description');
         $v->published = 0;
-        $v->published_at = now();
+        $v->published_at = Carbon::now();
         $v->save();
 
         return redirect(action('ChangelogController@index'));

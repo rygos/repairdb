@@ -47,7 +47,7 @@ namespace App\Models;
  */
 class Repair extends \App\Models\Base\Repair
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'started_at',
 		'rminstzlb_id',

@@ -4,7 +4,7 @@ namespace App\Models;
 
 class CrossCharge extends \App\Models\Base\CrossCharge
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'service_order',
 		'serial',

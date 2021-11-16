@@ -42,7 +42,7 @@ namespace App\Models;
  */
 class Spare extends \App\Models\Base\Spare
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'sap_no',
 		'sap_desc',

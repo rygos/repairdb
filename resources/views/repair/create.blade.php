@@ -1,6 +1,7 @@
 @extends('_layout')
 @section('title', 'Create new Repair')
 @section('content')
+    @if(Auth::check() and Auth::user()->access_repairs)
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
             <tbody>
@@ -90,4 +91,5 @@
             }
         </script>
     </div>
+    @endif
 @endsection

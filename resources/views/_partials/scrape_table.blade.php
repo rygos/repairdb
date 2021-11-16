@@ -1,4 +1,4 @@
-@if(Auth::user()->access_scrape == 1)
+@if(Auth::check() and Auth::user()->access_scrape == 1)
 <table id='pouetbox_packlist' class="boxtable pagedtable">
     <tr class="sortable">
         <th>PACKAGE</th>
@@ -7,7 +7,7 @@
     </tr>
     @foreach($packs as $item)
         <tr>
-            <td><a href="{{ action('ScrapeController@index', $item->package) }}">{{ $item->package }}</a></td>
+            <td><a href="{{ action('ScrapeController@index_pack', $item->package) }}">{{ $item->package }}</a></td>
             <td>{{ \App\Models\Scrap::wherePackage($item->package)->get()->count() }}</td>
             <td>{{ \App\Models\Scrap::wherePackage($item->package)->first()->scrape_date }}</td>
         </tr>

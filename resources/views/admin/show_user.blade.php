@@ -2,7 +2,7 @@
 @section('title', 'Show User')
 @section('content')
 
-    @if(Auth::user()->access_admin)
+    @if(Auth::check() and Auth::user()->access_admin)
         <div id="prodpagecontainer">
             {{ Form::open(['action' => 'AdminController@store_user']) }}
             <div class="pouettbl" id="pouetbox_repair">
@@ -52,6 +52,10 @@
                         <tr>
                             <td>Technician:</td>
                             <td>{{ Form::checkbox('technician', $user->technician, $user->technician) }}</td>
+                        </tr>
+                        <tr>
+                            <td>DOA</td>
+                            <td>{{ Form::checkbox('access_doa', $user->access_doa, $user->access_doa) }}</td>
                         </tr>
                         <tr>
                             <td colspan="2">Location</td>

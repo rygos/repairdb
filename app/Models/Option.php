@@ -25,7 +25,7 @@ namespace App\Models;
  */
 class Option extends \App\Models\Base\Option
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'name',
 		'poll_id',

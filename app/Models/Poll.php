@@ -25,7 +25,7 @@ namespace App\Models;
  */
 class Poll extends \App\Models\Base\Poll
 {
-    protected $dateFormat = 'd-m-Y H:i:s';
+    //protected $dateFormat = 'd-m-Y H:i:s';
 	protected $fillable = [
 		'question',
 		'maxCheck',

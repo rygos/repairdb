@@ -1,7 +1,7 @@
 @extends('_layout')
 @section('title', 'Repair - '.$data->rminst()->rminst.' / '.$data->rminst()->zlb)
 @section('content')
-    @if(Auth::user()->access_repairs == 1)
+    @if(Auth::check() and Auth::user()->access_repairs == 1)
     <div id="prodpagecontainer">
         <table id="pouetbox_prodmain">
             <tbody>
@@ -161,7 +161,29 @@
                         </table>
                     </td>
                     <td>
-                        Documentation: <br>
+                        @php
+                            $doas = \App\Models\DOA::whereSerial($data->unit()->serial);
+                            $oldreps = \App\Models\Unit::whereSerial($data->unit()->serial);
+                        @endphp
+                        @if($doas->count() != 0)
+                            <table class="pouettbl boxtable">
+                                <tr>
+                                    <th colspan="4">DOAs</th>
+                                </tr>
+                                @foreach($doas->get() as $d)
+                                    <tr>
+                                        <td>{{ $d->created_at }}</td>
+                                        <td>{{ $d->service_order }}</td>
+                                        <td>{{ \App\Models\User::whereId($d->user_id)->first()->name }}</td>
+                                        <td>{{ $d->doa_description }}</td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        @endif
+
+                        @if($oldreps->count() > 1)
+                            TESTOLDREPS
+                        @endif
                     </td>
                 </tr>
             </tbody>

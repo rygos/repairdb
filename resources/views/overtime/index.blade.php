@@ -1,6 +1,7 @@
 @extends('_layout')
 @section('title', 'Überstunden')
 @section('content')
+    @if(Auth::check() and Auth::user()->access_overtime)
     <table id="pouetbox_prodlist" class="boxtable pagedtable">
         <tr class="sortable">
             <th>Overtime date</th>
@@ -55,4 +56,5 @@
         </tr>
         {{ Form::close() }}
     </table>
+    @endif
 @endsection

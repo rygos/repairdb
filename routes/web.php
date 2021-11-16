@@ -65,8 +65,9 @@ Route::get('models', 'ModelController@index');
 Route::get('models/{id}', 'ModelController@show');
 
 Route::get('scrape/create_pack', 'ScrapeController@create_pack');
-Route::get('scrape/export/{pack}', 'ScrapeController@export');
-Route::get('scrape/{pack?}', 'ScrapeController@index');
+Route::get('scrape/export/{pack?}', 'ScrapeController@export');
+Route::get('scrape/{pack}', 'ScrapeController@index_pack');
+Route::get('scrape', 'ScrapeController@index');
 Route::post('scrape/store', 'ScrapeController@store');
 
 Route::get('xcharge/export/{export_type}', 'XChargeController@export');
@@ -96,6 +97,11 @@ Route::post('changelog/add_changelog', 'ChangelogController@add_changelog');
 Route::post('changelog/add_version', 'ChangelogController@add_version');
 Route::post('changelog/publish', 'ChangelogController@publish_version');
 
+Route::get('doa', 'DOAController@index');
+Route::post('doa/fileimport', 'DOAController@fileimport');
+Route::post('doa/store', 'DOAController@store');
+Route::get('doa/delete/{id}', 'DOAController@delete');
+Route::get('doa_all/{from_date?}/{to_date?}', 'DOAController@index_all');
 
 //Maintenance Routes
 Route::get('maint/link', function () {
