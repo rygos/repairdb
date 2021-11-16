@@ -70,9 +70,10 @@ class DOAController extends Controller
             $records = $csv->getRecords(['sap_no', 'sap_desc']); //returns all the CSV records as an Iterator object
 
             foreach ($records as $offset => $record){
-                $d = DoaSpeedItem::whereSapNo($record['sap_no'])->first();
+                $d = DoaSpeedItem::whereSapNo($record['sap_no']);
 
-                if(!$d->count()){
+                if($d->count() != 0){
+                    $d->first();
                     $d->sap_desc = $record['sap_desc'];
                     $d->save();
                 }else{
