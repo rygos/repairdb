@@ -72,7 +72,7 @@ class DOAController extends Controller
             foreach ($records as $offset => $record){
                 $d = DoaSpeedItem::whereSapNo($record['sap_no'])->first();
 
-                if($d->count() != 0){
+                if(!$d->count()){
                     $d->sap_desc = $record['sap_desc'];
                     $d->save();
                 }else{
